@@ -417,7 +417,7 @@ export default function GuestHistory() {
             </div>
             <button
               onClick={openCreateModal}
-              className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+              className="flex items-center space-x-2 px-4 py-2 bg-gtbank-primary text-white rounded-lg hover:bg-gtbank-light-orange transition-colors"
             >
               <Plus size={20} />
               <span>New Guest</span>
@@ -431,7 +431,7 @@ export default function GuestHistory() {
               <input
                 type="text"
                 placeholder="Search by guest name, email, or phone..."
-                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -442,7 +442,7 @@ export default function GuestHistory() {
           <div className="space-y-3">
             {isLoading ? (
               <div className="text-center py-12 bg-white rounded-lg">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gtbank-primary mx-auto"></div>
                 <p className="text-gray-500 mt-4">Loading guests...</p>
               </div>
             ) : error ? (
@@ -458,8 +458,8 @@ export default function GuestHistory() {
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4 flex-1">
-                      <div className="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0">
-                        <User className="w-6 h-6 text-indigo-600" />
+                      <div className="w-12 h-12 rounded-full bg-gtbank-bg-gray flex items-center justify-center flex-shrink-0">
+                        <User className="w-6 h-6 text-gtbank-primary" />
                       </div>
                       <div className="flex-1">
                         <h3 className="text-lg font-semibold text-gray-900">{guest.name}</h3>
@@ -578,7 +578,7 @@ export default function GuestHistory() {
                         required
                         value={formData.name}
                         onChange={handleInputChange}
-                        className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                         placeholder="Enter guest name"
                       />
                     </div>
@@ -597,7 +597,7 @@ export default function GuestHistory() {
                         required
                         value={formData.email}
                         onChange={handleInputChange}
-                        className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                         placeholder="guest@example.com"
                       />
                     </div>
@@ -616,7 +616,7 @@ export default function GuestHistory() {
                         required
                         value={formData.phone}
                         onChange={handleInputChange}
-                        className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                         placeholder="+1 234 567 8900"
                       />
                     </div>
@@ -635,7 +635,7 @@ export default function GuestHistory() {
                         required
                         value={formData.nationality}
                         onChange={handleInputChange}
-                        className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                         placeholder="United States"
                       />
                     </div>
@@ -652,7 +652,7 @@ export default function GuestHistory() {
                         required
                         value={formData.idType}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                       >
                         <option value="Passport">Passport</option>
                         <option value="Driver's License">Driver's License</option>
@@ -672,7 +672,7 @@ export default function GuestHistory() {
                           required
                           value={formData.idNumber}
                           onChange={handleInputChange}
-                          className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                          className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                           placeholder="ID123456789"
                         />
                       </div>
@@ -692,7 +692,7 @@ export default function GuestHistory() {
                   <button
                     type="submit"
                     disabled={isCreating}
-                    className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="px-4 py-2 bg-gtbank-primary text-white rounded-lg hover:bg-gtbank-light-orange transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isCreating ? 'Creating...' : 'Create Guest'}
                   </button>
@@ -721,7 +721,7 @@ export default function GuestHistory() {
               {/* Loading State */}
               {guestLoading ? (
                 <div className="text-center py-12">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto"></div>
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gtbank-primary mx-auto"></div>
                   <p className="text-gray-500 mt-4">Loading guest details...</p>
                 </div>
               ) : !selectedGuest ? (
@@ -740,8 +740,8 @@ export default function GuestHistory() {
               {/* Header */}
               <div className="flex justify-between items-start mb-6">
                 <div className="flex items-center space-x-4">
-                  <div className="w-16 h-16 rounded-full bg-indigo-100 flex items-center justify-center">
-                    <User className="w-8 h-8 text-indigo-600" />
+                  <div className="w-16 h-16 rounded-full bg-gtbank-bg-gray flex items-center justify-center">
+                    <User className="w-8 h-8 text-gtbank-primary" />
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold">{selectedGuest.name}</h2>
@@ -792,9 +792,9 @@ export default function GuestHistory() {
                   <p className="text-sm text-gray-600">Total Spent</p>
                   <p className="text-2xl font-bold text-green-600">${selectedGuest.statistics?.total_spent || 0}</p>
                 </div>
-                <div className="bg-purple-50 p-4 rounded-lg">
+                <div className="bg-gtbank-bg-gray p-4 rounded-lg">
                   <p className="text-sm text-gray-600">Average Spend</p>
-                  <p className="text-2xl font-bold text-purple-600">${selectedGuest.statistics?.average_spend || 0}</p>
+                  <p className="text-2xl font-bold text-gtbank-primary">${selectedGuest.statistics?.average_spend || 0}</p>
                 </div>
                 <div className="bg-orange-50 p-4 rounded-lg">
                   <p className="text-sm text-gray-600">Last Visit</p>
@@ -847,7 +847,7 @@ export default function GuestHistory() {
                     <p className="font-medium text-gray-900 mb-2">Room Floor Preference</p>
                     <div className="flex flex-wrap gap-2">
                       {(selectedGuest.preferences?.room_floors && selectedGuest.preferences.room_floors.length > 0) ? selectedGuest.preferences.room_floors.map((floor, idx) => (
-                        <span key={idx} className="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm">
+                        <span key={idx} className="bg-gtbank-bg-gray text-gtbank-secondary px-3 py-1 rounded-full text-sm">
                           {floor}
                         </span>
                       )) : <span className="text-sm text-gray-500">No preference set</span>}
@@ -877,7 +877,7 @@ export default function GuestHistory() {
                     <p className="font-medium text-gray-900 mb-2">Special Requests</p>
                     <div className="flex flex-wrap gap-2">
                       {(selectedGuest.preferences?.special_requests && selectedGuest.preferences.special_requests.length > 0) ? selectedGuest.preferences.special_requests.map((req, idx) => (
-                        <span key={idx} className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm">
+                        <span key={idx} className="bg-gtbank-bg-gray text-gtbank-primary px-3 py-1 rounded-full text-sm">
                           {req}
                         </span>
                       )) : <span className="text-sm text-gray-500">No special requests</span>}
@@ -893,7 +893,7 @@ export default function GuestHistory() {
                   {(selectedGuest.service_usage && selectedGuest.service_usage.length > 0) ? selectedGuest.service_usage.map((service, idx) => (
                     <div key={idx} className="p-3 bg-gray-50 rounded-lg">
                       <p className="text-sm text-gray-600">{service.label}</p>
-                      <p className="text-2xl font-bold text-indigo-600">{service.count}</p>
+                      <p className="text-2xl font-bold text-gtbank-primary">{service.count}</p>
                     </div>
                   )) : (
                     <div className="col-span-full text-center py-8 bg-gray-50 rounded-lg">
