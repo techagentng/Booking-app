@@ -281,7 +281,7 @@ class TripsBookAPI {
   private getMockCategories(): Category[] {
     return [
       { id: 'all', name: 'All', icon: 'home', color: 'bg-blue-500', count: 1250 },
-      { id: 'hotels', name: 'Hotels', icon: 'building', color: 'bg-gtbank-orange', count: 450 },
+      { id: 'hotels', name: 'Hotels', icon: 'building', color: 'bg-gtbank-primary', count: 450 },
       { id: 'transport', name: 'Transport', icon: 'car', color: 'bg-green-500', count: 320 },
       { id: 'food', name: 'Food', icon: 'utensils', color: 'bg-orange-500', count: 280 },
       { id: 'shopping', name: 'Shopping', icon: 'shopping-bag', color: 'bg-pink-500', count: 200 }
@@ -290,7 +290,7 @@ class TripsBookAPI {
 
   private getMockTrendingCategories(): TrendingCategory[] {
     return [
-      { name: 'Hotels', change: '+23%', color: 'bg-gtbank-orange', icon: 'building' },
+      { name: 'Hotels', change: '+23%', color: 'bg-gtbank-primary', icon: 'building' },
       { name: 'Transport', change: '+18%', color: 'bg-green-500', icon: 'car' },
       { name: 'Food', change: '+12%', color: 'bg-orange-500', icon: 'utensils' },
       { name: 'Shopping', change: '+8%', color: 'bg-pink-500', icon: 'shopping-bag' }
@@ -299,7 +299,7 @@ class TripsBookAPI {
 
   private getMockFeaturedServices(): FeaturedService[] {
     return [
-      { title: 'Hotels', description: '12 nearby', icon: 'building', color: 'bg-gtbank-orange', count: 12, image: 'https://picsum.photos/seed/hotel/80/80.jpg' },
+      { title: 'Hotels', description: '12 nearby', icon: 'building', color: 'bg-gtbank-primary', count: 12, image: 'https://picsum.photos/seed/hotel/80/80.jpg' },
       { title: 'Restaurants', description: '28 nearby', icon: 'utensils', color: 'bg-orange-500', count: 28, image: 'https://picsum.photos/seed/restaurant/80/80.jpg' },
       { title: 'Transport', description: 'Available', icon: 'car', color: 'bg-green-500', count: null, image: 'https://picsum.photos/seed/transport/80/80.jpg' },
       { title: 'Shopping', description: '8 nearby', icon: 'shopping-bag', color: 'bg-pink-500', count: 8, image: 'https://picsum.photos/seed/shopping/80/80.jpg' }

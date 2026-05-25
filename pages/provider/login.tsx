@@ -67,7 +67,7 @@ export default function ProviderLoginPage() {
 
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} className="max-w-xl">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 mb-6">
-              <Sparkles className="w-4 h-4 text-gtbank-orange-light" />
+              <Sparkles className="w-4 h-4 text-gtbank-light-orange" />
               <span className="text-sm text-white/80">Provider Command Center</span>
             </div>
             <h1 className="text-5xl font-bold leading-tight mb-6">
@@ -107,8 +107,8 @@ export default function ProviderLoginPage() {
 
             <div className="bg-white text-gray-900 rounded-3xl shadow-2xl p-8 border border-white/20">
               <div className="mb-8">
-                <div className="w-14 h-14 rounded-2xl bg-orange-100 flex items-center justify-center mb-5">
-                  <Building2 className="w-7 h-7 text-gtbank-navy" />
+                <div className="w-14 h-14 rounded-2xl bg-gtbank-bg-gray flex items-center justify-center mb-5">
+                  <Building2 className="w-7 h-7 text-gtbank-secondary" />
                 </div>
                 <h2 className="text-3xl font-bold mb-2">Provider Login</h2>
                 <p className="text-gray-600">Access your dashboard to manage bookings and services.</p>
@@ -129,7 +129,7 @@ export default function ProviderLoginPage() {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-gtbank-orange focus:border-transparent outline-none"
+                      className="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-gtbank-primary focus:border-transparent outline-none"
                       placeholder="provider@company.com"
                       required
                     />
@@ -144,7 +144,7 @@ export default function ProviderLoginPage() {
                       type={showPassword ? 'text' : 'password'}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="w-full pl-12 pr-12 py-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-gtbank-orange focus:border-transparent outline-none"
+                      className="w-full pl-12 pr-12 py-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-gtbank-primary focus:border-transparent outline-none"
                       placeholder="Enter password"
                       required
                     />
@@ -160,10 +160,10 @@ export default function ProviderLoginPage() {
 
                 <div className="flex items-center justify-between text-sm">
                   <label className="flex items-center gap-2 text-gray-600">
-                    <input type="checkbox" className="rounded border-gray-300 text-gtbank-orange focus:ring-purple-500" />
+                    <input type="checkbox" className="rounded border-gray-300 text-gtbank-primary focus:ring-gtbank-primary" />
                     Remember me
                   </label>
-                  <Link href="/onboarding" className="text-gtbank-orange font-medium hover:text-gtbank-navy">
+                  <Link href="/onboarding" className="text-gtbank-primary font-medium hover:text-gtbank-secondary">
                     Become a provider
                   </Link>
                 </div>
@@ -171,7 +171,7 @@ export default function ProviderLoginPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full inline-flex items-center justify-center gap-3 py-4 rounded-xl bg-gradient-to-r from-gtbank-orange to-gtbank-navy text-white font-semibold shadow-lg shadow-gtbank-orange/20 hover:shadow-xl hover:shadow-gtbank-orange/25 transition-all disabled:opacity-70"
+                  className="w-full inline-flex items-center justify-center gap-3 py-4 rounded-xl bg-gradient-to-r from-gtbank-primary to-gtbank-secondary text-white font-semibold shadow-lg shadow-gtbank-primary/20 hover:shadow-xl hover:shadow-gtbank-primary/25 transition-all disabled:opacity-70"
                 >
                   {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : <ArrowRight className="w-5 h-5" />}
                   Enter Provider Dashboard
@@ -179,7 +179,7 @@ export default function ProviderLoginPage() {
               </form>
 
               <div className="mt-6 pt-6 border-t border-gray-100 text-center text-sm text-gray-500">
-                Hotel staff or admin? <Link href="/login" className="text-gtbank-orange font-medium">Use main login</Link>
+                Hotel staff or admin? <Link href="/login" className="text-gtbank-primary font-medium">Use main login</Link>
               </div>
             </div>
           </motion.div>

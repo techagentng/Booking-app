@@ -78,7 +78,7 @@ export default function VerificationPage() {
       case 'completed':
         return <CheckCircle className="w-6 h-6 text-green-500" />;
       case 'in-progress':
-        return <RefreshCw className="w-6 h-6 text-gtbank-orange animate-spin" />;
+        return <RefreshCw className="w-6 h-6 text-gtbank-primary animate-spin" />;
       case 'failed':
         return <AlertCircle className="w-6 h-6 text-red-500" />;
       default:
@@ -106,7 +106,7 @@ export default function VerificationPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-gtbank-bg-gray to-gtbank-soft-blue">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <motion.div
@@ -122,7 +122,7 @@ export default function VerificationPage() {
             <span>Back</span>
           </button>
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-10 h-10 bg-gtbank-orange rounded-full flex items-center justify-center text-white font-bold">
+            <div className="w-10 h-10 bg-gtbank-primary rounded-full flex items-center justify-center text-white font-bold">
               4
             </div>
             <div>
@@ -132,7 +132,7 @@ export default function VerificationPage() {
           </div>
           {/* Progress Bar */}
           <div className="w-full bg-gray-200 rounded-full h-2">
-            <div className="bg-gradient-to-r from-gtbank-orange to-gtbank-navy h-2 rounded-full" style={{ width: '80%' }} />
+            <div className="bg-gradient-to-r from-gtbank-primary to-gtbank-secondary h-2 rounded-full" style={{ width: '80%' }} />
           </div>
         </motion.div>
 
@@ -144,7 +144,7 @@ export default function VerificationPage() {
           {/* Verification Status */}
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <div className="flex items-center gap-4 mb-6">
-              <Shield className="w-8 h-8 text-gtbank-orange" />
+              <Shield className="w-8 h-8 text-gtbank-primary" />
               <div>
                 <h2 className="text-xl font-semibold text-gray-900">Verification Status</h2>
                 <p className="text-gray-600 text-sm">Track your verification progress</p>
@@ -215,7 +215,7 @@ export default function VerificationPage() {
             >
               <button
                 onClick={handleContinue}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gtbank-orange to-gtbank-navy text-white rounded-lg font-semibold hover:from-gtbank-orange-dark hover:to-gtbank-navy-dark transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gtbank-primary to-gtbank-secondary text-white rounded-lg font-semibold hover:from-gtbank-light-orange hover:to-gtbank-soft-blue transition-all"
               >
                 Continue to Go-Live
                 <ArrowLeft className="w-5 h-5 rotate-180" />

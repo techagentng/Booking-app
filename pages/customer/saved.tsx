@@ -90,11 +90,11 @@ export default function CustomerSavedPage() {
             Home
           </button>
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-orange-100 flex items-center justify-center">
-              <Heart className="w-6 h-6 text-gtbank-orange fill-current" />
+            <div className="w-12 h-12 rounded-2xl bg-gtbank-bg-gray flex items-center justify-center">
+              <Heart className="w-6 h-6 text-gtbank-primary fill-current" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gtbank-navy">Saved Services</h1>
+              <h1 className="text-2xl font-bold text-gtbank-secondary">Saved Services</h1>
               <p className="text-gray-600 text-sm">Your customer identity keeps your favorite services in one place.</p>
             </div>
           </div>
@@ -107,22 +107,22 @@ export default function CustomerSavedPage() {
         ) : savedServices.length === 0 ? (
           <div className="bg-white rounded-2xl p-10 text-center border border-gray-100">
             <Heart className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-            <h2 className="text-xl font-bold text-gtbank-navy mb-2">No saved services yet</h2>
+            <h2 className="text-xl font-bold text-gtbank-secondary mb-2">No saved services yet</h2>
             <p className="text-gray-600 mb-5">Save hotels, restaurants, transport, and experiences to find them quickly later.</p>
-            <button onClick={() => router.push('/')} className="px-5 py-3 bg-gtbank-orange text-white rounded-xl font-semibold">Explore services</button>
+            <button onClick={() => router.push('/')} className="px-5 py-3 bg-gtbank-primary text-white rounded-xl font-semibold">Explore services</button>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {savedServices.map((service) => (
               <div key={service.id} className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-                <div className="h-40 bg-gradient-to-br from-orange-100 to-blue-100">
+                <div className="h-40 bg-gradient-to-br from-gtbank-bg-gray to-gtbank-soft-blue">
                   {service.image_url && <img src={service.image_url} alt={service.service_name} className="w-full h-full object-cover" />}
                 </div>
                 <div className="p-5">
                   <div className="flex items-start justify-between gap-3 mb-3">
                     <div>
-                      <h2 className="font-bold text-gtbank-navy">{service.service_name}</h2>
-                      <p className="text-sm text-gtbank-orange font-medium">{service.service_type}</p>
+                      <h2 className="font-bold text-gtbank-secondary">{service.service_name}</h2>
+                      <p className="text-sm text-gtbank-primary font-medium">{service.service_type}</p>
                     </div>
                     <button onClick={() => removeSaved(service.id)} className="p-2 rounded-lg text-gray-400 hover:text-red-600 hover:bg-red-50">
                       <Trash2 className="w-5 h-5" />
@@ -133,8 +133,8 @@ export default function CustomerSavedPage() {
                     <div className="flex items-center gap-2"><Star className="w-4 h-4 text-yellow-500 fill-current" /> {service.rating || 4.7}</div>
                   </div>
                   <div className="flex items-center justify-between">
-                    <div className="font-bold text-gtbank-navy">₦{(service.price || 0).toLocaleString()}</div>
-                    <button onClick={() => bookService(service)} className="inline-flex items-center gap-2 px-4 py-2 bg-gtbank-orange text-white rounded-xl font-semibold hover:bg-gtbank-orange-dark">
+                    <div className="font-bold text-gtbank-secondary">₦{(service.price || 0).toLocaleString()}</div>
+                    <button onClick={() => bookService(service)} className="inline-flex items-center gap-2 px-4 py-2 bg-gtbank-primary text-white rounded-xl font-semibold hover:bg-gtbank-light-orange">
                       <Calendar className="w-4 h-4" />
                       Book
                     </button>

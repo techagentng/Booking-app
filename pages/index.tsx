@@ -358,7 +358,7 @@ export default function Landing() {
         <div className="max-w-lg mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-gradient-to-br from-gtbank-orange to-gtbank-navy rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-br from-gtbank-primary to-gtbank-secondary rounded-lg flex items-center justify-center">
                 <Navigation className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -380,7 +380,7 @@ export default function Landing() {
       </div>
 
       {/* Search Bar */}
-      <div className="bg-gradient-to-r from-gtbank-orange to-gtbank-navy px-4 py-3">
+      <div className="bg-gradient-to-r from-gtbank-primary to-gtbank-secondary px-4 py-3">
         <div className="max-w-lg mx-auto">
           <div className="relative">
             <input
@@ -388,7 +388,7 @@ export default function Landing() {
               placeholder="Search hotels, food, transport..."
               value={searchQuery}
               onChange={(e) => handleSearch(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 bg-gray-50 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gtbank-orange"
+              className="w-full pl-10 pr-4 py-2 bg-gray-50 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gtbank-primary"
             />
             <Search className="absolute left-3 top-2.5 w-4 h-4 text-gray-400" />
           </div>
@@ -405,7 +405,7 @@ export default function Landing() {
                 onClick={() => setActiveTab(tab)}
                 className={`flex-1 pb-2 border-b-2 transition-colors ${
                   activeTab === tab
-                    ? 'border-gtbank-orange text-gtbank-orange'
+                    ? 'border-gtbank-primary text-gtbank-primary'
                     : 'border-transparent text-gray-500'
                 }`}
               >
@@ -444,7 +444,7 @@ export default function Landing() {
                         onClick={() => handleCategorySelect(category.id)}
                         className={`flex flex-col items-center gap-2 p-3 rounded-xl transition-all ${
                           selectedCategory === category.id
-                            ? 'bg-orange-50 border-2 border-gtbank-orange'
+                            ? 'bg-gtbank-bg-gray border-2 border-gtbank-primary'
                             : 'bg-white border-2 border-gray-200'
                         }`}
                       >
@@ -520,7 +520,7 @@ export default function Landing() {
                                 <span>{place.rating}</span>
                               </div>
                             </div>
-                            <p className="text-sm font-medium text-gtbank-orange">{place.price}</p>
+                            <p className="text-sm font-medium text-gtbank-primary">{place.price}</p>
                           </div>
                         </div>
                       </motion.div>
@@ -586,7 +586,7 @@ export default function Landing() {
               <h2 className="text-lg font-bold text-gray-900 mb-3">Quick Actions</h2>
               <div className="grid grid-cols-2 gap-3">
                 <Link href="/hotelbooking">
-                  <button className="bg-gtbank-orange text-white rounded-xl p-4 font-medium flex items-center justify-center gap-2">
+                  <button className="bg-gtbank-primary text-white rounded-xl p-4 font-medium flex items-center justify-center gap-2">
                     <Calendar className="w-4 h-4" />
                     Book Hotel
                   </button>
@@ -659,11 +659,11 @@ export default function Landing() {
                                 <span>{place.rating}</span>
                               </div>
                             </div>
-                            <p className="text-sm font-medium text-gtbank-orange">{place.price}</p>
+                            <p className="text-sm font-medium text-gtbank-primary">{place.price}</p>
                             {place.features && (
                               <div className="flex flex-wrap gap-1 mt-2">
                                 {place.features.slice(0, 3).map((feature: string, idx: number) => (
-                                  <span key={idx} className="text-xs bg-orange-50 text-gtbank-navy px-2 py-1 rounded">
+                                  <span key={idx} className="text-xs bg-gtbank-bg-gray text-gtbank-secondary px-2 py-1 rounded">
                                     {feature}
                                   </span>
                                 ))}
@@ -727,11 +727,11 @@ export default function Landing() {
                                 <span>{place.rating}</span>
                               </div>
                             </div>
-                            <p className="text-sm font-medium text-gtbank-orange">{place.price}</p>
+                            <p className="text-sm font-medium text-gtbank-primary">{place.price}</p>
                             {place.features && (
                               <div className="flex flex-wrap gap-1 mt-2">
                                 {place.features.slice(0, 3).map((feature: string, idx: number) => (
-                                  <span key={idx} className="text-xs bg-orange-50 text-gtbank-navy px-2 py-1 rounded">
+                                  <span key={idx} className="text-xs bg-gtbank-bg-gray text-gtbank-secondary px-2 py-1 rounded">
                                     {feature}
                                   </span>
                                 ))}
@@ -753,7 +753,7 @@ export default function Landing() {
                 {['< 1km', '< 5km', '< 10km', 'Any distance'].map((distance) => (
                   <button
                     key={distance}
-                    className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium whitespace-nowrap hover:bg-orange-100 hover:text-gtbank-navy transition-colors"
+                    className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium whitespace-nowrap hover:bg-orange-100 hover:text-gtbank-secondary transition-colors"
                   >
                     {distance}
                   </button>
@@ -763,9 +763,9 @@ export default function Landing() {
 
             {/* Map Preview */}
             <div className="mb-20">
-              <div className="bg-gradient-to-br from-orange-100 to-blue-100 rounded-xl h-48 flex items-center justify-center">
+              <div className="bg-gradient-to-br from-gtbank-bg-gray to-gtbank-soft-blue rounded-xl h-48 flex items-center justify-center">
                 <div className="text-center">
-                  <MapPin className="w-8 h-8 text-gtbank-orange mx-auto mb-2" />
+                  <MapPin className="w-8 h-8 text-gtbank-primary mx-auto mb-2" />
                   <p className="text-sm text-gray-600">Interactive map view</p>
                   <p className="text-xs text-gray-500">Tap to see full map</p>
                 </div>
@@ -832,11 +832,11 @@ export default function Landing() {
                                 <span>{service.rating}</span>
                               </div>
                             </div>
-                            <p className="text-sm font-medium text-gtbank-orange">{service.price}</p>
+                            <p className="text-sm font-medium text-gtbank-primary">{service.price}</p>
                           </div>
                         </div>
-                        <button className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <ChevronRight className="w-4 h-4 text-gtbank-orange" />
+                        <button className="w-8 h-8 bg-gtbank-bg-gray rounded-lg flex items-center justify-center flex-shrink-0">
+                          <ChevronRight className="w-4 h-4 text-gtbank-primary" />
                         </button>
                       </motion.div>
                     );
@@ -876,7 +876,7 @@ export default function Landing() {
               <h2 className="text-lg font-bold text-gray-900 mb-3">Join the Trend</h2>
               <div className="grid grid-cols-2 gap-3">
                 <Link href="/hotelbooking">
-                  <button className="bg-gtbank-orange text-white rounded-xl p-4 font-medium flex items-center justify-center gap-2">
+                  <button className="bg-gtbank-primary text-white rounded-xl p-4 font-medium flex items-center justify-center gap-2">
                     <Calendar className="w-4 h-4" />
                     Book Trending
                   </button>

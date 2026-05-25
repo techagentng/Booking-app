@@ -16,8 +16,8 @@ import HallBookingRightSection from "../components/HallBookingRightSection";
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 const adminKpis = [
-  { label: 'Total Providers', value: '248', change: '+18 this month', icon: Building2, color: 'bg-orange-100 text-gtbank-navy' },
-  { label: 'Active Bookings', value: '1,284', change: '+12.5% vs last week', icon: Calendar, color: 'bg-blue-100 text-gtbank-navy' },
+  { label: 'Total Providers', value: '248', change: '+18 this month', icon: Building2, color: 'bg-gtbank-bg-gray text-gtbank-secondary' },
+  { label: 'Active Bookings', value: '1,284', change: '+12.5% vs last week', icon: Calendar, color: 'bg-gtbank-bg-gray text-gtbank-secondary' },
   { label: 'Platform Revenue', value: '₦42.8M', change: '+8.2% growth', icon: CreditCard, color: 'bg-green-100 text-green-700' },
   { label: 'Open Disputes', value: '16', change: '7 urgent', icon: AlertTriangle, color: 'bg-red-100 text-red-700' },
 ];
@@ -29,7 +29,7 @@ const adminFunctions = [
     href: '/admin/providers',
     icon: ShieldCheck,
     badge: '12 pending',
-    color: 'from-gtbank-orange to-gtbank-navy',
+    color: 'from-gtbank-primary to-gtbank-secondary',
   },
   {
     title: 'All Bookings',
@@ -37,7 +37,7 @@ const adminFunctions = [
     href: '/admin/bookings',
     icon: ClipboardList,
     badge: '86 today',
-    color: 'from-gtbank-navy to-gtbank-navy-light',
+    color: 'from-gtbank-secondary to-gtbank-soft-blue',
   },
   {
     title: 'Service Catalog',
@@ -147,7 +147,7 @@ export default function Dashboard() {
         <section className="mb-10">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-6">
             <div>
-              <p className="text-sm font-semibold text-gtbank-orange uppercase tracking-wide">General Admin Command Center</p>
+              <p className="text-sm font-semibold text-gtbank-primary uppercase tracking-wide">General Admin Command Center</p>
               <h1 className="text-3xl font-bold text-gray-900 mt-1">Platform Operations Overview</h1>
               <p className="text-gray-600 mt-2">
                 Control providers, bookings, customers, services, payments, disputes, reports, and marketplace quality from one dashboard.
@@ -217,9 +217,9 @@ export default function Dashboard() {
                       {item.badge}
                     </span>
                   </div>
-                  <h3 className="font-bold text-gray-900 mb-2 group-hover:text-gtbank-navy">{item.title}</h3>
+                  <h3 className="font-bold text-gray-900 mb-2 group-hover:text-gtbank-secondary">{item.title}</h3>
                   <p className="text-sm text-gray-600 leading-relaxed mb-4">{item.description}</p>
-                  <div className="inline-flex items-center gap-2 text-sm font-semibold text-gtbank-orange">
+                  <div className="inline-flex items-center gap-2 text-sm font-semibold text-gtbank-primary">
                     Open module
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>
@@ -236,7 +236,7 @@ export default function Dashboard() {
                 <h2 className="text-xl font-bold text-gray-900">Operations Queue</h2>
                 <p className="text-sm text-gray-600 mt-1">Work that needs admin attention across the platform.</p>
               </div>
-              <button className="text-sm font-semibold text-gtbank-orange hover:text-gtbank-navy">View all</button>
+              <button className="text-sm font-semibold text-gtbank-primary hover:text-gtbank-secondary">View all</button>
             </div>
             <div className="space-y-3">
               {operationsQueue.map((item) => (
@@ -275,21 +275,21 @@ export default function Dashboard() {
         </section>
 
         <section className="mb-10">
-          <div className="bg-gradient-to-r from-gtbank-orange to-gtbank-navy rounded-2xl shadow-lg p-6 text-white flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div className="bg-gradient-to-r from-gtbank-primary to-gtbank-secondary rounded-2xl shadow-lg p-6 text-white flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center">
                 <Building2 className="w-6 h-6" />
               </div>
               <div>
                 <h2 className="text-xl font-bold">Provider workspace</h2>
-                <p className="text-orange-100 mt-1">
+                <p className="text-gtbank-light-orange mt-1">
                   Manage provider bookings, services, revenue, reviews, and onboarding from the new provider dashboard.
                 </p>
               </div>
             </div>
             <button
               onClick={() => router.push('/provider/dashboard')}
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-white text-purple-700 rounded-xl font-semibold hover:bg-orange-50 transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-white text-gtbank-secondary rounded-xl font-semibold hover:bg-gtbank-bg-gray transition-colors"
             >
               Open Provider Dashboard
               <ArrowRight className="w-5 h-5" />
@@ -318,14 +318,14 @@ export default function Dashboard() {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 max-h-[80vh] overflow-hidden">
             {/* Modal Header */}
-            <div className="bg-gradient-to-r from-gtbank-navy to-gtbank-navy-dark px-6 py-4 flex items-center justify-between">
+            <div className="bg-gradient-to-r from-gtbank-secondary to-gtbank-navy px-6 py-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <AlertTriangle className="w-6 h-6 text-white" />
                 <h2 className="text-xl font-bold text-white">Flagged Bookings</h2>
               </div>
               <button 
                 onClick={() => setShowFlaggedModal(false)}
-                className="text-white hover:bg-orange-500 rounded-full p-1 transition-colors"
+                className="text-white hover:bg-gtbank-primary rounded-full p-1 transition-colors"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -335,8 +335,8 @@ export default function Dashboard() {
             <div className="p-6 overflow-y-auto max-h-[60vh]">
               {flaggedBookings.length === 0 ? (
                 <div className="text-center py-8">
-                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <FileWarning className="w-8 h-8 text-gtbank-orange" />
+                  <div className="w-16 h-16 bg-gtbank-bg-gray rounded-full flex items-center justify-center mx-auto mb-4">
+                    <FileWarning className="w-8 h-8 text-gtbank-primary" />
                   </div>
                   <p className="text-gray-500 text-lg">No flagged bookings</p>
                   <p className="text-gray-400 text-sm mt-1">All bookings appear to be legitimate</p>
@@ -349,10 +349,10 @@ export default function Dashboard() {
                   {flaggedBookings.map((booking, index) => (
                     <div 
                       key={index}
-                      className="flex items-center gap-3 p-4 bg-orange-50 border border-orange-200 rounded-xl hover:bg-orange-100 transition-colors"
+                      className="flex items-center gap-3 p-4 bg-gtbank-bg-gray border border-gtbank-border-gray rounded-xl hover:bg-gtbank-bg-gray transition-colors"
                     >
-                      <div className="w-12 h-12 bg-orange-200 rounded-full flex items-center justify-center flex-shrink-0">
-                        <span className="text-gtbank-navy font-bold text-lg">
+                      <div className="w-12 h-12 bg-gtbank-light-orange rounded-full flex items-center justify-center flex-shrink-0">
+                        <span className="text-gtbank-secondary font-bold text-lg">
                           {booking.guestName.charAt(0).toUpperCase()}
                         </span>
                       </div>
@@ -362,9 +362,9 @@ export default function Dashboard() {
                         <p className="text-xs text-gray-400">
                           {new Date(booking.timestamp).toLocaleString()}
                         </p>
-                        <p className="text-sm text-gtbank-orange font-medium">⚠️ Low face match score detected</p>
+                        <p className="text-sm text-gtbank-primary font-medium">⚠️ Low face match score detected</p>
                       </div>
-                      <span className="text-xs bg-gtbank-orange text-white px-2 py-1 rounded-full">
+                      <span className="text-xs bg-gtbank-primary text-white px-2 py-1 rounded-full">
                         #{index + 1}
                       </span>
                     </div>
@@ -374,16 +374,16 @@ export default function Dashboard() {
             </div>
 
             {/* Modal Footer */}
-            <div className="px-6 py-4 bg-orange-50 border-t border-orange-100 flex justify-end gap-3">
+            <div className="px-6 py-4 bg-gtbank-bg-gray border-t border-gtbank-border-gray flex justify-end gap-3">
               <button
                 onClick={() => setShowFlaggedModal(false)}
-                className="px-4 py-2 text-gray-600 hover:bg-orange-100 rounded-lg transition-colors"
+                className="px-4 py-2 text-gray-600 hover:bg-gtbank-bg-gray rounded-lg transition-colors"
               >
                 Close
               </button>
               {flaggedBookings.length > 0 && (
                 <button
-                  className="px-4 py-2 bg-gtbank-orange text-white rounded-lg hover:bg-gtbank-orange-dark transition-colors"
+                  className="px-4 py-2 bg-gtbank-primary text-white rounded-lg hover:bg-gtbank-light-orange transition-colors"
                   onClick={() => {
                     // Could navigate to a detailed review page
                     setShowFlaggedModal(false);
@@ -502,7 +502,7 @@ function RightSection() {
       <section>
         <div className="flex justify-between items-center mb-3">
           <h2 className="text-lg font-bold">Newest Bookings</h2>
-          <Link href="/bookings" className="text-sm text-gtbank-orange hover:text-gtbank-navy">
+          <Link href="/bookings" className="text-sm text-gtbank-primary hover:text-gtbank-secondary">
             See more
           </Link>
         </div>
@@ -522,7 +522,7 @@ function RightSection() {
       <section>
         <div className="flex justify-between items-center mb-3">
           <h2 className="text-lg font-bold">Guest Preferences</h2>
-          <Link href="/guesthistory" className="text-sm text-gtbank-orange hover:text-gtbank-navy">
+          <Link href="/guesthistory" className="text-sm text-gtbank-primary hover:text-gtbank-secondary">
             See more
           </Link>
         </div>
@@ -567,7 +567,7 @@ function BookingCard({ booking }: { booking: RecentBooking }) {
   };
 
   return (
-    <div className="p-3 bg-gray-50 rounded-lg mb-3 border-l-4 border-gtbank-orange">
+    <div className="p-3 bg-gray-50 rounded-lg mb-3 border-l-4 border-gtbank-primary">
       <div className="flex justify-between items-start">
         <div className="flex-1">
           <p className="text-xs text-gray-500">{formatDate(booking.date || booking.check_in)}</p>
@@ -594,16 +594,16 @@ function BookingCard({ booking }: { booking: RecentBooking }) {
 
 function PreferenceCard({ preference }: { preference: GuestPreference }) {
   return (
-    <div className="bg-gray-50 p-3 rounded-lg mb-3 border-l-4 border-gtbank-orange">
+    <div className="bg-gray-50 p-3 rounded-lg mb-3 border-l-4 border-gtbank-primary">
       <p className="font-semibold text-gray-900">{preference.guest_name}</p>
       <div className="mt-2 flex flex-wrap gap-1">
         {preference.room_types?.slice(0, 2).map((type, idx) => (
-          <span key={`room-${idx}`} className="px-2 py-0.5 bg-orange-100 text-gtbank-navy text-xs rounded">
+          <span key={`room-${idx}`} className="px-2 py-0.5 bg-gtbank-bg-gray text-gtbank-secondary text-xs rounded">
             {type}
           </span>
         ))}
         {preference.meal_types?.slice(0, 2).map((meal, idx) => (
-          <span key={`meal-${idx}`} className="px-2 py-0.5 bg-orange-100 text-gtbank-navy text-xs rounded">
+          <span key={`meal-${idx}`} className="px-2 py-0.5 bg-gtbank-bg-gray text-gtbank-secondary text-xs rounded">
             {meal}
           </span>
         ))}

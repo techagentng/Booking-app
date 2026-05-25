@@ -86,11 +86,11 @@ export default function CustomerProfilePage() {
             Home
           </button>
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-orange-100 flex items-center justify-center">
-              <User className="w-6 h-6 text-gtbank-orange" />
+            <div className="w-12 h-12 rounded-2xl bg-gtbank-bg-gray flex items-center justify-center">
+              <User className="w-6 h-6 text-gtbank-primary" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gtbank-navy">Customer Profile</h1>
+              <h1 className="text-2xl font-bold text-gtbank-secondary">Customer Profile</h1>
               <p className="text-gray-600 text-sm">Your customer identity, preferences, and verification status.</p>
             </div>
           </div>
@@ -103,14 +103,14 @@ export default function CustomerProfilePage() {
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <section className="lg:col-span-2 bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-              <h2 className="text-lg font-bold text-gtbank-navy mb-5">Personal Information</h2>
+              <h2 className="text-lg font-bold text-gtbank-secondary mb-5">Personal Information</h2>
               <div className="space-y-5">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Full name</label>
                   <input
                     value={profile.full_name || ''}
                     onChange={(e) => updateField('full_name', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-gtbank-orange focus:border-transparent outline-none"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-gtbank-primary focus:border-transparent outline-none"
                   />
                 </div>
                 <div>
@@ -131,7 +131,7 @@ export default function CustomerProfilePage() {
                     <input
                       value={profile.phone || ''}
                       onChange={(e) => updateField('phone', e.target.value)}
-                      className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-gtbank-orange focus:border-transparent outline-none"
+                      className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-gtbank-primary focus:border-transparent outline-none"
                     />
                   </div>
                 </div>
@@ -142,7 +142,7 @@ export default function CustomerProfilePage() {
                     <input
                       value={profile.preferred_city || ''}
                       onChange={(e) => updateField('preferred_city', e.target.value)}
-                      className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-gtbank-orange focus:border-transparent outline-none"
+                      className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-gtbank-primary focus:border-transparent outline-none"
                     />
                   </div>
                 </div>
@@ -152,7 +152,7 @@ export default function CustomerProfilePage() {
                 <button
                   onClick={saveProfile}
                   disabled={saving}
-                  className="inline-flex items-center gap-2 px-5 py-3 bg-gtbank-orange text-white rounded-xl font-semibold hover:bg-gtbank-orange-dark disabled:opacity-70"
+                  className="inline-flex items-center gap-2 px-5 py-3 bg-gtbank-primary text-white rounded-xl font-semibold hover:bg-gtbank-light-orange disabled:opacity-70"
                 >
                   <Save className="w-5 h-5" />
                   {saving ? 'Saving...' : 'Save profile'}
@@ -163,7 +163,7 @@ export default function CustomerProfilePage() {
 
             <aside className="space-y-6">
               <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-                <h2 className="text-lg font-bold text-gtbank-navy mb-4">Verification</h2>
+                <h2 className="text-lg font-bold text-gtbank-secondary mb-4">Verification</h2>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="flex items-center gap-2 text-gray-700"><Mail className="w-4 h-4" /> Email</span>
@@ -181,11 +181,11 @@ export default function CustomerProfilePage() {
               </div>
 
               <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-                <h2 className="text-lg font-bold text-gtbank-navy mb-4">Preferences</h2>
-                <div className="flex items-center gap-3 p-4 bg-orange-50 rounded-xl">
-                  <Bell className="w-5 h-5 text-gtbank-orange" />
+                <h2 className="text-lg font-bold text-gtbank-secondary mb-4">Preferences</h2>
+                <div className="flex items-center gap-3 p-4 bg-gtbank-bg-gray rounded-xl">
+                  <Bell className="w-5 h-5 text-gtbank-primary" />
                   <div>
-                    <div className="font-semibold text-gtbank-navy">Notifications</div>
+                    <div className="font-semibold text-gtbank-secondary">Notifications</div>
                     <div className="text-sm text-gray-600">Booking updates and offers enabled</div>
                   </div>
                 </div>

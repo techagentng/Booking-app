@@ -182,28 +182,37 @@
 }
 
 :root {
-  /* GTBank Brand Colors */
-  --gtbank-orange: #FF6600;
-  --gtbank-navy: #003366;
-  --gtbank-navy-dark: #002244;
-  --gtbank-navy-light: #004488;
-  --gtbank-orange-light: #FF8533;
-  --gtbank-orange-dark: #CC5200;
+  /* GTBank Official Brand Colors */
+  --gtbank-primary: #F58220;
+  --gtbank-secondary: #00425F;
+  --gtbank-navy: #002B3D;
+  --gtbank-light-orange: #FF9A4D;
+  --gtbank-soft-blue: #1F6F8B;
+  --gtbank-bg-gray: #F5F7FA;
+  --gtbank-border-gray: #E6E9EE;
+  --gtbank-muted-text: #6B7280;
+  --gtbank-dark-text: #111827;
+
+  /* Status Colors */
+  --gtbank-success: #16A34A;
+  --gtbank-warning: #F59E0B;
+  --gtbank-error: #DC2626;
+  --gtbank-info: #3B82F6;
 
   /* Light mode colors */
   --bg-primary: #ffffff;
-  --bg-secondary: #f5f7fa;
-  --bg-tertiary: #e8eef5;
-  --text-primary: #003366;
-  --text-secondary: #4a5568;
-  --text-tertiary: #718096;
-  --border-color: #e2e8f0;
-  --accent-primary: #FF6600;
-  --accent-secondary: #003366;
-  --accent-success: #00A651;
+  --bg-secondary: #F5F7FA;
+  --bg-tertiary: #E6E9EE;
+  --text-primary: #111827;
+  --text-secondary: #6B7280;
+  --text-tertiary: #9CA3AF;
+  --border-color: #E6E9EE;
+  --accent-primary: #F58220;
+  --accent-secondary: #00425F;
+  --accent-success: #16A34A;
   --accent-danger: #DC2626;
   --accent-warning: #F59E0B;
-  --accent-info: #003366;
+  --accent-info: #3B82F6;
 }
 
 .dark {

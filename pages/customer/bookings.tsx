@@ -84,11 +84,11 @@ export default function CustomerBookingsPage() {
             Home
           </button>
           <div className="flex items-center gap-3 mb-5">
-            <div className="w-12 h-12 rounded-2xl bg-orange-100 flex items-center justify-center">
-              <Calendar className="w-6 h-6 text-gtbank-orange" />
+            <div className="w-12 h-12 rounded-2xl bg-gtbank-bg-gray flex items-center justify-center">
+              <Calendar className="w-6 h-6 text-gtbank-primary" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gtbank-navy">My Bookings</h1>
+              <h1 className="text-2xl font-bold text-gtbank-secondary">My Bookings</h1>
               <p className="text-gray-600 text-sm">Your completed and upcoming booking history.</p>
             </div>
           </div>
@@ -98,7 +98,7 @@ export default function CustomerBookingsPage() {
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`px-4 py-2 rounded-full text-sm font-semibold capitalize whitespace-nowrap ${
-                  activeTab === tab ? 'bg-gtbank-orange text-white' : 'bg-gray-100 text-gray-600'
+                  activeTab === tab ? 'bg-gtbank-primary text-white' : 'bg-gray-100 text-gray-600'
                 }`}
               >
                 {tab}
@@ -114,9 +114,9 @@ export default function CustomerBookingsPage() {
         ) : bookings.length === 0 ? (
           <div className="bg-white rounded-2xl p-10 text-center border border-gray-100">
             <Calendar className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-            <h2 className="text-xl font-bold text-gtbank-navy mb-2">No bookings found</h2>
+            <h2 className="text-xl font-bold text-gtbank-secondary mb-2">No bookings found</h2>
             <p className="text-gray-600 mb-5">Your customer bookings will appear here after you order or reserve a service.</p>
-            <button onClick={() => router.push('/')} className="px-5 py-3 bg-gtbank-orange text-white rounded-xl font-semibold">Explore services</button>
+            <button onClick={() => router.push('/')} className="px-5 py-3 bg-gtbank-primary text-white rounded-xl font-semibold">Explore services</button>
           </div>
         ) : (
           <div className="space-y-4">
@@ -125,12 +125,12 @@ export default function CustomerBookingsPage() {
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
                   <div>
                     <div className="flex flex-wrap items-center gap-2 mb-2">
-                      <h2 className="font-bold text-gtbank-navy">{booking.service_name}</h2>
+                      <h2 className="font-bold text-gtbank-secondary">{booking.service_name}</h2>
                       <span className={`px-2 py-1 rounded-full text-xs font-semibold ${statusClass(booking.status)}`}>{booking.status}</span>
                     </div>
                     <p className="text-sm text-gray-500">{booking.booking_id || booking.id} • {booking.service_type}</p>
                   </div>
-                  <div className="text-lg font-bold text-gtbank-navy">₦{(booking.amount || 0).toLocaleString()}</div>
+                  <div className="text-lg font-bold text-gtbank-secondary">₦{(booking.amount || 0).toLocaleString()}</div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm text-gray-600 mb-4">
                   <div className="flex items-center gap-2"><Clock className="w-4 h-4" /> {booking.booking_date || 'Date pending'}</div>
@@ -139,7 +139,7 @@ export default function CustomerBookingsPage() {
                 </div>
                 <div className="flex flex-wrap gap-2">
                   <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200">View details</button>
-                  <button onClick={() => router.push('/')} className="inline-flex items-center gap-2 px-4 py-2 bg-gtbank-orange text-white rounded-xl font-semibold hover:bg-gtbank-orange-dark">
+                  <button onClick={() => router.push('/')} className="inline-flex items-center gap-2 px-4 py-2 bg-gtbank-primary text-white rounded-xl font-semibold hover:bg-gtbank-light-orange">
                     <RefreshCw className="w-4 h-4" />
                     Book again
                   </button>

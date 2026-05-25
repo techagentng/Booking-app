@@ -89,7 +89,7 @@ export default function GoLivePage() {
   const canActivate = completedCount === modules.length && testBookingCompleted;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-gtbank-bg-gray to-gtbank-soft-blue">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <motion.div
@@ -105,7 +105,7 @@ export default function GoLivePage() {
             <span>Back</span>
           </button>
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-10 h-10 bg-gtbank-orange rounded-full flex items-center justify-center text-white font-bold">
+            <div className="w-10 h-10 bg-gtbank-primary rounded-full flex items-center justify-center text-white font-bold">
               5
             </div>
             <div>
@@ -115,7 +115,7 @@ export default function GoLivePage() {
           </div>
           {/* Progress Bar */}
           <div className="w-full bg-gray-200 rounded-full h-2">
-            <div className="bg-gradient-to-r from-gtbank-orange to-gtbank-navy h-2 rounded-full" style={{ width: '100%' }} />
+            <div className="bg-gradient-to-r from-gtbank-primary to-gtbank-secondary h-2 rounded-full" style={{ width: '100%' }} />
           </div>
         </motion.div>
 
@@ -162,17 +162,17 @@ export default function GoLivePage() {
                   className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${
                     module.completed
                       ? 'border-green-300 bg-green-50'
-                      : 'border-gray-200 hover:border-gtbank-orange'
+                      : 'border-gray-200 hover:border-gtbank-primary'
                   }`}
                 >
                   <div className="flex items-center gap-4">
                     <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                      module.completed ? 'bg-green-500' : 'bg-orange-100'
+                      module.completed ? 'bg-green-500' : 'bg-gtbank-bg-gray'
                     }`}>
                       {module.completed ? (
                         <CheckCircle className="w-6 h-6 text-white" />
                       ) : (
-                        <div className="text-gtbank-orange">{module.icon}</div>
+                        <div className="text-gtbank-primary">{module.icon}</div>
                       )}
                     </div>
                     <div className="flex-1">
@@ -190,7 +190,7 @@ export default function GoLivePage() {
           {!isActivated && (
             <div className="bg-white rounded-2xl shadow-lg p-8">
               <div className="flex items-center gap-4 mb-6">
-                <Play className="w-8 h-8 text-gtbank-orange" />
+                <Play className="w-8 h-8 text-gtbank-primary" />
                 <div>
                   <h2 className="text-xl font-semibold text-gray-900">Test Booking Simulation</h2>
                   <p className="text-gray-600 text-sm">Practice with a simulated booking before going live</p>
@@ -200,16 +200,16 @@ export default function GoLivePage() {
               {!showTestBooking ? (
                 <button
                   onClick={handleStartTestBooking}
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 border-2 border-gtbank-orange text-gtbank-navy rounded-xl font-semibold hover:bg-orange-50 transition-all"
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 border-2 border-gtbank-primary text-gtbank-secondary rounded-xl font-semibold hover:bg-gtbank-bg-gray transition-all"
                 >
                   <Play className="w-5 h-5" />
                   Start Test Booking
                 </button>
               ) : (
-                <div className="border-2 border-orange-100 rounded-xl p-5 bg-orange-50">
+                <div className="border-2 border-gtbank-border-gray rounded-xl p-5 bg-gtbank-bg-gray">
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <div>
-                      <p className="text-sm font-medium text-gtbank-navy mb-1">Incoming test booking</p>
+                      <p className="text-sm font-medium text-gtbank-secondary mb-1">Incoming test booking</p>
                       <h3 className="text-lg font-semibold text-gray-900">Standard Room</h3>
                       <p className="text-sm text-gray-600">Test Guest • test.guest@example.com • +234 800 000 0000</p>
                     </div>
@@ -272,11 +272,11 @@ export default function GoLivePage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-gradient-to-r from-gtbank-orange to-gtbank-navy rounded-2xl shadow-lg p-8 text-center"
+              className="bg-gradient-to-r from-gtbank-primary to-gtbank-secondary rounded-2xl shadow-lg p-8 text-center"
             >
               <Rocket className="w-12 h-12 text-white mx-auto mb-4" />
               <h2 className="text-2xl font-bold text-white mb-2">Ready to Go Live?</h2>
-              <p className="text-orange-100 mb-6">
+              <p className="text-gtbank-light-orange mb-6">
                 Complete training and the test booking simulation to activate your account
               </p>
               <button
@@ -284,7 +284,7 @@ export default function GoLivePage() {
                 disabled={!canActivate}
                 className={`inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all ${
                   canActivate
-                    ? 'bg-white text-gtbank-orange hover:bg-gray-100'
+                    ? 'bg-white text-gtbank-primary hover:bg-gray-100'
                     : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                 }`}
               >
@@ -292,7 +292,7 @@ export default function GoLivePage() {
                 Activate My Account
               </button>
               {!canActivate && (
-                <p className="text-orange-200 text-sm mt-3">
+                <p className="text-gtbank-light-orange text-sm mt-3">
                   Complete all training modules and the test booking simulation to activate
                 </p>
               )}

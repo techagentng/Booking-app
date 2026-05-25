@@ -82,7 +82,7 @@ export default function RegistrationPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-gtbank-bg-gray to-gtbank-soft-blue">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <motion.div
@@ -98,7 +98,7 @@ export default function RegistrationPage() {
             <span>Back</span>
           </button>
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-10 h-10 bg-gtbank-orange rounded-full flex items-center justify-center text-white font-bold">
+            <div className="w-10 h-10 bg-gtbank-primary rounded-full flex items-center justify-center text-white font-bold">
               1
             </div>
             <div>
@@ -108,7 +108,7 @@ export default function RegistrationPage() {
           </div>
           {/* Progress Bar */}
           <div className="w-full bg-gray-200 rounded-full h-2">
-            <div className="bg-gradient-to-r from-gtbank-orange to-gtbank-navy h-2 rounded-full" style={{ width: `${(step / 2) * 100}%` }} />
+            <div className="bg-gradient-to-r from-gtbank-primary to-gtbank-secondary h-2 rounded-full" style={{ width: `${(step / 2) * 100}%` }} />
           </div>
         </motion.div>
 
@@ -133,7 +133,7 @@ export default function RegistrationPage() {
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-orange focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                     placeholder="John"
                   />
                   {errors.firstName && <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>}
@@ -145,7 +145,7 @@ export default function RegistrationPage() {
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-orange focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                     placeholder="Doe"
                   />
                   {errors.lastName && <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>}
@@ -161,7 +161,7 @@ export default function RegistrationPage() {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-orange focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                     placeholder="john@company.com"
                   />
                 </div>
@@ -175,7 +175,7 @@ export default function RegistrationPage() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-orange focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                   placeholder="+234 800 000 0000"
                 />
                 {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
@@ -190,7 +190,7 @@ export default function RegistrationPage() {
                     name="password"
                     value={formData.password}
                     onChange={handleInputChange}
-                    className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-orange focus:border-transparent"
+                    className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                     placeholder="••••••••"
                   />
                   <button
@@ -211,7 +211,7 @@ export default function RegistrationPage() {
                   name="confirmPassword"
                   value={formData.confirmPassword}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-orange focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                   placeholder="••••••••"
                 />
                 {errors.confirmPassword && <p className="text-red-500 text-sm mt-1">{errors.confirmPassword}</p>}
@@ -221,7 +221,7 @@ export default function RegistrationPage() {
             <div className="mt-8 flex justify-end">
               <button
                 onClick={handleNext}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gtbank-orange to-gtbank-navy text-white rounded-lg font-semibold hover:from-gtbank-orange-dark hover:to-gtbank-navy-dark transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gtbank-primary to-gtbank-secondary text-white rounded-lg font-semibold hover:from-gtbank-light-orange hover:to-gtbank-soft-blue transition-all"
               >
                 Continue
                 <ArrowRight className="w-5 h-5" />
@@ -250,7 +250,7 @@ export default function RegistrationPage() {
                   name="businessName"
                   value={formData.businessName}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-orange focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                   placeholder="Eko Hotels & Suites"
                 />
                 {errors.businessName && <p className="text-red-500 text-sm mt-1">{errors.businessName}</p>}
@@ -265,7 +265,7 @@ export default function RegistrationPage() {
                       onClick={() => setSelectedBusinessType(type.id)}
                       className={`p-4 rounded-xl border-2 transition-all text-left ${
                         selectedBusinessType === type.id
-                          ? 'border-gtbank-orange bg-orange-50'
+                          ? 'border-gtbank-primary bg-gtbank-bg-gray'
                           : 'border-gray-200 hover:border-gray-300'
                       }`}
                     >
@@ -293,7 +293,7 @@ export default function RegistrationPage() {
               </button>
               <button
                 onClick={handleNext}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gtbank-orange to-gtbank-navy text-white rounded-lg font-semibold hover:from-gtbank-orange-dark hover:to-gtbank-navy-dark transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gtbank-primary to-gtbank-secondary text-white rounded-lg font-semibold hover:from-gtbank-light-orange hover:to-gtbank-soft-blue transition-all"
               >
                 Continue
                 <ArrowRight className="w-5 h-5" />
