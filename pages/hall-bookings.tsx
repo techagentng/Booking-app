@@ -181,8 +181,8 @@ export default function HallBookingManagement() {
                 <p className="text-sm text-gray-600">Total Bookings</p>
                 <p className="text-2xl font-bold text-gray-900">{stats.total}</p>
               </div>
-              <div className="p-3 bg-indigo-100 rounded-lg">
-                <Calendar className="w-6 h-6 text-indigo-600" />
+              <div className="p-3 bg-gtbank-bg-gray rounded-lg">
+                <Calendar className="w-6 h-6 text-gtbank-primary" />
               </div>
             </div>
           </div>
@@ -289,14 +289,14 @@ export default function HallBookingManagement() {
                 placeholder="Search bookings..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
               />
             </div>
             <div className="flex gap-2">
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
               >
                 <option value="all">All Status</option>
                 <option value="pending">Pending</option>
@@ -383,7 +383,7 @@ export default function HallBookingManagement() {
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() => handleViewDetails(booking)}
-                          className="p-1 text-gray-400 hover:text-indigo-600 transition-colors"
+                          className="p-1 text-gray-400 hover:text-gtbank-primary transition-colors"
                           title="View Details"
                         >
                           <Eye className="w-4 h-4" />
@@ -414,7 +414,7 @@ export default function HallBookingManagement() {
         {showDetailsModal && selectedBooking && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-white rounded-xl shadow-2xl w-full max-w-2xl mx-4 max-h-[90vh] overflow-hidden">
-              <div className="bg-gradient-to-r from-indigo-600 to-indigo-700 px-6 py-4">
+              <div className="bg-gradient-to-r from-gtbank-secondary to-gtbank-navy px-6 py-4">
                 <h2 className="text-xl font-bold text-white">Booking Details</h2>
               </div>
               
@@ -471,7 +471,7 @@ export default function HallBookingManagement() {
                       handleStatusUpdate(selectedBooking.id, e.target.value);
                       setSelectedBooking({ ...selectedBooking, status: e.target.value as any });
                     }}
-                    className="px-3 py-1 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                    className="px-3 py-1 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                   >
                     <option value="pending">Pending</option>
                     <option value="confirmed">Confirmed</option>
@@ -481,7 +481,7 @@ export default function HallBookingManagement() {
                 </div>
                 <button
                   onClick={() => setShowDetailsModal(false)}
-                  className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+                  className="px-4 py-2 bg-gtbank-primary text-white rounded-lg hover:bg-gtbank-light-orange transition-colors"
                 >
                   Close
                 </button>

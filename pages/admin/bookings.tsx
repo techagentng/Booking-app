@@ -176,7 +176,7 @@ export default function AdminBookingManagement() {
               onClick={() => setActiveTab('list')}
               className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
                 activeTab === 'list'
-                  ? 'border-indigo-500 text-indigo-600'
+                  ? 'border-gtbank-primary text-gtbank-primary'
                   : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
               }`}
             >
@@ -186,7 +186,7 @@ export default function AdminBookingManagement() {
               onClick={() => setActiveTab('calendar')}
               className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
                 activeTab === 'calendar'
-                  ? 'border-indigo-500 text-indigo-600'
+                  ? 'border-gtbank-primary text-gtbank-primary'
                   : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
               }`}
             >
@@ -208,7 +208,7 @@ export default function AdminBookingManagement() {
                   onClick={() => {
                     setShowNewBookingModal(true);
                   }}
-                  className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 bg-gtbank-primary text-white rounded-lg hover:bg-gtbank-light-orange transition-colors"
                 >
                   <Plus className="w-4 h-4" />
                   New Booking
@@ -258,7 +258,7 @@ export default function AdminBookingManagement() {
                     placeholder="Search by name, email, or booking ID..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-gray-900 placeholder-gray-500"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent text-gray-900 placeholder-gray-500"
                   />
                 </div>
                 
@@ -280,7 +280,7 @@ export default function AdminBookingManagement() {
                       type="date"
                       value={dateRange.from}
                       onChange={(e) => setDateRange(prev => ({ ...prev, from: e.target.value }))}
-                      className="pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-gray-900"
+                      className="pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent text-gray-900"
                     />
                     <div className="absolute left-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
                       <Calendar className="w-5 h-5 text-gray-500" />
@@ -292,7 +292,7 @@ export default function AdminBookingManagement() {
                       type="date"
                       value={dateRange.to}
                       onChange={(e) => setDateRange(prev => ({ ...prev, to: e.target.value }))}
-                      className="pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-gray-900"
+                      className="pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent text-gray-900"
                     />
                     <div className="absolute left-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
                       <Calendar className="w-5 h-5 text-gray-500" />
@@ -306,7 +306,7 @@ export default function AdminBookingManagement() {
                 <div className="flex items-center gap-2 text-sm text-gray-600">
                   <span>Active filters:</span>
                   {searchTerm && (
-                    <span className="px-2 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs">
+                    <span className="px-2 py-1 bg-gtbank-bg-gray text-gtbank-secondary rounded-full text-xs">
                       Search: {searchTerm}
                     </span>
                   )}

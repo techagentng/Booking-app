@@ -278,7 +278,7 @@ export default function Rooms() {
             ) : filteredRooms.length > 0 ? (
               filteredRooms.map((room: APIRoom) => (
                 <div key={room.id} className="bg-white rounded-xl shadow hover:shadow-lg transition-shadow overflow-hidden">
-                  <div className="bg-gradient-to-r from-indigo-500 to-indigo-600 h-32 flex items-center justify-center">
+                  <div className="bg-gradient-to-r from-gtbank-secondary to-gtbank-navy h-32 flex items-center justify-center">
                     <Home className="w-16 h-16 text-white opacity-80" />
                   </div>
 

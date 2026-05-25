@@ -404,7 +404,7 @@ export default function CheckIn() {
             </div>
             <button
               onClick={() => setShowManualCheckin(true)}
-              className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors flex items-center"
+              className="bg-gtbank-primary text-white px-4 py-2 rounded-lg hover:bg-gtbank-light-orange transition-colors flex items-center"
             >
               <Plus size={18} className="mr-2" />
               <span>+ Manual Check-In</span>
@@ -470,7 +470,7 @@ export default function CheckIn() {
                 <input
                   type="text"
                   placeholder="Search guests..."
-                  className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
@@ -502,7 +502,7 @@ export default function CheckIn() {
               <div className="mt-4 pt-4 border-t border-gray-100">
                 <label className="block text-sm font-medium text-gray-700 mb-2">Status</label>
                 <select
-                  className="w-full p-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full p-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value as CheckinStatus | 'all')}
                 >
@@ -537,8 +537,8 @@ export default function CheckIn() {
                       <tr key={guest.id} className="hover:bg-gray-50">
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
-                            <div className="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center">
-                              <User className="h-5 w-5 text-indigo-600" />
+                            <div className="flex-shrink-0 h-10 w-10 rounded-full bg-gtbank-bg-gray flex items-center justify-center">
+                              <User className="h-5 w-5 text-gtbank-primary" />
                             </div>
                             <div className="ml-4">
                               <div className="text-sm font-medium text-gray-900">{guest.guestName}</div>
@@ -592,7 +592,7 @@ export default function CheckIn() {
                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                           <button
                             onClick={() => handleViewDetails(guest)}
-                            className="text-indigo-600 hover:text-indigo-900 mr-4"
+                            className="text-gtbank-primary hover:text-gtbank-secondary mr-4"
                           >
                             View
                           </button>
@@ -685,15 +685,15 @@ export default function CheckIn() {
 
               {/* Progress Indicator */}
               <div className="mb-8 flex items-center justify-between">
-                <div className={`flex items-center justify-center w-10 h-10 rounded-full ${manualCheckinStep === 'search' || manualCheckinStep === 'verify' || manualCheckinStep === 'complete' ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-600'}`}>
+                <div className={`flex items-center justify-center w-10 h-10 rounded-full ${manualCheckinStep === 'search' || manualCheckinStep === 'verify' || manualCheckinStep === 'complete' ? 'bg-gtbank-primary text-white' : 'bg-gray-200 text-gray-600'}`}>
                   <span className="font-semibold">1</span>
                 </div>
-                <div className={`flex-1 h-1 mx-2 ${manualCheckinStep === 'verify' || manualCheckinStep === 'complete' ? 'bg-indigo-600' : 'bg-gray-200'}`}></div>
-                <div className={`flex items-center justify-center w-10 h-10 rounded-full ${manualCheckinStep === 'verify' || manualCheckinStep === 'complete' ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-600'}`}>
+                <div className={`flex-1 h-1 mx-2 ${manualCheckinStep === 'verify' || manualCheckinStep === 'complete' ? 'bg-gtbank-primary' : 'bg-gray-200'}`}></div>
+                <div className={`flex items-center justify-center w-10 h-10 rounded-full ${manualCheckinStep === 'verify' || manualCheckinStep === 'complete' ? 'bg-gtbank-primary text-white' : 'bg-gray-200 text-gray-600'}`}>
                   <span className="font-semibold">2</span>
                 </div>
-                <div className={`flex-1 h-1 mx-2 ${manualCheckinStep === 'complete' ? 'bg-indigo-600' : 'bg-gray-200'}`}></div>
-                <div className={`flex items-center justify-center w-10 h-10 rounded-full ${manualCheckinStep === 'complete' ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-600'}`}>
+                <div className={`flex-1 h-1 mx-2 ${manualCheckinStep === 'complete' ? 'bg-gtbank-primary' : 'bg-gray-200'}`}></div>
+                <div className={`flex items-center justify-center w-10 h-10 rounded-full ${manualCheckinStep === 'complete' ? 'bg-gtbank-primary text-white' : 'bg-gray-200 text-gray-600'}`}>
                   <span className="font-semibold">3</span>
                 </div>
               </div>
@@ -706,7 +706,7 @@ export default function CheckIn() {
                     <input
                       type="text"
                       placeholder="Enter booking ID (e.g., BK-1001)"
-                      className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                       value={manualFormData.bookingId}
                       onChange={(e) => setManualFormData({...manualFormData, bookingId: e.target.value})}
                     />
@@ -724,7 +724,7 @@ export default function CheckIn() {
                       <input
                         type="text"
                         placeholder="Guest name"
-                        className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                         value={manualFormData.guestName}
                         onChange={(e) => setManualFormData({...manualFormData, guestName: e.target.value})}
                       />
@@ -734,7 +734,7 @@ export default function CheckIn() {
                       <input
                         type="email"
                         placeholder="Guest email"
-                        className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                         value={manualFormData.guestEmail}
                         onChange={(e) => setManualFormData({...manualFormData, guestEmail: e.target.value})}
                       />
@@ -747,7 +747,7 @@ export default function CheckIn() {
                       <input
                         type="tel"
                         placeholder="Guest phone"
-                        className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                         value={manualFormData.guestPhone}
                         onChange={(e) => setManualFormData({...manualFormData, guestPhone: e.target.value})}
                       />
@@ -757,7 +757,7 @@ export default function CheckIn() {
                       <input
                         type="text"
                         placeholder="Room number"
-                        className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                         value={manualFormData.roomNumber}
                         onChange={(e) => setManualFormData({...manualFormData, roomNumber: e.target.value})}
                       />
@@ -772,7 +772,7 @@ export default function CheckIn() {
                         type="checkbox"
                         checked={manualFormData.idVerified}
                         onChange={(e) => setManualFormData({...manualFormData, idVerified: e.target.checked})}
-                        className="w-4 h-4 text-indigo-600 rounded focus:ring-2 focus:ring-indigo-500"
+                        className="w-4 h-4 text-gtbank-primary rounded focus:ring-2 focus:ring-gtbank-primary"
                       />
                       <div className="flex items-center">
                         <FileText size={16} className="mr-2 text-gray-400" />
@@ -785,7 +785,7 @@ export default function CheckIn() {
                         type="checkbox"
                         checked={manualFormData.keyIssued}
                         onChange={(e) => setManualFormData({...manualFormData, keyIssued: e.target.checked})}
-                        className="w-4 h-4 text-indigo-600 rounded focus:ring-2 focus:ring-indigo-500"
+                        className="w-4 h-4 text-gtbank-primary rounded focus:ring-2 focus:ring-gtbank-primary"
                       />
                       <div className="flex items-center">
                         <Key size={16} className="mr-2 text-gray-400" />
@@ -798,7 +798,7 @@ export default function CheckIn() {
                         type="checkbox"
                         checked={manualFormData.documentsSigned}
                         onChange={(e) => setManualFormData({...manualFormData, documentsSigned: e.target.checked})}
-                        className="w-4 h-4 text-indigo-600 rounded focus:ring-2 focus:ring-indigo-500"
+                        className="w-4 h-4 text-gtbank-primary rounded focus:ring-2 focus:ring-gtbank-primary"
                       />
                       <div className="flex items-center">
                         <FileText size={16} className="mr-2 text-gray-400" />
@@ -861,7 +861,7 @@ export default function CheckIn() {
                     <label className="block text-sm font-medium text-gray-700 mb-2">Additional Notes</label>
                     <textarea
                       placeholder="Any special notes or requests..."
-                      className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                       rows={3}
                       value={manualFormData.notes}
                       onChange={(e) => setManualFormData({...manualFormData, notes: e.target.value})}
@@ -883,7 +883,7 @@ export default function CheckIn() {
                 {manualCheckinStep === 'search' && (
                   <button
                     type="button"
-                    className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                    className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gtbank-primary hover:bg-gtbank-light-orange"
                     onClick={handleSearchBooking}
                     disabled={!manualFormData.bookingId.trim()}
                   >
@@ -902,7 +902,7 @@ export default function CheckIn() {
                     </button>
                     <button
                       type="button"
-                      className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                      className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gtbank-primary hover:bg-gtbank-light-orange"
                       onClick={() => setManualCheckinStep('complete')}
                     >
                       Continue
@@ -1012,7 +1012,7 @@ export default function CheckIn() {
                     </div>
                     <div>
                       <p className="text-sm text-gray-500">Total Price</p>
-                      <p className="font-medium flex items-center text-indigo-600">
+                      <p className="font-medium flex items-center text-gtbank-primary">
                         ₦{selectedGuest.totalPrice}
                       </p>
                     </div>
@@ -1061,16 +1061,16 @@ export default function CheckIn() {
 
               {/* AI Insights Section */}
               {selectedGuest.guestId && (
-                <div className="mb-6 p-4 bg-indigo-50 rounded-lg border border-indigo-200">
+                <div className="mb-6 p-4 bg-gtbank-bg-gray rounded-lg border border-gtbank-border-gray">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-lg font-medium text-gray-900 flex items-center">
-                      <Lightbulb size={20} className="mr-2 text-indigo-600" />
+                      <Lightbulb size={20} className="mr-2 text-gtbank-primary" />
                       AI Insights
                     </h3>
                     <button
                       onClick={() => selectedGuest.guestId && refreshInsights.mutate(selectedGuest.guestId)}
                       disabled={refreshInsights.isPending || insightsLoading}
-                      className="text-sm text-indigo-600 hover:text-indigo-700 flex items-center gap-1 disabled:opacity-50"
+                      className="text-sm text-gtbank-primary hover:text-gtbank-secondary flex items-center gap-1 disabled:opacity-50"
                       title="Refresh insights"
                     >
                       <RefreshCw 
@@ -1083,13 +1083,13 @@ export default function CheckIn() {
 
                   {insightsLoading ? (
                     <div className="flex items-center justify-center py-4">
-                      <RefreshCw className="w-5 h-5 animate-spin text-indigo-600 mr-2" />
+                      <RefreshCw className="w-5 h-5 animate-spin text-gtbank-primary mr-2" />
                       <span className="text-sm text-gray-600">Analyzing preferences...</span>
                     </div>
                   ) : aiInsights ? (
                     <div className="space-y-4">
                       <div className="flex items-start">
-                        <Utensils className="w-5 h-5 text-indigo-600 mr-3 mt-0.5 flex-shrink-0" />
+                        <Utensils className="w-5 h-5 text-gtbank-primary mr-3 mt-0.5 flex-shrink-0" />
                         <div className="flex-1">
                           <p className="text-sm font-medium text-gray-700 mb-1">Meal Preference</p>
                           <p className="text-sm text-gray-600">
@@ -1101,7 +1101,7 @@ export default function CheckIn() {
                       </div>
 
                       <div className="flex items-start">
-                        <Home className="w-5 h-5 text-indigo-600 mr-3 mt-0.5 flex-shrink-0" />
+                        <Home className="w-5 h-5 text-gtbank-primary mr-3 mt-0.5 flex-shrink-0" />
                         <div className="flex-1">
                           <p className="text-sm font-medium text-gray-700 mb-1">Room Preference</p>
                           <p className="text-sm text-gray-600">
@@ -1113,7 +1113,7 @@ export default function CheckIn() {
                       </div>
 
                       <div className="flex items-start">
-                        <Activity className="w-5 h-5 text-indigo-600 mr-3 mt-0.5 flex-shrink-0" />
+                        <Activity className="w-5 h-5 text-gtbank-primary mr-3 mt-0.5 flex-shrink-0" />
                         <div className="flex-1">
                           <p className="text-sm font-medium text-gray-700 mb-1">Service Pattern</p>
                           <p className="text-sm text-gray-600">
@@ -1125,9 +1125,9 @@ export default function CheckIn() {
                       </div>
 
                       {aiInsights.recommendations && aiInsights.recommendations.length > 0 && (
-                        <div className="pt-3 border-t border-indigo-200">
+                        <div className="pt-3 border-t border-gtbank-border-gray">
                           <p className="text-sm font-medium text-gray-700 mb-2 flex items-center">
-                            <Lightbulb size={16} className="mr-2 text-indigo-600" />
+                            <Lightbulb size={16} className="mr-2 text-gtbank-primary" />
                             Recommendations
                           </p>
                           <ul className="space-y-1">
@@ -1185,7 +1185,7 @@ export default function CheckIn() {
                     </button>
                     <button
                       type="button"
-                      className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                      className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gtbank-primary hover:bg-gtbank-light-orange"
                       onClick={() => handleCompleteCheckin(selectedGuest)}
                     >
                       Complete Check-In
@@ -1256,7 +1256,7 @@ export default function CheckIn() {
                       onChange={(e) => setAdditionalCharges(e.target.value)}
                       placeholder="0.00"
                       step="0.01"
-                      className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-gray-900"
+                      className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-gtbank-primary focus:border-transparent text-gray-900"
                     />
                   </div>
                   <p className="text-xs text-gray-500 mt-1">Mini-bar, room service, or other charges</p>
@@ -1271,7 +1271,7 @@ export default function CheckIn() {
                     onChange={(e) => setCheckoutNotes(e.target.value)}
                     placeholder="Any feedback or special notes..."
                     rows={3}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-gray-900"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-gtbank-primary focus:border-transparent text-gray-900"
                   />
                 </div>
               </div>
