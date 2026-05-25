@@ -77,7 +77,7 @@ export default function OnboardingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <motion.div
@@ -111,7 +111,7 @@ export default function OnboardingPage() {
               initial={{ width: 0 }}
               animate={{ width: `${(completedPhases.length / phases.length) * 100}%` }}
               transition={{ duration: 0.5 }}
-              className="bg-gradient-to-r from-purple-600 to-blue-600 h-3 rounded-full"
+              className="bg-gradient-to-r from-gtbank-orange to-gtbank-navy h-3 rounded-full"
             />
           </div>
 
@@ -133,7 +133,7 @@ export default function OnboardingPage() {
                     isCompleted
                       ? 'bg-green-50 border-green-200'
                       : isCurrent
-                      ? 'bg-purple-50 border-purple-300'
+                      ? 'bg-orange-50 border-gtbank-orange'
                       : 'bg-gray-50 border-gray-200 opacity-60'
                   }`}
                 >
@@ -144,7 +144,7 @@ export default function OnboardingPage() {
                         <CheckCircle className="w-6 h-6 text-white" />
                       </div>
                     ) : isCurrent ? (
-                      <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-gtbank-orange rounded-full flex items-center justify-center">
                         <Circle className="w-6 h-6 text-white" />
                       </div>
                     ) : (
@@ -159,7 +159,7 @@ export default function OnboardingPage() {
                     <div className="flex items-center gap-3 mb-1">
                       <h3 className="font-semibold text-gray-900">{phase.title}</h3>
                       {isCurrent && (
-                        <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs font-medium rounded-full">
+                        <span className="px-2 py-1 bg-orange-100 text-gtbank-navy text-xs font-medium rounded-full">
                           Current
                         </span>
                       )}
@@ -175,7 +175,7 @@ export default function OnboardingPage() {
                   {(isCurrent || isCompleted) && (
                     <div className="flex-shrink-0">
                       {isCurrent ? (
-                        <ArrowRight className="w-6 h-6 text-purple-600" />
+                        <ArrowRight className="w-6 h-6 text-gtbank-orange" />
                       ) : (
                         <CheckCircle className="w-6 h-6 text-green-600" />
                       )}
@@ -197,7 +197,7 @@ export default function OnboardingPage() {
           >
             <button
               onClick={handleStartOnboarding}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl font-semibold hover:from-purple-700 hover:to-blue-700 transition-all shadow-lg hover:shadow-xl"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-gtbank-orange to-gtbank-navy text-white rounded-xl font-semibold hover:from-gtbank-orange-dark hover:to-gtbank-navy-dark transition-all shadow-lg hover:shadow-xl"
             >
               Start Onboarding
               <ArrowRight className="w-5 h-5" />

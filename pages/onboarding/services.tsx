@@ -114,7 +114,7 @@ export default function ServicesPage() {
   const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <motion.div
@@ -130,7 +130,7 @@ export default function ServicesPage() {
             <span>Back</span>
           </button>
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+            <div className="w-10 h-10 bg-gtbank-orange rounded-full flex items-center justify-center text-white font-bold">
               3
             </div>
             <div>
@@ -140,7 +140,7 @@ export default function ServicesPage() {
           </div>
           {/* Progress Bar */}
           <div className="w-full bg-gray-200 rounded-full h-2">
-            <div className="bg-gradient-to-r from-purple-600 to-blue-600 h-2 rounded-full" style={{ width: '60%' }} />
+            <div className="bg-gradient-to-r from-gtbank-orange to-gtbank-navy h-2 rounded-full" style={{ width: '60%' }} />
           </div>
         </motion.div>
 
@@ -163,14 +163,14 @@ export default function ServicesPage() {
                   onClick={() => toggleCategory(category.id)}
                   className={`p-4 rounded-xl border-2 transition-all text-center ${
                     selectedCategories.includes(category.id)
-                      ? 'border-purple-500 bg-purple-50'
+                      ? 'border-gtbank-orange bg-orange-50'
                       : 'border-gray-200 hover:border-gray-300'
                   }`}
                 >
                   <div className="text-4xl mb-2">{category.icon}</div>
                   <div className="font-medium text-gray-900">{category.name}</div>
                   {selectedCategories.includes(category.id) && (
-                    <CheckCircle className="w-5 h-5 text-purple-600 mx-auto mt-2" />
+                    <CheckCircle className="w-5 h-5 text-gtbank-orange mx-auto mt-2" />
                   )}
                 </button>
               ))}
@@ -204,7 +204,7 @@ export default function ServicesPage() {
                         type="text"
                         value={service.name}
                         onChange={(e) => updateService(service.id, 'name', e.target.value)}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-orange focus:border-transparent"
                         placeholder="e.g., Standard Room, Airport Transfer"
                       />
                       {errors[`service-${index}-name`] && (
@@ -217,7 +217,7 @@ export default function ServicesPage() {
                       <select
                         value={service.category}
                         onChange={(e) => updateService(service.id, 'category', e.target.value)}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-orange focus:border-transparent"
                       >
                         <option value="">Select a category</option>
                         {categories.map((cat) => (
@@ -237,7 +237,7 @@ export default function ServicesPage() {
                         value={service.description}
                         onChange={(e) => updateService(service.id, 'description', e.target.value)}
                         rows={3}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-orange focus:border-transparent resize-none"
                         placeholder="Describe what this service includes..."
                       />
                       {errors[`service-${index}-description`] && (
@@ -254,7 +254,7 @@ export default function ServicesPage() {
                             type="number"
                             value={service.price}
                             onChange={(e) => updateService(service.id, 'price', parseFloat(e.target.value) || 0)}
-                            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-orange focus:border-transparent"
                             placeholder="0"
                           />
                         </div>
@@ -270,7 +270,7 @@ export default function ServicesPage() {
                             type="text"
                             value={service.duration}
                             onChange={(e) => updateService(service.id, 'duration', e.target.value)}
-                            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-orange focus:border-transparent"
                             placeholder="e.g., 1 hour, 1 night, 30 min"
                           />
                         </div>
@@ -289,7 +289,7 @@ export default function ServicesPage() {
                             onClick={() => toggleAvailability(service.id, day)}
                             className={`px-4 py-2 rounded-lg border-2 transition-all ${
                               service.availability.includes(day)
-                                ? 'border-purple-500 bg-purple-50 text-purple-700'
+                                ? 'border-gtbank-orange bg-orange-50 text-gtbank-navy'
                                 : 'border-gray-200 hover:border-gray-300'
                             }`}
                           >
@@ -308,7 +308,7 @@ export default function ServicesPage() {
 
             <button
               onClick={addService}
-              className="mt-6 inline-flex items-center gap-2 px-4 py-2 border-2 border-dashed border-gray-300 text-gray-700 rounded-lg hover:border-purple-500 hover:text-purple-600 transition-all w-full justify-center"
+              className="mt-6 inline-flex items-center gap-2 px-4 py-2 border-2 border-dashed border-gray-300 text-gray-700 rounded-lg hover:border-gtbank-orange hover:text-gtbank-orange transition-all w-full justify-center"
             >
               <Plus className="w-5 h-5" />
               Add Another Service
@@ -326,7 +326,7 @@ export default function ServicesPage() {
             </button>
             <button
               onClick={handleSubmit}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gtbank-orange to-gtbank-navy text-white rounded-lg font-semibold hover:from-gtbank-orange-dark hover:to-gtbank-navy-dark transition-all"
             >
               Continue
               <ArrowRight className="w-5 h-5" />

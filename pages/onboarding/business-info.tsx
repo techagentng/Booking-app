@@ -60,7 +60,7 @@ export default function BusinessInfoPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <motion.div
@@ -76,7 +76,7 @@ export default function BusinessInfoPage() {
             <span>Back</span>
           </button>
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+            <div className="w-10 h-10 bg-gtbank-orange rounded-full flex items-center justify-center text-white font-bold">
               2
             </div>
             <div>
@@ -86,7 +86,7 @@ export default function BusinessInfoPage() {
           </div>
           {/* Progress Bar */}
           <div className="w-full bg-gray-200 rounded-full h-2">
-            <div className="bg-gradient-to-r from-purple-600 to-blue-600 h-2 rounded-full" style={{ width: '40%' }} />
+            <div className="bg-gradient-to-r from-gtbank-orange to-gtbank-navy h-2 rounded-full" style={{ width: '40%' }} />
           </div>
         </motion.div>
 
@@ -112,7 +112,7 @@ export default function BusinessInfoPage() {
                     name="address"
                     value={formData.address}
                     onChange={handleInputChange}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-orange focus:border-transparent"
                     placeholder="123 Victoria Island"
                   />
                 </div>
@@ -127,7 +127,7 @@ export default function BusinessInfoPage() {
                     name="city"
                     value={formData.city}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-orange focus:border-transparent"
                     placeholder="Lagos"
                   />
                   {errors.city && <p className="text-red-500 text-sm mt-1">{errors.city}</p>}
@@ -139,7 +139,7 @@ export default function BusinessInfoPage() {
                     name="state"
                     value={formData.state}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-orange focus:border-transparent"
                     placeholder="Lagos State"
                   />
                   {errors.state && <p className="text-red-500 text-sm mt-1">{errors.state}</p>}
@@ -151,7 +151,7 @@ export default function BusinessInfoPage() {
                     name="postalCode"
                     value={formData.postalCode}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-orange focus:border-transparent"
                     placeholder="101241"
                   />
                 </div>
@@ -167,7 +167,7 @@ export default function BusinessInfoPage() {
                       name="businessPhone"
                       value={formData.businessPhone}
                       onChange={handleInputChange}
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-orange focus:border-transparent"
                       placeholder="+234 800 000 0000"
                     />
                   </div>
@@ -182,7 +182,7 @@ export default function BusinessInfoPage() {
                       name="businessEmail"
                       value={formData.businessEmail}
                       onChange={handleInputChange}
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-orange focus:border-transparent"
                       placeholder="info@eko-hotels.com"
                     />
                   </div>
@@ -199,7 +199,7 @@ export default function BusinessInfoPage() {
                     name="website"
                     value={formData.website}
                     onChange={handleInputChange}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-orange focus:border-transparent"
                     placeholder="https://eko-hotels.com"
                   />
                 </div>
@@ -221,7 +221,7 @@ export default function BusinessInfoPage() {
                 value={formData.description}
                 onChange={handleInputChange}
                 rows={4}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-orange focus:border-transparent resize-none"
                 placeholder="Describe your business, what you offer, and what makes you unique..."
               />
               {errors.description && <p className="text-red-500 text-sm mt-1">{errors.description}</p>}
@@ -236,7 +236,7 @@ export default function BusinessInfoPage() {
             </div>
 
             <div className="space-y-4">
-              <div className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center hover:border-purple-500 transition-colors">
+              <div className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center hover:border-gtbank-orange transition-colors">
                 <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                 <p className="text-gray-600 mb-2">Drag and drop files here, or click to select</p>
                 <p className="text-gray-400 text-sm">PDF, JPG, PNG up to 10MB each</p>
@@ -250,7 +250,7 @@ export default function BusinessInfoPage() {
                 />
                 <label
                   htmlFor="file-upload"
-                  className="inline-block mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 cursor-pointer"
+                  className="inline-block mt-4 px-4 py-2 bg-gtbank-orange text-white rounded-lg hover:bg-gtbank-orange-dark cursor-pointer"
                 >
                   Select Files
                 </label>
@@ -296,7 +296,7 @@ export default function BusinessInfoPage() {
             </button>
             <button
               onClick={handleSubmit}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gtbank-orange to-gtbank-navy text-white rounded-lg font-semibold hover:from-gtbank-orange-dark hover:to-gtbank-navy-dark transition-all"
             >
               Continue
               <ArrowRight className="w-5 h-5" />
