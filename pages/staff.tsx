@@ -135,20 +135,20 @@ const StaffManagement: React.FC = () => {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+      <div className="min-h-screen bg-gradient-to-br from-gtbank-bg-gray to-gtbank-soft-blue">
         <div className="p-8 max-w-7xl mx-auto">
           {/* Header */}
           <div className="mb-8">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-2">
+                <h1 className="text-4xl font-bold bg-gradient-to-r from-gtbank-secondary to-gtbank-navy bg-clip-text text-transparent mb-2">
                   Staff Management
                 </h1>
                 <p className="text-gray-600 text-lg">Manage your hotel staff, shifts, and assignments</p>
               </div>
               <button
                 onClick={() => setShowCreateModal(true)}
-                className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gtbank-secondary to-gtbank-navy text-white rounded-xl hover:from-gtbank-soft-blue hover:to-gtbank-navy transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 <UserPlus className="w-5 h-5" />
                 Add Staff
@@ -158,7 +158,7 @@ const StaffManagement: React.FC = () => {
 
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all p-6 border border-blue-100 transform hover:-translate-y-1">
+            <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all p-6 border border-gtbank-border-gray transform hover:-translate-y-1">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-gray-600 mb-1">Total Staff</p>
@@ -184,7 +184,7 @@ const StaffManagement: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all p-6 border border-blue-100 transform hover:-translate-y-1">
+            <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all p-6 border border-gtbank-border-gray transform hover:-translate-y-1">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-gray-600 mb-1">Available</p>
@@ -270,7 +270,7 @@ const StaffManagement: React.FC = () => {
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/50 overflow-hidden">
             {isLoading ? (
               <div className="text-center py-16">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full mb-4 animate-pulse">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-gtbank-secondary to-gtbank-navy rounded-full mb-4 animate-pulse">
                   <Clock className="w-8 h-8 text-white animate-spin" />
                 </div>
                 <p className="text-gray-600 font-medium">Loading staff...</p>
@@ -286,7 +286,7 @@ const StaffManagement: React.FC = () => {
             ) : (
               <div className="overflow-x-auto">
                 <table className="w-full">
-                  <thead className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b-2 border-blue-100">
+                  <thead className="bg-gradient-to-r from-gtbank-bg-gray to-gtbank-soft-blue border-b-2 border-gtbank-border-gray">
                     <tr>
                       <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Staff Member</th>
                       <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Department</th>
@@ -302,7 +302,7 @@ const StaffManagement: React.FC = () => {
                     <tr key={member.id} className="hover:bg-blue-50/50 transition-colors group">
                       <td className="px-6 py-5 whitespace-nowrap">
                         <div className="flex items-center">
-                          <div className="flex-shrink-0 h-12 w-12 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
+                          <div className="flex-shrink-0 h-12 w-12 bg-gradient-to-br from-gtbank-secondary to-gtbank-navy rounded-xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
                             <span className="text-white font-bold text-sm">
                               {member.first_name[0]}{member.last_name[0]}
                             </span>
@@ -440,7 +440,7 @@ const StaffManagement: React.FC = () => {
       {showCreateModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="sticky top-0 bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-6 rounded-t-2xl">
+            <div className="sticky top-0 bg-gradient-to-r from-gtbank-secondary to-gtbank-navy text-white p-6 rounded-t-2xl">
               <div className="flex items-center justify-between">
                 <h2 className="text-2xl font-bold">Add New Staff Member</h2>
                 <button
@@ -626,7 +626,7 @@ const StaffManagement: React.FC = () => {
                 <button
                   type="submit"
                   disabled={createStaff.isPending}
-                  className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                  className="px-6 py-3 bg-gradient-to-r from-gtbank-secondary to-gtbank-navy text-white font-semibold rounded-xl hover:from-gtbank-soft-blue hover:to-gtbank-navy transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                 >
                   {createStaff.isPending ? (
                     <>
@@ -650,7 +650,7 @@ const StaffManagement: React.FC = () => {
       {showEditModal && selectedStaff && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="sticky top-0 bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-6 rounded-t-2xl">
+            <div className="sticky top-0 bg-gradient-to-r from-gtbank-secondary to-gtbank-navy text-white p-6 rounded-t-2xl">
               <div className="flex items-center justify-between">
                 <h2 className="text-2xl font-bold">Edit Staff Member</h2>
                 <button
@@ -845,7 +845,7 @@ const StaffManagement: React.FC = () => {
                 <button
                   type="submit"
                   disabled={updateStaff.isPending}
-                  className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                  className="px-6 py-3 bg-gradient-to-r from-gtbank-secondary to-gtbank-navy text-white font-semibold rounded-xl hover:from-gtbank-soft-blue hover:to-gtbank-navy transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                 >
                   {updateStaff.isPending ? (
                     <>

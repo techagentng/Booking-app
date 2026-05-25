@@ -308,7 +308,7 @@ export default function Housekeeping() {
               </button>
               <button
                 onClick={handleAutoAssign}
-                className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors flex items-center"
+                className="bg-gtbank-primary text-white px-4 py-2 rounded-lg hover:bg-gtbank-light-orange transition-colors flex items-center"
               >
                 <TrendingUp size={18} className="mr-2" />
                 <span>Auto Assign</span>
@@ -370,10 +370,10 @@ export default function Housekeeping() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-gray-500 text-sm">Available Staff</p>
-                  <p className="text-3xl font-bold text-indigo-600">{availableStaff}</p>
+                  <p className="text-3xl font-bold text-gtbank-primary">{availableStaff}</p>
                 </div>
-                <div className="bg-indigo-100 p-3 rounded-lg">
-                  <User className="w-6 h-6 text-indigo-600" />
+                <div className="bg-gtbank-bg-gray p-3 rounded-lg">
+                  <User className="w-6 h-6 text-gtbank-primary" />
                 </div>
               </div>
             </div>
@@ -386,7 +386,7 @@ export default function Housekeeping() {
                 onClick={() => setActiveTab('tasks')}
                 className={`flex-1 px-6 py-4 text-center font-medium transition-colors ${
                   activeTab === 'tasks'
-                    ? 'text-indigo-600 border-b-2 border-indigo-600'
+                    ? 'text-gtbank-primary border-b-2 border-gtbank-primary'
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
@@ -397,7 +397,7 @@ export default function Housekeeping() {
                 onClick={() => setActiveTab('staff')}
                 className={`flex-1 px-6 py-4 text-center font-medium transition-colors ${
                   activeTab === 'staff'
-                    ? 'text-indigo-600 border-b-2 border-indigo-600'
+                    ? 'text-gtbank-primary border-b-2 border-gtbank-primary'
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
@@ -408,7 +408,7 @@ export default function Housekeeping() {
                 onClick={() => setActiveTab('history')}
                 className={`flex-1 px-6 py-4 text-center font-medium transition-colors ${
                   activeTab === 'history'
-                    ? 'text-indigo-600 border-b-2 border-indigo-600'
+                    ? 'text-gtbank-primary border-b-2 border-gtbank-primary'
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
@@ -429,7 +429,7 @@ export default function Housekeeping() {
                       <input
                         type="text"
                         placeholder="Search tasks..."
-                        className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                       />
@@ -461,7 +461,7 @@ export default function Housekeeping() {
                     <div className="mb-6 p-4 bg-gray-50 rounded-lg">
                       <label className="block text-sm font-medium text-gray-700 mb-2">Task Status</label>
                       <select
-                        className="w-full p-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        className="w-full p-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                         value={statusFilter}
                         onChange={(e) => setStatusFilter(e.target.value as TaskStatus | 'all')}
                       >
@@ -637,7 +637,7 @@ export default function Housekeeping() {
                           </div>
 
                           <div className="pt-3 border-t border-gray-100">
-                            <button className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition-colors text-sm font-medium">
+                            <button className="w-full bg-gtbank-primary text-white py-2 rounded-lg hover:bg-gtbank-light-orange transition-colors text-sm font-medium">
                               Assign Task
                             </button>
                           </div>

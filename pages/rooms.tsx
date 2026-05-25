@@ -133,7 +133,7 @@ export default function Rooms() {
                 });
                 setShowCreateModal(true);
               }}
-              className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors flex items-center"
+              className="bg-gtbank-primary text-white px-4 py-2 rounded-lg hover:bg-gtbank-light-orange transition-colors flex items-center"
             >
               <Plus size={18} className="mr-2" />
               <span>+ New Room</span>
@@ -199,7 +199,7 @@ export default function Rooms() {
                 <input
                   type="text"
                   placeholder="Search rooms..."
-                  className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
@@ -233,7 +233,7 @@ export default function Rooms() {
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
                     <select
-                      className="w-full p-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                      className="w-full p-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                       value={statusFilter}
                       onChange={(e) => setStatusFilter(e.target.value as RoomStatus | 'all')}
                     >
@@ -248,7 +248,7 @@ export default function Rooms() {
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Room Type</label>
                     <select
-                      className="w-full p-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                      className="w-full p-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                       value={typeFilter}
                       onChange={(e) => setTypeFilter(e.target.value)}
                     >
@@ -267,7 +267,7 @@ export default function Rooms() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {isLoading ? (
               <div className="col-span-full text-center py-12">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gtbank-primary mx-auto"></div>
                 <p className="text-gray-500 mt-4">Loading rooms...</p>
               </div>
             ) : error ? (
@@ -316,7 +316,7 @@ export default function Rooms() {
 
                     <button
                       onClick={() => handleViewDetails(room)}
-                      className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition-colors text-sm font-medium"
+                      className="w-full bg-gtbank-primary text-white py-2 rounded-lg hover:bg-gtbank-light-orange transition-colors text-sm font-medium"
                     >
                       View Details
                     </button>
@@ -409,7 +409,7 @@ export default function Rooms() {
                     </div>
                     <div>
                       <p className="text-sm text-gray-500">Price per Night</p>
-                      <p className="font-medium text-indigo-600">₦{selectedRoom.price_per_night}</p>
+                      <p className="font-medium text-gtbank-primary">₦{selectedRoom.price_per_night}</p>
                     </div>
                     <div>
                       <p className="text-sm text-gray-500">Bed Type</p>
@@ -470,7 +470,7 @@ export default function Rooms() {
                     setShowCreateModal(true);
                     setSelectedRoom(null);
                   }}
-                  className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                  className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gtbank-primary hover:bg-gtbank-light-orange"
                 >
                   Edit Room
                 </button>
@@ -557,7 +557,7 @@ export default function Rooms() {
                     required
                     value={roomForm.room_number}
                     onChange={(e) => setRoomForm({ ...roomForm, room_number: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-gray-900"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent text-gray-900"
                     placeholder="e.g., 101"
                   />
                 </div>
@@ -571,7 +571,7 @@ export default function Rooms() {
                     required
                     value={roomForm.room_type}
                     onChange={(e) => setRoomForm({ ...roomForm, room_type: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-gray-900"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent text-gray-900"
                   >
                     <option value="Standard">Standard</option>
                     <option value="Deluxe">Deluxe</option>
@@ -595,7 +595,7 @@ export default function Rooms() {
                     max="50"
                     value={roomForm.floor}
                     onChange={(e) => setRoomForm({ ...roomForm, floor: parseInt(e.target.value) })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-gray-900"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent text-gray-900"
                   />
                 </div>
 
@@ -612,7 +612,7 @@ export default function Rooms() {
                     max="10"
                     value={roomForm.capacity}
                     onChange={(e) => setRoomForm({ ...roomForm, capacity: parseInt(e.target.value) || 1 })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-gray-900"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent text-gray-900"
                   />
                 </div>
               </div>
@@ -632,7 +632,7 @@ export default function Rooms() {
                     step="0.01"
                     value={roomForm.price_per_night}
                     onChange={(e) => setRoomForm({ ...roomForm, price_per_night: parseFloat(e.target.value) })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-gray-900"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent text-gray-900"
                     placeholder="100.00"
                   />
                 </div>
@@ -647,7 +647,7 @@ export default function Rooms() {
                     required
                     value={roomForm.bed_type}
                     onChange={(e) => setRoomForm({ ...roomForm, bed_type: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-gray-900"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent text-gray-900"
                   >
                     <option value="Single">Single</option>
                     <option value="Twin">Twin</option>
@@ -669,7 +669,7 @@ export default function Rooms() {
                   rows={4}
                   value={roomForm.description}
                   onChange={(e) => setRoomForm({ ...roomForm, description: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-gray-900 placeholder-gray-400"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent text-gray-900 placeholder-gray-400"
                   placeholder="Enter room description, amenities, and features..."
                 />
               </div>
@@ -686,7 +686,7 @@ export default function Rooms() {
                 </button>
                 <button
                   type="submit"
-                  className="inline-flex items-center px-4 py-2 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+                  className="inline-flex items-center px-4 py-2 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gtbank-primary hover:bg-gtbank-light-orange focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gtbank-primary disabled:opacity-50"
                   disabled={createRoom.isPending || updateRoom.isPending}
                 >
                   {createRoom.isPending || updateRoom.isPending ? (
