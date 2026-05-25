@@ -406,7 +406,7 @@ export default function Landing() {
                 className={`flex-1 pb-2 border-b-2 transition-colors ${
                   activeTab === tab
                     ? 'border-gtbank-primary text-gtbank-primary'
-                    : 'border-transparent text-gray-500'
+                    : 'border-transparent text-gray-600'
                 }`}
               >
                 {tab}
