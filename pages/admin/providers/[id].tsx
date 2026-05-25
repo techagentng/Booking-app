@@ -388,7 +388,7 @@ export default function AdminProviderDetailPage() {
                     value={editedProvider.adminNotes || ''}
                     onChange={(e) => setEditedProvider({ ...editedProvider, adminNotes: e.target.value })}
                     rows={4}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                     placeholder="Add admin notes about this provider..."
                   />
                 ) : (

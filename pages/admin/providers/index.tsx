@@ -214,7 +214,7 @@ export default function AdminProvidersPage() {
               </button>
               <button
                 onClick={() => router.push('/admin/providers/positioning')}
-                className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
+                className="flex items-center gap-2 px-4 py-2 bg-gtbank-primary text-white rounded-lg hover:bg-gtbank-light-orange"
               >
                 Manage Positioning
               </button>
@@ -238,14 +238,14 @@ export default function AdminProvidersPage() {
                 placeholder="Search providers..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-gray-900 placeholder-gray-500"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent text-gray-900 placeholder-gray-500"
               />
             </div>
             <div className="flex gap-3">
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
               >
                 {categories.map(cat => (
                   <option key={cat.id} value={cat.id}>{cat.name}</option>
@@ -254,7 +254,7 @@ export default function AdminProvidersPage() {
               <select
                 value={selectedStatus}
                 onChange={(e) => setSelectedStatus(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
               >
                 {statusFilters.map(filter => (
                   <option key={filter.id} value={filter.id}>{filter.name}</option>
@@ -283,7 +283,7 @@ export default function AdminProvidersPage() {
             <div className="text-sm text-gray-600">Pending Verification</div>
           </div>
           <div className="bg-white rounded-xl shadow-sm p-4">
-            <div className="text-2xl font-bold text-purple-600">
+            <div className="text-2xl font-bold text-gtbank-primary">
               {mockProviders.filter(p => p.isFeatured).length}
             </div>
             <div className="text-sm text-gray-600">Featured</div>
@@ -375,7 +375,7 @@ export default function AdminProvidersPage() {
                   </td>
                   <td className="px-6 py-4">
                     {provider.position ? (
-                      <span className="text-sm font-medium text-purple-600">#{provider.position}</span>
+                      <span className="text-sm font-medium text-gtbank-primary">#{provider.position}</span>
                     ) : (
                       <span className="text-sm text-gray-400">-</span>
                     )}

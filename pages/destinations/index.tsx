@@ -152,7 +152,7 @@ export default function DestinationsPage() {
               placeholder="Search destinations..."
               value={searchQuery}
               onChange={(e) => handleSearch(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-gray-900 placeholder-gray-500"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent text-gray-900 placeholder-gray-500"
             />
           </div>
         </div>
@@ -166,7 +166,7 @@ export default function DestinationsPage() {
             <div className="text-sm text-gray-600">Total Destinations</div>
           </div>
           <div className="bg-white rounded-xl shadow-sm p-4">
-            <div className="text-2xl font-bold text-purple-600">
+            <div className="text-2xl font-bold text-gtbank-primary">
               {mockDestinations.reduce((sum, d) => sum + d.service_count, 0)}
             </div>
             <div className="text-sm text-gray-600">Total Services</div>
@@ -225,12 +225,12 @@ export default function DestinationsPage() {
                 </div>
                 <div className="flex flex-wrap gap-1 mb-3">
                   {destination.highlights.slice(0, 3).map((highlight, idx) => (
-                    <span key={idx} className="text-xs bg-purple-50 text-purple-700 px-2 py-1 rounded">
+                    <span key={idx} className="text-xs bg-gtbank-bg-gray text-gtbank-secondary px-2 py-1 rounded">
                       {highlight}
                     </span>
                   ))}
                 </div>
-                <div className="flex items-center text-purple-600 text-sm font-medium">
+                <div className="flex items-center text-gtbank-primary text-sm font-medium">
                   View Services
                   <ChevronRight className="w-4 h-4 ml-1" />
                 </div>

@@ -247,7 +247,7 @@ export default function AdminPositioningPage() {
             <button
               onClick={handleSave}
               disabled={isSaving}
-              className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 disabled:opacity-50"
+              className="flex items-center gap-2 px-4 py-2 bg-gtbank-primary text-white rounded-lg hover:bg-gtbank-light-orange disabled:opacity-50"
             >
               <Save className="w-4 h-4" />
               {isSaving ? 'Saving...' : 'Save Changes'}
@@ -265,7 +265,7 @@ export default function AdminPositioningPage() {
               onClick={() => setSelectedCategory(category.id)}
               className={`px-4 py-2 rounded-full whitespace-nowrap transition-colors ${
                 selectedCategory === category.id
-                  ? 'bg-purple-600 text-white'
+                  ? 'bg-gtbank-primary text-white'
                   : 'bg-white text-gray-700 hover:bg-gray-100'
               }`}
             >
@@ -318,7 +318,7 @@ export default function AdminPositioningPage() {
                   {/* Position Badge */}
                   <div className="flex-shrink-0">
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-white ${
-                      index < 5 ? 'bg-purple-600' : 'bg-gray-400'
+                      index < 5 ? 'bg-gtbank-primary' : 'bg-gray-400'
                     }`}>
                       {provider.position}
                     </div>
@@ -336,7 +336,7 @@ export default function AdminPositioningPage() {
                     <div className="flex items-center gap-3 mb-1">
                       <h3 className="font-semibold text-gray-900">{provider.name}</h3>
                       {provider.isFeatured && (
-                        <span className="flex items-center gap-1 bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full text-xs font-medium">
+                        <span className="flex items-center gap-1 bg-gtbank-bg-gray text-gtbank-primary px-2 py-0.5 rounded-full text-xs font-medium">
                           <Star className="w-3 h-3" />
                           Featured
                         </span>
@@ -392,7 +392,7 @@ export default function AdminPositioningPage() {
                       onClick={() => toggleFeatured(provider.id)}
                       className={`p-2 rounded-lg transition-colors ${
                         provider.isFeatured
-                          ? 'bg-purple-100 text-purple-700'
+                          ? 'bg-gtbank-bg-gray text-gtbank-primary'
                           : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                       }`}
                     >
@@ -436,8 +436,8 @@ export default function AdminPositioningPage() {
         <div className="mt-6 bg-white rounded-xl shadow-md p-6">
           <h3 className="font-semibold text-gray-900 mb-4">Positioning Legend</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="flex items-center gap-3 p-3 bg-purple-50 rounded-lg">
-              <div className="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold text-sm">
+            <div className="flex items-center gap-3 p-3 bg-gtbank-bg-gray rounded-lg">
+              <div className="w-8 h-8 rounded-full bg-gtbank-primary flex items-center justify-center text-white font-bold text-sm">
                 1-5
               </div>
               <div>
