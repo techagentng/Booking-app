@@ -75,8 +75,8 @@ const serviceTypeConfig: Record<ServiceType, { icon: React.ReactNode; label: str
   'general-assistance': {
     icon: <HelpCircle size={20} />,
     label: 'General Assistance',
-    color: 'text-indigo-600',
-    bgColor: 'bg-indigo-100',
+    color: 'text-gtbank-primary',
+    bgColor: 'bg-gtbank-bg-gray',
   },
 };
 
@@ -288,7 +288,7 @@ export default function RoomService() {
                 onClick={() => setServiceTypeFilter(serviceTypeFilter === key ? 'all' : (key as ServiceType))}
                 className={`p-4 rounded-lg transition-all ${
                   serviceTypeFilter === key
-                    ? 'bg-indigo-600 text-white shadow-lg'
+                    ? 'bg-gtbank-primary text-white shadow-lg'
                     : 'bg-white text-gray-900 hover:shadow-md'
                 }`}
               >
@@ -311,7 +311,7 @@ export default function RoomService() {
                 <input
                   type="text"
                   placeholder="Search by room, guest name, or description..."
-                  className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
@@ -345,7 +345,7 @@ export default function RoomService() {
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Status</label>
                     <select
-                      className="w-full p-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                      className="w-full p-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                       value={statusFilter}
                       onChange={(e) => setStatusFilter(e.target.value as ServiceStatus | 'all')}
                     >
@@ -411,7 +411,7 @@ export default function RoomService() {
                           <div className="flex items-center">
                             {request.assigned_to ? (
                               <>
-                                <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mr-2">
+                                <div className="w-6 h-6 bg-gradient-to-br from-gtbank-secondary to-gtbank-navy rounded-full flex items-center justify-center mr-2">
                                   <span className="text-xs font-semibold text-white">
                                     {request.assigned_to.split(' ').map(n => n[0]).join('').toUpperCase()}
                                   </span>
