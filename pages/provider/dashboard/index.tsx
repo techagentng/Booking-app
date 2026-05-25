@@ -180,7 +180,7 @@ export default function ProviderDashboardPage() {
               <select
                 value={timeRange}
                 onChange={(e) => setTimeRange(e.target.value as any)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
               >
                 <option value="7d">Last 7 days</option>
                 <option value="30d">Last 30 days</option>
@@ -192,7 +192,7 @@ export default function ProviderDashboardPage() {
               </button>
               <button
                 onClick={() => router.push('/provider/services/new')}
-                className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
+                className="flex items-center gap-2 px-4 py-2 bg-gtbank-primary text-white rounded-lg hover:bg-gtbank-light-orange"
               >
                 <Plus className="w-4 h-4" />
                 Add Service
@@ -255,8 +255,8 @@ export default function ProviderDashboardPage() {
             className="bg-white rounded-xl shadow-sm p-6"
           >
             <div className="flex items-center justify-between mb-4">
-              <div className="p-3 bg-purple-100 rounded-lg">
-                <Star className="w-6 h-6 text-purple-600" />
+              <div className="p-3 bg-gtbank-bg-gray rounded-lg">
+                <Star className="w-6 h-6 text-gtbank-primary" />
               </div>
               <div className="flex items-center gap-1">
                 {getChangeIcon(stats.ratingChange)}
@@ -328,7 +328,7 @@ export default function ProviderDashboardPage() {
               <h2 className="text-lg font-semibold text-gray-900">Recent Bookings</h2>
               <button
                 onClick={() => router.push('/provider/bookings')}
-                className="text-purple-600 hover:text-purple-700 text-sm font-medium"
+                className="text-gtbank-primary hover:text-gtbank-secondary text-sm font-medium"
               >
                 View All
               </button>
@@ -366,7 +366,7 @@ export default function ProviderDashboardPage() {
               <h2 className="text-lg font-semibold text-gray-900">Recent Reviews</h2>
               <button
                 onClick={() => router.push('/provider/reviews')}
-                className="text-purple-600 hover:text-purple-700 text-sm font-medium"
+                className="text-gtbank-primary hover:text-gtbank-secondary text-sm font-medium"
               >
                 View All
               </button>
@@ -391,7 +391,7 @@ export default function ProviderDashboardPage() {
                   <div className="flex items-center justify-between text-sm">
                     <div className="text-gray-500">{review.date}</div>
                     {!review.responded && (
-                      <button className="text-purple-600 hover:text-purple-700 font-medium">
+                      <button className="text-gtbank-primary hover:text-gtbank-secondary font-medium">
                         Respond
                       </button>
                     )}
@@ -413,14 +413,14 @@ export default function ProviderDashboardPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
               <div className="text-sm text-gray-600 mb-2">Revenue Trend</div>
-              <div className="h-32 bg-gradient-to-t from-purple-100 to-purple-50 rounded-lg flex items-end justify-between p-4">
-                <div className="w-8 bg-purple-600 rounded-t" style={{ height: '40%' }} />
-                <div className="w-8 bg-purple-600 rounded-t" style={{ height: '60%' }} />
-                <div className="w-8 bg-purple-600 rounded-t" style={{ height: '45%' }} />
-                <div className="w-8 bg-purple-600 rounded-t" style={{ height: '80%' }} />
-                <div className="w-8 bg-purple-600 rounded-t" style={{ height: '70%' }} />
-                <div className="w-8 bg-purple-600 rounded-t" style={{ height: '90%' }} />
-                <div className="w-8 bg-purple-600 rounded-t" style={{ height: '100%' }} />
+              <div className="h-32 bg-gradient-to-t from-gtbank-bg-gray to-gtbank-soft-blue rounded-lg flex items-end justify-between p-4">
+                <div className="w-8 bg-gtbank-primary rounded-t" style={{ height: '40%' }} />
+                <div className="w-8 bg-gtbank-primary rounded-t" style={{ height: '60%' }} />
+                <div className="w-8 bg-gtbank-primary rounded-t" style={{ height: '45%' }} />
+                <div className="w-8 bg-gtbank-primary rounded-t" style={{ height: '80%' }} />
+                <div className="w-8 bg-gtbank-primary rounded-t" style={{ height: '70%' }} />
+                <div className="w-8 bg-gtbank-primary rounded-t" style={{ height: '90%' }} />
+                <div className="w-8 bg-gtbank-primary rounded-t" style={{ height: '100%' }} />
               </div>
             </div>
             <div>

@@ -167,7 +167,7 @@ export default function AdminProviderDetailPage() {
               {!isEditing ? (
                 <button
                   onClick={handleEdit}
-                  className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
+                  className="flex items-center gap-2 px-4 py-2 bg-gtbank-primary text-white rounded-lg hover:bg-gtbank-light-orange"
                 >
                   <Edit className="w-4 h-4" />
                   Edit Provider
@@ -226,7 +226,7 @@ export default function AdminProviderDetailPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   {provider.position && (
-                    <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-medium">
+                    <span className="bg-gtbank-bg-gray text-gtbank-secondary px-3 py-1 rounded-full text-sm font-medium">
                       #{provider.position} Featured
                     </span>
                   )}
@@ -257,7 +257,7 @@ export default function AdminProviderDetailPage() {
                 onClick={() => setActiveTab(tab as any)}
                 className={`flex-1 px-6 py-4 font-medium transition-colors capitalize ${
                   activeTab === tab
-                    ? 'text-purple-600 border-b-2 border-purple-600 bg-purple-50'
+                    ? 'text-gtbank-primary border-b-2 border-gtbank-primary bg-gtbank-bg-gray'
                     : 'text-gray-600 hover:bg-gray-50'
                 }`}
               >
@@ -280,7 +280,7 @@ export default function AdminProviderDetailPage() {
                         onClick={() => handleStatusChange(status)}
                         className={`px-4 py-2 rounded-lg capitalize transition-colors ${
                           editedProvider.status === status
-                            ? 'bg-purple-600 text-white'
+                            ? 'bg-gtbank-primary text-white'
                             : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                         }`}
                       >
@@ -303,14 +303,14 @@ export default function AdminProviderDetailPage() {
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Contact Information</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg">
-                    <Phone className="w-5 h-5 text-purple-600" />
+                    <Phone className="w-5 h-5 text-gtbank-primary" />
                     <div>
                       <div className="text-sm text-gray-500">Phone</div>
                       <div className="font-medium">{provider.contact.phone}</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg">
-                    <Mail className="w-5 h-5 text-purple-600" />
+                    <Mail className="w-5 h-5 text-gtbank-primary" />
                     <div>
                       <div className="text-sm text-gray-500">Email</div>
                       <div className="font-medium">{provider.contact.email}</div>
@@ -318,10 +318,10 @@ export default function AdminProviderDetailPage() {
                   </div>
                   {provider.contact.website && (
                     <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg">
-                      <Globe className="w-5 h-5 text-purple-600" />
+                      <Globe className="w-5 h-5 text-gtbank-primary" />
                       <div>
                         <div className="text-sm text-gray-500">Website</div>
-                        <a href={provider.contact.website} className="font-medium text-purple-600 hover:underline">
+                        <a href={provider.contact.website} className="font-medium text-gtbank-primary hover:underline">
                           Visit Website
                         </a>
                       </div>
@@ -335,22 +335,22 @@ export default function AdminProviderDetailPage() {
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Business Information</h3>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                   <div className="p-4 bg-gray-50 rounded-lg">
-                    <Calendar className="w-5 h-5 text-purple-600 mb-2" />
+                    <Calendar className="w-5 h-5 text-gtbank-primary mb-2" />
                     <div className="text-sm text-gray-500">Established</div>
                     <div className="font-medium">{provider.businessInfo.establishedYear}</div>
                   </div>
                   <div className="p-4 bg-gray-50 rounded-lg">
-                    <Users className="w-5 h-5 text-purple-600 mb-2" />
+                    <Users className="w-5 h-5 text-gtbank-primary mb-2" />
                     <div className="text-sm text-gray-500">Employees</div>
                     <div className="font-medium">{provider.businessInfo.employeeCount}</div>
                   </div>
                   <div className="p-4 bg-gray-50 rounded-lg">
-                    <MapPin className="w-5 h-5 text-purple-600 mb-2" />
+                    <MapPin className="w-5 h-5 text-gtbank-primary mb-2" />
                     <div className="text-sm text-gray-500">Service Area</div>
                     <div className="font-medium">{provider.businessInfo.serviceArea}</div>
                   </div>
                   <div className="p-4 bg-gray-50 rounded-lg">
-                    <Clock className="w-5 h-5 text-purple-600 mb-2" />
+                    <Clock className="w-5 h-5 text-gtbank-primary mb-2" />
                     <div className="text-sm text-gray-500">Hours</div>
                     <div className="font-medium">{provider.businessInfo.operatingHours}</div>
                   </div>
@@ -361,20 +361,20 @@ export default function AdminProviderDetailPage() {
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Rating Breakdown</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <div className="text-center p-4 bg-purple-50 rounded-lg">
-                    <div className="text-3xl font-bold text-purple-600">{provider.ratingBreakdown.quality}</div>
+                  <div className="text-center p-4 bg-gtbank-bg-gray rounded-lg">
+                    <div className="text-3xl font-bold text-gtbank-primary">{provider.ratingBreakdown.quality}</div>
                     <div className="text-sm text-gray-600">Quality</div>
                   </div>
-                  <div className="text-center p-4 bg-purple-50 rounded-lg">
-                    <div className="text-3xl font-bold text-purple-600">{provider.ratingBreakdown.value}</div>
+                  <div className="text-center p-4 bg-gtbank-bg-gray rounded-lg">
+                    <div className="text-3xl font-bold text-gtbank-primary">{provider.ratingBreakdown.value}</div>
                     <div className="text-sm text-gray-600">Value</div>
                   </div>
-                  <div className="text-center p-4 bg-purple-50 rounded-lg">
-                    <div className="text-3xl font-bold text-purple-600">{provider.ratingBreakdown.punctuality}</div>
+                  <div className="text-center p-4 bg-gtbank-bg-gray rounded-lg">
+                    <div className="text-3xl font-bold text-gtbank-primary">{provider.ratingBreakdown.punctuality}</div>
                     <div className="text-sm text-gray-600">Punctuality</div>
                   </div>
-                  <div className="text-center p-4 bg-purple-50 rounded-lg">
-                    <div className="text-3xl font-bold text-purple-600">{provider.ratingBreakdown.professionalism}</div>
+                  <div className="text-center p-4 bg-gtbank-bg-gray rounded-lg">
+                    <div className="text-3xl font-bold text-gtbank-primary">{provider.ratingBreakdown.professionalism}</div>
                     <div className="text-sm text-gray-600">Professionalism</div>
                   </div>
                 </div>
@@ -437,21 +437,21 @@ export default function AdminProviderDetailPage() {
                 <h3 className="text-lg font-semibold text-gray-900">Position Management</h3>
                 <button
                   onClick={() => router.push('/admin/providers/positioning')}
-                  className="text-purple-600 hover:text-purple-700 font-medium text-sm"
+                  className="text-gtbank-primary hover:text-gtbank-secondary font-medium text-sm"
                 >
                   Manage All Positions
                 </button>
               </div>
-              <div className="p-4 bg-purple-50 rounded-lg">
+              <div className="p-4 bg-gtbank-bg-gray rounded-lg">
                 <div className="flex items-center justify-between">
                   <div>
-                    <div className="text-2xl font-bold text-purple-600">
+                    <div className="text-2xl font-bold text-gtbank-primary">
                       {provider.position || 'Not Positioned'}
                     </div>
                     <div className="text-sm text-gray-600">Current Position</div>
                   </div>
                   {provider.isFeatured && (
-                    <div className="flex items-center gap-2 bg-purple-600 text-white px-4 py-2 rounded-lg">
+                    <div className="flex items-center gap-2 bg-gtbank-primary text-white px-4 py-2 rounded-lg">
                       <Award className="w-5 h-5" />
                       <span>Featured</span>
                     </div>

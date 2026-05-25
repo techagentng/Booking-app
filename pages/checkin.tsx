@@ -1142,7 +1142,7 @@ export default function CheckIn() {
                       )}
 
                       {aiInsights.risk_score && aiInsights.risk_score !== 'low' && (
-                        <div className={`pt-3 border-t border-indigo-200 flex items-center ${
+                        <div className={`pt-3 border-t border-gtbank-border-gray flex items-center ${
                           aiInsights.risk_score === 'high' ? 'text-red-600' : 'text-yellow-600'
                         }`}>
                           <AlertCircle size={16} className="mr-2" />
@@ -1222,7 +1222,7 @@ export default function CheckIn() {
                 </button>
               </div>
 
-              <div className="mb-6 p-6 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl">
+              <div className="mb-6 p-6 bg-gradient-to-r from-gtbank-bg-gray to-gtbank-soft-blue rounded-2xl">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <p className="text-sm text-gray-600 mb-1">Guest Name</p>
