@@ -289,7 +289,7 @@ export default function ServicesPage() {
                             onClick={() => toggleAvailability(service.id, day)}
                             className={`px-4 py-2 rounded-lg border-2 transition-all ${
                               service.availability.includes(day)
-                                ? 'border-gtbank-primary bg-gtbank-bg-gray text-gtbank-navy'
+                                ? 'border-gtbank-primary bg-gtbank-bg-gray text-gtbank-secondary'
                                 : 'border-gray-200 hover:border-gray-300'
                             }`}
                           >

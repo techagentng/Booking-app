@@ -91,7 +91,7 @@ export default function VerificationPage() {
       case 'completed':
         return 'border-green-200 bg-green-50';
       case 'in-progress':
-        return 'border-gtbank-orange bg-orange-50';
+        return 'border-gtbank-primary bg-gtbank-bg-gray';
       case 'failed':
         return 'border-red-200 bg-red-50';
       default:
