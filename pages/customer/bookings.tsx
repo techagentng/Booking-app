@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { ArrowLeft, Calendar, Clock, CreditCard, MapPin, RefreshCw } from 'lucide-react';
+import { Calendar, Clock, CreditCard, MapPin, RefreshCw, Home, Search, Heart, User } from 'lucide-react';
 import axios from '../../lib/axios';
 
 type CustomerBooking = {
@@ -76,23 +76,28 @@ export default function CustomerBookingsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-8">
-      <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
-        <div className="max-w-4xl mx-auto px-4 py-4">
-          <button onClick={() => router.push('/')} className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-4">
-            <ArrowLeft className="w-5 h-5" />
-            Home
-          </button>
-          <div className="flex items-center gap-3 mb-5">
-            <div className="w-12 h-12 rounded-2xl bg-gtbank-bg-gray flex items-center justify-center">
-              <Calendar className="w-6 h-6 text-gtbank-primary" />
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold text-gtbank-secondary">My Bookings</h1>
-              <p className="text-gray-600 text-sm">Your completed and upcoming booking history.</p>
+    <div className="min-h-screen bg-gray-50 pb-20">
+      {/* Mobile Header */}
+      <div className="bg-white shadow-sm border-b border-gray-200">
+        <div className="max-w-lg mx-auto px-4 py-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-gradient-to-br from-gtbank-primary to-gtbank-secondary rounded-lg flex items-center justify-center">
+                <Calendar className="w-5 h-5 text-white" />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-gray-900">Bookings</h1>
+                <p className="text-xs text-gray-600">Your booking history</p>
+              </div>
             </div>
           </div>
-          <div className="flex gap-2 overflow-x-auto pb-1">
+        </div>
+      </div>
+
+      {/* Tab Navigation */}
+      <div className="bg-white border-b border-gray-200">
+        <div className="max-w-lg mx-auto px-4 py-2">
+          <div className="flex gap-2 overflow-x-auto">
             {tabs.map((tab) => (
               <button
                 key={tab}
@@ -108,7 +113,7 @@ export default function CustomerBookingsPage() {
         </div>
       </div>
 
-      <main className="max-w-4xl mx-auto px-4 py-6">
+      <main className="max-w-lg mx-auto px-4 py-4">
         {loading ? (
           <div className="bg-white rounded-2xl p-8 text-center text-gray-700">Loading bookings...</div>
         ) : bookings.length === 0 ? (
@@ -119,28 +124,28 @@ export default function CustomerBookingsPage() {
             <button onClick={() => router.push('/')} className="px-5 py-3 bg-gtbank-primary text-white rounded-xl font-semibold">Explore services</button>
           </div>
         ) : (
-          <div className="space-y-4">
+          <div className="space-y-3">
             {bookings.map((booking) => (
-              <div key={booking.id} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+              <div key={booking.id} className="bg-white rounded-xl border border-gray-200 shadow-sm p-4">
+                <div className="flex flex-col items-start justify-between gap-2 mb-3">
                   <div>
-                    <div className="flex flex-wrap items-center gap-2 mb-2">
-                      <h2 className="font-bold text-gtbank-secondary">{booking.service_name}</h2>
-                      <span className={`px-2 py-1 rounded-full text-xs font-semibold ${statusClass(booking.status)}`}>{booking.status}</span>
+                    <div className="flex flex-wrap items-center gap-2 mb-1">
+                      <h2 className="font-bold text-gray-900 text-sm">{booking.service_name}</h2>
+                      <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${statusClass(booking.status)}`}>{booking.status}</span>
                     </div>
-                    <p className="text-sm text-gray-700">{booking.booking_id || booking.id} • {booking.service_type}</p>
+                    <p className="text-xs text-gray-600">{booking.booking_id || booking.id} • {booking.service_type}</p>
                   </div>
-                  <div className="text-lg font-bold text-gtbank-secondary">₦{(booking.amount || 0).toLocaleString()}</div>
+                  <div className="text-base font-bold text-gray-900">₦{(booking.amount || 0).toLocaleString()}</div>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm text-gray-600 mb-4">
-                  <div className="flex items-center gap-2"><Clock className="w-4 h-4" /> {booking.booking_date || 'Date pending'}</div>
-                  <div className="flex items-center gap-2"><MapPin className="w-4 h-4" /> {booking.location || 'Lagos, Nigeria'}</div>
-                  <div className="flex items-center gap-2"><CreditCard className="w-4 h-4" /> {booking.payment_status || 'pending'}</div>
+                <div className="grid grid-cols-3 gap-2 text-xs text-gray-600 mb-3">
+                  <div className="flex items-center gap-1"><Clock className="w-3 h-3" /> {booking.booking_date || 'Date pending'}</div>
+                  <div className="flex items-center gap-1"><MapPin className="w-3 h-3" /> {booking.location || 'Lagos, Nigeria'}</div>
+                  <div className="flex items-center gap-1"><CreditCard className="w-3 h-3" /> {booking.payment_status || 'pending'}</div>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200">View details</button>
-                  <button onClick={() => router.push('/')} className="inline-flex items-center gap-2 px-4 py-2 bg-gtbank-primary text-white rounded-xl font-semibold hover:bg-gtbank-light-orange">
-                    <RefreshCw className="w-4 h-4" />
+                <div className="flex gap-2">
+                  <button className="px-3 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-semibold hover:bg-gray-200">View details</button>
+                  <button onClick={() => router.push('/')} className="inline-flex items-center gap-1 px-3 py-2 bg-gtbank-primary text-white rounded-lg text-sm font-semibold hover:bg-gtbank-light-orange">
+                    <RefreshCw className="w-3 h-3" />
                     Book again
                   </button>
                 </div>
@@ -149,6 +154,34 @@ export default function CustomerBookingsPage() {
           </div>
         )}
       </main>
+
+      {/* Bottom Navigation */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50">
+        <div className="max-w-lg mx-auto px-4 py-2">
+          <div className="flex justify-around">
+            <button onClick={() => router.push('/')} className="flex flex-col items-center gap-1 p-2 text-gray-600">
+              <Home className="w-5 h-5" />
+              <span className="text-xs">Home</span>
+            </button>
+            <button onClick={() => router.push('/')} className="flex flex-col items-center gap-1 p-2 text-gray-600">
+              <Search className="w-5 h-5" />
+              <span className="text-xs">Search</span>
+            </button>
+            <button onClick={() => router.push('/customer/saved')} className="flex flex-col items-center gap-1 p-2 text-gray-600">
+              <Heart className="w-5 h-5" />
+              <span className="text-xs">Saved</span>
+            </button>
+            <button className="flex flex-col items-center gap-1 p-2 text-gtbank-primary">
+              <Calendar className="w-5 h-5" />
+              <span className="text-xs font-medium">Bookings</span>
+            </button>
+            <button onClick={() => router.push('/customer/profile')} className="flex flex-col items-center gap-1 p-2 text-gray-600">
+              <User className="w-5 h-5" />
+              <span className="text-xs">Profile</span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { ArrowLeft, Heart, MapPin, Star, Trash2, Calendar } from 'lucide-react';
+import { ArrowLeft, Heart, MapPin, Star, Trash2, Calendar, Home, Search, User } from 'lucide-react';
 import axios from '../../lib/axios';
 
 type SavedService = {
@@ -82,26 +82,25 @@ export default function CustomerSavedPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-8">
-      <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
-        <div className="max-w-4xl mx-auto px-4 py-4">
-          <button onClick={() => router.push('/')} className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-4">
-            <ArrowLeft className="w-5 h-5" />
-            Home
-          </button>
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-gtbank-bg-gray flex items-center justify-center">
-              <Heart className="w-6 h-6 text-gtbank-primary fill-current" />
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold text-gtbank-secondary">Saved Services</h1>
-              <p className="text-gray-600 text-sm">Your customer identity keeps your favorite services in one place.</p>
+    <div className="min-h-screen bg-gray-50 pb-20">
+      {/* Mobile Header */}
+      <div className="bg-white shadow-sm border-b border-gray-200">
+        <div className="max-w-lg mx-auto px-4 py-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-gradient-to-br from-gtbank-primary to-gtbank-secondary rounded-lg flex items-center justify-center">
+                <Heart className="w-5 h-5 text-white" />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-gray-900">Saved</h1>
+                <p className="text-xs text-gray-600">Your favorite services</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <main className="max-w-4xl mx-auto px-4 py-6">
+      <main className="max-w-lg mx-auto px-4 py-4">
         {loading ? (
           <div className="bg-white rounded-2xl p-8 text-center text-gray-700">Loading saved services...</div>
         ) : savedServices.length === 0 ? (
@@ -112,30 +111,30 @@ export default function CustomerSavedPage() {
             <button onClick={() => router.push('/')} className="px-5 py-3 bg-gtbank-primary text-white rounded-xl font-semibold">Explore services</button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-3">
             {savedServices.map((service) => (
-              <div key={service.id} className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-                <div className="h-40 bg-gradient-to-br from-gtbank-bg-gray to-gtbank-soft-blue">
+              <div key={service.id} className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+                <div className="h-32 bg-gradient-to-br from-gtbank-bg-gray to-gtbank-soft-blue">
                   {service.image_url && <img src={service.image_url} alt={service.service_name} className="w-full h-full object-cover" />}
                 </div>
-                <div className="p-5">
-                  <div className="flex items-start justify-between gap-3 mb-3">
+                <div className="p-4">
+                  <div className="flex items-start justify-between gap-2 mb-2">
                     <div>
-                      <h2 className="font-bold text-gtbank-secondary">{service.service_name}</h2>
-                      <p className="text-sm text-gtbank-primary font-medium">{service.service_type}</p>
+                      <h2 className="font-bold text-gray-900 text-sm">{service.service_name}</h2>
+                      <p className="text-xs text-gtbank-primary font-medium">{service.service_type}</p>
                     </div>
                     <button onClick={() => removeSaved(service.id)} className="p-2 rounded-lg text-gray-600 hover:text-red-600 hover:bg-red-50">
                       <Trash2 className="w-5 h-5" />
                     </button>
                   </div>
-                  <div className="space-y-2 text-sm text-gray-600 mb-4">
+                  <div className="space-y-1 text-xs text-gray-600 mb-3">
                     <div className="flex items-center gap-2"><MapPin className="w-4 h-4" /> {service.location || 'Lagos, Nigeria'}</div>
                     <div className="flex items-center gap-2"><Star className="w-4 h-4 text-yellow-500 fill-current" /> {service.rating || 4.7}</div>
                   </div>
                   <div className="flex items-center justify-between">
-                    <div className="font-bold text-gtbank-secondary">₦{(service.price || 0).toLocaleString()}</div>
-                    <button onClick={() => bookService(service)} className="inline-flex items-center gap-2 px-4 py-2 bg-gtbank-primary text-white rounded-xl font-semibold hover:bg-gtbank-light-orange">
-                      <Calendar className="w-4 h-4" />
+                    <div className="font-bold text-gray-900 text-sm">₦{(service.price || 0).toLocaleString()}</div>
+                    <button onClick={() => bookService(service)} className="inline-flex items-center gap-1 px-3 py-2 bg-gtbank-primary text-white rounded-lg text-sm font-semibold hover:bg-gtbank-light-orange">
+                      <Calendar className="w-3 h-3" />
                       Book
                     </button>
                   </div>
@@ -145,6 +144,34 @@ export default function CustomerSavedPage() {
           </div>
         )}
       </main>
+
+      {/* Bottom Navigation */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50">
+        <div className="max-w-lg mx-auto px-4 py-2">
+          <div className="flex justify-around">
+            <button onClick={() => router.push('/')} className="flex flex-col items-center gap-1 p-2 text-gray-600">
+              <Home className="w-5 h-5" />
+              <span className="text-xs">Home</span>
+            </button>
+            <button onClick={() => router.push('/')} className="flex flex-col items-center gap-1 p-2 text-gray-600">
+              <Search className="w-5 h-5" />
+              <span className="text-xs">Search</span>
+            </button>
+            <button className="flex flex-col items-center gap-1 p-2 text-gtbank-primary">
+              <Heart className="w-5 h-5 fill-current" />
+              <span className="text-xs font-medium">Saved</span>
+            </button>
+            <button onClick={() => router.push('/customer/bookings')} className="flex flex-col items-center gap-1 p-2 text-gray-600">
+              <Calendar className="w-5 h-5" />
+              <span className="text-xs">Bookings</span>
+            </button>
+            <button onClick={() => router.push('/customer/profile')} className="flex flex-col items-center gap-1 p-2 text-gray-600">
+              <User className="w-5 h-5" />
+              <span className="text-xs">Profile</span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

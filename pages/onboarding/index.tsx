@@ -77,7 +77,7 @@ export default function OnboardingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gtbank-bg-gray to-gtbank-soft-blue">
+    <div className="min-h-screen bg-[#FAFAF8]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <motion.div
@@ -96,7 +96,7 @@ export default function OnboardingPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-white rounded-2xl shadow-lg p-8 mb-8"
+          className="bg-white rounded-2xl shadow-sm border border-[#F1F1F1] p-8 mb-8"
         >
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-semibold text-gray-900">Onboarding Progress</h2>
@@ -106,7 +106,7 @@ export default function OnboardingPage() {
           </div>
 
           {/* Progress Bar */}
-          <div className="w-full bg-gray-200 rounded-full h-3 mb-8">
+          <div className="w-full bg-[#FFF1E6] rounded-full h-3 mb-8">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${(completedPhases.length / phases.length) * 100}%` }}
@@ -131,16 +131,16 @@ export default function OnboardingPage() {
                   onClick={() => handlePhaseClick(phase.id, phase.number)}
                   className={`flex items-center gap-4 p-4 rounded-xl border-2 transition-all cursor-pointer ${
                     isCompleted
-                      ? 'bg-green-50 border-green-200'
+                      ? 'bg-white border-gtbank-success shadow-xs'
                       : isCurrent
-                      ? 'bg-gtbank-bg-gray border-gtbank-primary'
-                      : 'bg-gray-50 border-gray-200 opacity-60'
+                      ? 'bg-[#FFF8F3] border-gtbank-primary shadow-sm'
+                      : 'bg-[#FFFDFC] border-[#F5E6DA]'
                   }`}
                 >
                   {/* Status Icon */}
                   <div className="flex-shrink-0">
                     {isCompleted ? (
-                      <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-gtbank-success rounded-full flex items-center justify-center">
                         <CheckCircle className="w-6 h-6 text-white" />
                       </div>
                     ) : isCurrent ? (
@@ -148,7 +148,7 @@ export default function OnboardingPage() {
                         <Circle className="w-6 h-6 text-white" />
                       </div>
                     ) : (
-                      <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-[#FFD7B5] rounded-full flex items-center justify-center">
                         <Circle className="w-6 h-6 text-white" />
                       </div>
                     )}
@@ -159,13 +159,13 @@ export default function OnboardingPage() {
                     <div className="flex items-center gap-3 mb-1">
                       <h3 className="font-semibold text-gray-900">{phase.title}</h3>
                       {isCurrent && (
-                        <span className="px-2 py-1 bg-gtbank-bg-gray text-gtbank-secondary text-xs font-medium rounded-full">
+                        <span className="px-2 py-1 bg-gtbank-primary text-white text-xs font-medium rounded-full">
                           Current
                         </span>
                       )}
                     </div>
-                    <p className="text-sm text-gray-600 mb-2">{phase.description}</p>
-                    <div className="flex items-center gap-2 text-xs text-gray-500">
+                    <p className="text-sm text-[#5B6470] mb-2">{phase.description}</p>
+                    <div className="flex items-center gap-2 text-xs text-[#7A828D]">
                       <Clock className="w-4 h-4" />
                       <span>{phase.duration}</span>
                     </div>
@@ -177,7 +177,7 @@ export default function OnboardingPage() {
                       {isCurrent ? (
                         <ArrowRight className="w-6 h-6 text-gtbank-primary" />
                       ) : (
-                        <CheckCircle className="w-6 h-6 text-green-600" />
+                        <CheckCircle className="w-6 h-6 text-gtbank-success" />
                       )}
                     </div>
                   )}
@@ -197,7 +197,7 @@ export default function OnboardingPage() {
           >
             <button
               onClick={handleStartOnboarding}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-gtbank-primary to-gtbank-secondary text-white rounded-xl font-semibold hover:from-gtbank-light-orange hover:to-gtbank-soft-blue transition-all shadow-lg hover:shadow-xl"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#E67817] text-white rounded-xl font-semibold transition-all shadow-sm hover:shadow-md"
             >
               Start Onboarding
               <ArrowRight className="w-5 h-5" />

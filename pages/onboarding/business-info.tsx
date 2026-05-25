@@ -60,7 +60,7 @@ export default function BusinessInfoPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gtbank-bg-gray to-gtbank-soft-blue">
+    <div className="min-h-screen bg-[#FAFAF8]">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <motion.div
@@ -85,7 +85,7 @@ export default function BusinessInfoPage() {
             </div>
           </div>
           {/* Progress Bar */}
-          <div className="w-full bg-gray-200 rounded-full h-2">
+          <div className="w-full bg-[#FFF1E6] rounded-full h-2">
             <div className="bg-gradient-to-r from-gtbank-primary to-gtbank-secondary h-2 rounded-full" style={{ width: '40%' }} />
           </div>
         </motion.div>
@@ -96,23 +96,23 @@ export default function BusinessInfoPage() {
           className="space-y-6"
         >
           {/* Contact Information */}
-          <div className="bg-white rounded-2xl shadow-lg p-8">
+          <div className="bg-white rounded-2xl shadow-sm border border-[#F1F1F1] p-8">
             <div className="mb-6">
               <h2 className="text-xl font-semibold text-gray-900 mb-2">Contact Information</h2>
-              <p className="text-gray-600 text-sm">Where customers can reach your business</p>
+              <p className="text-[#5B6470] text-sm">Where customers can reach your business</p>
             </div>
 
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Business Address</label>
                 <div className="relative">
-                  <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 w-5 h-5" />
+                  <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#7A828D] w-5 h-5" />
                   <input
                     type="text"
                     name="address"
                     value={formData.address}
                     onChange={handleInputChange}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-3 border border-[#F5E6DA] rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                     placeholder="123 Victoria Island"
                   />
                 </div>
@@ -127,7 +127,7 @@ export default function BusinessInfoPage() {
                     name="city"
                     value={formData.city}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
+                    className="w-full px-4 py-3 border border-[#F5E6DA] rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                     placeholder="Lagos"
                   />
                   {errors.city && <p className="text-red-500 text-sm mt-1">{errors.city}</p>}
@@ -139,7 +139,7 @@ export default function BusinessInfoPage() {
                     name="state"
                     value={formData.state}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
+                    className="w-full px-4 py-3 border border-[#F5E6DA] rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                     placeholder="Lagos State"
                   />
                   {errors.state && <p className="text-red-500 text-sm mt-1">{errors.state}</p>}
@@ -151,7 +151,7 @@ export default function BusinessInfoPage() {
                     name="postalCode"
                     value={formData.postalCode}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
+                    className="w-full px-4 py-3 border border-[#F5E6DA] rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                     placeholder="101241"
                   />
                 </div>
@@ -161,13 +161,13 @@ export default function BusinessInfoPage() {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Business Phone</label>
                   <div className="relative">
-                    <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 w-5 h-5" />
+                    <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#7A828D] w-5 h-5" />
                     <input
                       type="tel"
                       name="businessPhone"
                       value={formData.businessPhone}
                       onChange={handleInputChange}
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
+                      className="w-full pl-10 pr-4 py-3 border border-[#F5E6DA] rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                       placeholder="+234 800 000 0000"
                     />
                   </div>
@@ -176,13 +176,13 @@ export default function BusinessInfoPage() {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Business Email</label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 w-5 h-5" />
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#7A828D] w-5 h-5" />
                     <input
                       type="email"
                       name="businessEmail"
                       value={formData.businessEmail}
                       onChange={handleInputChange}
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
+                      className="w-full pl-10 pr-4 py-3 border border-[#F5E6DA] rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                       placeholder="info@eko-hotels.com"
                     />
                   </div>
@@ -193,13 +193,13 @@ export default function BusinessInfoPage() {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Website (Optional)</label>
                 <div className="relative">
-                  <Globe className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 w-5 h-5" />
+                  <Globe className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#7A828D] w-5 h-5" />
                   <input
                     type="url"
                     name="website"
                     value={formData.website}
                     onChange={handleInputChange}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-3 border border-[#F5E6DA] rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                     placeholder="https://eko-hotels.com"
                   />
                 </div>
@@ -208,10 +208,10 @@ export default function BusinessInfoPage() {
           </div>
 
           {/* Business Description */}
-          <div className="bg-white rounded-2xl shadow-lg p-8">
+          <div className="bg-white rounded-2xl shadow-sm border border-[#F1F1F1] p-8">
             <div className="mb-6">
               <h2 className="text-xl font-semibold text-gray-900 mb-2">Business Description</h2>
-              <p className="text-gray-600 text-sm">Tell customers about your business</p>
+              <p className="text-[#5B6470] text-sm">Tell customers about your business</p>
             </div>
 
             <div>
@@ -221,7 +221,7 @@ export default function BusinessInfoPage() {
                 value={formData.description}
                 onChange={handleInputChange}
                 rows={4}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent resize-none"
+                className="w-full px-4 py-3 border border-[#F5E6DA] rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent resize-none"
                 placeholder="Describe your business, what you offer, and what makes you unique..."
               />
               {errors.description && <p className="text-red-500 text-sm mt-1">{errors.description}</p>}
@@ -229,17 +229,17 @@ export default function BusinessInfoPage() {
           </div>
 
           {/* Document Upload */}
-          <div className="bg-white rounded-2xl shadow-lg p-8">
+          <div className="bg-white rounded-2xl shadow-sm border border-[#F1F1F1] p-8">
             <div className="mb-6">
               <h2 className="text-xl font-semibold text-gray-900 mb-2">Document Upload</h2>
-              <p className="text-gray-600 text-sm">Upload required documents for verification</p>
+              <p className="text-[#5B6470] text-sm">Upload required documents for verification</p>
             </div>
 
             <div className="space-y-4">
-              <div className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center hover:border-gtbank-primary transition-colors">
-                <Upload className="w-12 h-12 text-gray-600 mx-auto mb-4" />
-                <p className="text-gray-600 mb-2">Drag and drop files here, or click to select</p>
-                <p className="text-gray-600 text-sm">PDF, JPG, PNG up to 10MB each</p>
+              <div className="border-2 border-dashed border-[#F5E6DA] rounded-xl p-8 text-center hover:border-gtbank-primary transition-colors">
+                <Upload className="w-12 h-12 text-[#7A828D] mx-auto mb-4" />
+                <p className="text-[#5B6470] mb-2">Drag and drop files here, or click to select</p>
+                <p className="text-[#7A828D] text-sm">PDF, JPG, PNG up to 10MB each</p>
                 <input
                   type="file"
                   multiple
@@ -250,7 +250,7 @@ export default function BusinessInfoPage() {
                 />
                 <label
                   htmlFor="file-upload"
-                  className="inline-block mt-4 px-4 py-2 bg-gtbank-primary text-white rounded-lg hover:bg-gtbank-light-orange cursor-pointer"
+                  className="inline-block mt-4 px-4 py-2 bg-[#E67817] text-white rounded-lg hover:bg-[#D66A12] cursor-pointer"
                 >
                   Select Files
                 </label>
@@ -260,9 +260,9 @@ export default function BusinessInfoPage() {
                 <div className="space-y-2">
                   <p className="text-sm font-medium text-gray-700">Uploaded Files:</p>
                   {uploadedFiles.map((file, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div key={index} className="flex items-center justify-between p-3 bg-[#FFFDFC] rounded-lg">
                       <div className="flex items-center gap-3">
-                        <FileText className="w-5 h-5 text-gray-600" />
+                        <FileText className="w-5 h-5 text-[#7A828D]" />
                         <span className="text-sm text-gray-700">{file.name}</span>
                         <span className="text-xs text-gray-700">({(file.size / 1024).toFixed(1)} KB)</span>
                       </div>
@@ -277,8 +277,8 @@ export default function BusinessInfoPage() {
                 </div>
               )}
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <p className="text-sm text-blue-800">
+              <div className="bg-[#FFF8F3] border border-[#F5E6DA] rounded-lg p-4">
+                <p className="text-sm text-[#5B6470]">
                   <strong>Required Documents:</strong> Business registration certificate, Tax identification number, Proof of address, and Identity document of business owner.
                 </p>
               </div>
@@ -289,14 +289,14 @@ export default function BusinessInfoPage() {
           <div className="flex justify-between">
             <button
               onClick={() => router.back()}
-              className="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 border border-[#F5E6DA] text-gray-700 rounded-lg font-semibold hover:bg-[#FFF8F3] transition-all"
             >
               <ArrowLeft className="w-5 h-5" />
               Back
             </button>
             <button
               onClick={handleSubmit}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gtbank-primary to-gtbank-secondary text-white rounded-lg font-semibold hover:from-gtbank-light-orange hover:to-gtbank-soft-blue transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#E67817] text-white rounded-lg font-semibold hover:bg-[#D66A12] transition-all shadow-sm hover:shadow-md"
             >
               Continue
               <ArrowRight className="w-5 h-5" />

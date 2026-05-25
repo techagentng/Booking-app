@@ -89,13 +89,13 @@ export default function VerificationPage() {
   const getStatusColor = (status: VerificationStep['status']) => {
     switch (status) {
       case 'completed':
-        return 'border-green-200 bg-green-50';
+        return 'border-gtbank-success bg-[#FFF8F3]';
       case 'in-progress':
-        return 'border-gtbank-primary bg-gtbank-bg-gray';
+        return 'border-gtbank-primary bg-[#FFF8F3]';
       case 'failed':
-        return 'border-red-200 bg-red-50';
+        return 'border-red-500 bg-red-50';
       default:
-        return 'border-gray-200 bg-gray-50';
+        return 'bg-[#FFFDFC] border-[#F5E6DA]';
     }
   };
 
@@ -106,7 +106,7 @@ export default function VerificationPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gtbank-bg-gray to-gtbank-soft-blue">
+    <div className="min-h-screen bg-[#FAFAF8]">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <motion.div
@@ -131,7 +131,7 @@ export default function VerificationPage() {
             </div>
           </div>
           {/* Progress Bar */}
-          <div className="w-full bg-gray-200 rounded-full h-2">
+          <div className="w-full bg-[#FFF1E6] rounded-full h-2">
             <div className="bg-gradient-to-r from-gtbank-primary to-gtbank-secondary h-2 rounded-full" style={{ width: '80%' }} />
           </div>
         </motion.div>
@@ -142,12 +142,12 @@ export default function VerificationPage() {
           className="space-y-6"
         >
           {/* Verification Status */}
-          <div className="bg-white rounded-2xl shadow-lg p-8">
+          <div className="bg-white rounded-2xl shadow-sm border border-[#F1F1F1] p-8">
             <div className="flex items-center gap-4 mb-6">
               <Shield className="w-8 h-8 text-gtbank-primary" />
               <div>
                 <h2 className="text-xl font-semibold text-gray-900">Verification Status</h2>
-                <p className="text-gray-600 text-sm">Track your verification progress</p>
+                <p className="text-[#5B6470] text-sm">Track your verification progress</p>
               </div>
             </div>
 
@@ -164,9 +164,9 @@ export default function VerificationPage() {
                     <div className="flex-shrink-0">{getStatusIcon(step.status)}</div>
                     <div className="flex-1">
                       <h3 className="font-semibold text-gray-900">{step.name}</h3>
-                      <p className="text-sm text-gray-600">{step.description}</p>
+                      <p className="text-sm text-[#5B6470]">{step.description}</p>
                       {step.completedAt && (
-                        <p className="text-xs text-gray-500 mt-1">
+                        <p className="text-xs text-[#7A828D] mt-1">
                           Completed at {new Date(step.completedAt).toLocaleTimeString()}
                         </p>
                       )}
@@ -178,12 +178,12 @@ export default function VerificationPage() {
           </div>
 
           {/* Info Card */}
-          <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+          <div className="bg-[#FFF8F3] border border-[#F5E6DA] rounded-xl p-6">
             <div className="flex items-start gap-4">
-              <FileText className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+              <FileText className="w-6 h-6 text-gtbank-primary flex-shrink-0 mt-1" />
               <div>
-                <h3 className="font-semibold text-blue-900 mb-2">What happens during verification?</h3>
-                <ul className="text-sm text-blue-800 space-y-1">
+                <h3 className="font-semibold text-gray-900 mb-2">What happens during verification?</h3>
+                <ul className="text-sm text-[#5B6470] space-y-1">
                   <li>• We review your uploaded documents for authenticity</li>
                   <li>• We verify your business registration with government records</li>
                   <li>• We perform identity verification on the business owner</li>
@@ -194,12 +194,12 @@ export default function VerificationPage() {
           </div>
 
           {/* Estimated Time */}
-          <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-6">
+          <div className="bg-[#FFF8F3] border border-[#F5E6DA] rounded-xl p-6">
             <div className="flex items-start gap-4">
-              <Clock className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-1" />
+              <Clock className="w-6 h-6 text-gtbank-primary flex-shrink-0 mt-1" />
               <div>
-                <h3 className="font-semibold text-yellow-900 mb-2">Estimated Timeline</h3>
-                <p className="text-sm text-yellow-800">
+                <h3 className="font-semibold text-gray-900 mb-2">Estimated Timeline</h3>
+                <p className="text-sm text-[#5B6470]">
                   Verification typically takes 1-3 business days. You'll receive an email notification once your account is approved.
                 </p>
               </div>
@@ -215,7 +215,7 @@ export default function VerificationPage() {
             >
               <button
                 onClick={handleContinue}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gtbank-primary to-gtbank-secondary text-white rounded-lg font-semibold hover:from-gtbank-light-orange hover:to-gtbank-soft-blue transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#E67817] text-white rounded-lg font-semibold hover:bg-[#D66A12] transition-all shadow-sm hover:shadow-md"
               >
                 Continue to Go-Live
                 <ArrowLeft className="w-5 h-5 rotate-180" />
@@ -225,7 +225,7 @@ export default function VerificationPage() {
 
           {!isComplete && (
             <div className="text-center">
-              <p className="text-gray-600 text-sm">Please wait while we verify your information...</p>
+              <p className="text-[#5B6470] text-sm">Please wait while we verify your information...</p>
             </div>
           )}
         </motion.div>

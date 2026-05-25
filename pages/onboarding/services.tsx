@@ -114,7 +114,7 @@ export default function ServicesPage() {
   const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gtbank-bg-gray to-gtbank-soft-blue">
+    <div className="min-h-screen bg-[#FAFAF8]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <motion.div
@@ -139,7 +139,7 @@ export default function ServicesPage() {
             </div>
           </div>
           {/* Progress Bar */}
-          <div className="w-full bg-gray-200 rounded-full h-2">
+          <div className="w-full bg-[#FFF1E6] rounded-full h-2">
             <div className="bg-gradient-to-r from-gtbank-primary to-gtbank-secondary h-2 rounded-full" style={{ width: '60%' }} />
           </div>
         </motion.div>
@@ -150,10 +150,10 @@ export default function ServicesPage() {
           className="space-y-6"
         >
           {/* Category Selection */}
-          <div className="bg-white rounded-2xl shadow-lg p-8">
+          <div className="bg-white rounded-2xl shadow-sm border border-[#F1F1F1] p-8">
             <div className="mb-6">
               <h2 className="text-xl font-semibold text-gray-900 mb-2">Select Categories</h2>
-              <p className="text-gray-600 text-sm">Choose the categories that best describe your services</p>
+              <p className="text-[#5B6470] text-sm">Choose the categories that best describe your services</p>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -163,8 +163,8 @@ export default function ServicesPage() {
                   onClick={() => toggleCategory(category.id)}
                   className={`p-4 rounded-xl border-2 transition-all text-center ${
                     selectedCategories.includes(category.id)
-                      ? 'border-gtbank-primary bg-gtbank-bg-gray'
-                      : 'border-gray-200 hover:border-gray-300'
+                      ? 'border-gtbank-primary bg-[#FFF8F3]'
+                      : 'bg-[#FFFDFC] border-[#F5E6DA] hover:border-gtbank-primary'
                   }`}
                 >
                   <div className="text-4xl mb-2">{category.icon}</div>
@@ -179,15 +179,15 @@ export default function ServicesPage() {
           </div>
 
           {/* Services */}
-          <div className="bg-white rounded-2xl shadow-lg p-8">
+          <div className="bg-white rounded-2xl shadow-sm border border-[#F1F1F1] p-8">
             <div className="mb-6">
               <h2 className="text-xl font-semibold text-gray-900 mb-2">Add Services</h2>
-              <p className="text-gray-600 text-sm">Create the services you want to offer</p>
+              <p className="text-[#5B6470] text-sm">Create the services you want to offer</p>
             </div>
 
             <div className="space-y-6">
               {services.map((service, index) => (
-                <div key={service.id} className="border-2 border-gray-200 rounded-xl p-6 relative">
+                <div key={service.id} className="border-2 border-[#F5E6DA] rounded-xl p-6 relative">
                   {services.length > 1 && (
                     <button
                       onClick={() => removeService(service.id)}
@@ -204,7 +204,7 @@ export default function ServicesPage() {
                         type="text"
                         value={service.name}
                         onChange={(e) => updateService(service.id, 'name', e.target.value)}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
+                        className="w-full px-4 py-3 border border-[#F5E6DA] rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                         placeholder="e.g., Standard Room, Airport Transfer"
                       />
                       {errors[`service-${index}-name`] && (
@@ -217,7 +217,7 @@ export default function ServicesPage() {
                       <select
                         value={service.category}
                         onChange={(e) => updateService(service.id, 'category', e.target.value)}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
+                        className="w-full px-4 py-3 border border-[#F5E6DA] rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                       >
                         <option value="">Select a category</option>
                         {categories.map((cat) => (
@@ -237,7 +237,7 @@ export default function ServicesPage() {
                         value={service.description}
                         onChange={(e) => updateService(service.id, 'description', e.target.value)}
                         rows={3}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent resize-none"
+                        className="w-full px-4 py-3 border border-[#F5E6DA] rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent resize-none"
                         placeholder="Describe what this service includes..."
                       />
                       {errors[`service-${index}-description`] && (
@@ -249,12 +249,12 @@ export default function ServicesPage() {
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">Price (₦)</label>
                         <div className="relative">
-                          <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                          <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#7A828D] w-5 h-5" />
                           <input
                             type="number"
                             value={service.price}
                             onChange={(e) => updateService(service.id, 'price', parseFloat(e.target.value) || 0)}
-                            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
+                            className="w-full pl-10 pr-4 py-3 border border-[#F5E6DA] rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                             placeholder="0"
                           />
                         </div>
@@ -265,12 +265,12 @@ export default function ServicesPage() {
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">Duration</label>
                         <div className="relative">
-                          <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                          <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#7A828D] w-5 h-5" />
                           <input
                             type="text"
                             value={service.duration}
                             onChange={(e) => updateService(service.id, 'duration', e.target.value)}
-                            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
+                            className="w-full pl-10 pr-4 py-3 border border-[#F5E6DA] rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                             placeholder="e.g., 1 hour, 1 night, 30 min"
                           />
                         </div>
@@ -289,8 +289,8 @@ export default function ServicesPage() {
                             onClick={() => toggleAvailability(service.id, day)}
                             className={`px-4 py-2 rounded-lg border-2 transition-all ${
                               service.availability.includes(day)
-                                ? 'border-gtbank-primary bg-gtbank-bg-gray text-gtbank-secondary'
-                                : 'border-gray-200 hover:border-gray-300'
+                                ? 'border-gtbank-primary bg-[#FFF8F3] text-gtbank-secondary'
+                                : 'bg-[#FFFDFC] border-[#F5E6DA] hover:border-gtbank-primary'
                             }`}
                           >
                             {day}
@@ -308,7 +308,7 @@ export default function ServicesPage() {
 
             <button
               onClick={addService}
-              className="mt-6 inline-flex items-center gap-2 px-4 py-2 border-2 border-dashed border-gray-300 text-gray-700 rounded-lg hover:border-gtbank-primary hover:text-gtbank-primary transition-all w-full justify-center"
+              className="mt-6 inline-flex items-center gap-2 px-4 py-2 border-2 border-dashed border-[#F5E6DA] text-gray-700 rounded-lg hover:border-gtbank-primary hover:text-gtbank-primary transition-all w-full justify-center"
             >
               <Plus className="w-5 h-5" />
               Add Another Service
@@ -319,14 +319,14 @@ export default function ServicesPage() {
           <div className="flex justify-between">
             <button
               onClick={() => router.back()}
-              className="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 border border-[#F5E6DA] text-gray-700 rounded-lg font-semibold hover:bg-[#FFF8F3] transition-all"
             >
               <ArrowLeft className="w-5 h-5" />
               Back
             </button>
             <button
               onClick={handleSubmit}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gtbank-primary to-gtbank-secondary text-white rounded-lg font-semibold hover:from-gtbank-light-orange hover:to-gtbank-soft-blue transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#E67817] text-white rounded-lg font-semibold hover:bg-[#D66A12] transition-all shadow-sm hover:shadow-md"
             >
               Continue
               <ArrowRight className="w-5 h-5" />

@@ -89,7 +89,7 @@ export default function GoLivePage() {
   const canActivate = completedCount === modules.length && testBookingCompleted;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gtbank-bg-gray to-gtbank-soft-blue">
+    <div className="min-h-screen bg-[#FAFAF8]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <motion.div
@@ -114,7 +114,7 @@ export default function GoLivePage() {
             </div>
           </div>
           {/* Progress Bar */}
-          <div className="w-full bg-gray-200 rounded-full h-2">
+          <div className="w-full bg-[#FFF1E6] rounded-full h-2">
             <div className="bg-gradient-to-r from-gtbank-primary to-gtbank-secondary h-2 rounded-full" style={{ width: '100%' }} />
           </div>
         </motion.div>
@@ -138,15 +138,15 @@ export default function GoLivePage() {
           </div>
 
           {/* Training Modules */}
-          <div className="bg-white rounded-2xl shadow-lg p-8">
+          <div className="bg-white rounded-2xl shadow-sm border border-[#F1F1F1] p-8">
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h2 className="text-xl font-semibold text-gray-900">Training Modules</h2>
-                <p className="text-gray-600 text-sm">
+                <p className="text-[#5B6470] text-sm">
                   {completedCount} of {modules.length} completed
                 </p>
               </div>
-              <div className="text-sm text-gray-500">
+              <div className="text-sm text-[#7A828D]">
                 Total: ~26 min
               </div>
             </div>
@@ -161,13 +161,13 @@ export default function GoLivePage() {
                   onClick={() => toggleModule(module.id)}
                   className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${
                     module.completed
-                      ? 'border-green-300 bg-green-50'
-                      : 'border-gray-200 hover:border-gtbank-primary'
+                      ? 'border-gtbank-success bg-[#FFF8F3]'
+                      : 'bg-[#FFFDFC] border-[#F5E6DA] hover:border-gtbank-primary'
                   }`}
                 >
                   <div className="flex items-center gap-4">
                     <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                      module.completed ? 'bg-green-500' : 'bg-gtbank-bg-gray'
+                      module.completed ? 'bg-gtbank-success' : 'bg-[#FFD7B5]'
                     }`}>
                       {module.completed ? (
                         <CheckCircle className="w-6 h-6 text-white" />
@@ -177,9 +177,9 @@ export default function GoLivePage() {
                     </div>
                     <div className="flex-1">
                       <h3 className="font-semibold text-gray-900">{module.title}</h3>
-                      <p className="text-sm text-gray-600">{module.description}</p>
+                      <p className="text-sm text-[#5B6470]">{module.description}</p>
                     </div>
-                    <div className="text-sm text-gray-500">{module.duration}</div>
+                    <div className="text-sm text-[#7A828D]">{module.duration}</div>
                   </div>
                 </motion.div>
               ))}
@@ -188,30 +188,30 @@ export default function GoLivePage() {
 
           {/* Test Booking */}
           {!isActivated && (
-            <div className="bg-white rounded-2xl shadow-lg p-8">
+            <div className="bg-white rounded-2xl shadow-sm border border-[#F1F1F1] p-8">
               <div className="flex items-center gap-4 mb-6">
                 <Play className="w-8 h-8 text-gtbank-primary" />
                 <div>
                   <h2 className="text-xl font-semibold text-gray-900">Test Booking Simulation</h2>
-                  <p className="text-gray-600 text-sm">Practice with a simulated booking before going live</p>
+                  <p className="text-[#5B6470] text-sm">Practice with a simulated booking before going live</p>
                 </div>
               </div>
 
               {!showTestBooking ? (
                 <button
                   onClick={handleStartTestBooking}
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 border-2 border-gtbank-primary text-gtbank-secondary rounded-xl font-semibold hover:bg-gtbank-bg-gray transition-all"
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 border-2 border-gtbank-primary text-gtbank-secondary rounded-xl font-semibold hover:bg-[#FFF8F3] transition-all"
                 >
                   <Play className="w-5 h-5" />
                   Start Test Booking
                 </button>
               ) : (
-                <div className="border-2 border-gtbank-border-gray rounded-xl p-5 bg-gtbank-bg-gray">
+                <div className="border-2 border-[#F5E6DA] rounded-xl p-5 bg-[#FFFDFC]">
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <div>
                       <p className="text-sm font-medium text-gtbank-secondary mb-1">Incoming test booking</p>
                       <h3 className="text-lg font-semibold text-gray-900">Standard Room</h3>
-                      <p className="text-sm text-gray-600">Test Guest • test.guest@example.com • +234 800 000 0000</p>
+                      <p className="text-sm text-[#5B6470]">Test Guest • test.guest@example.com • +234 800 000 0000</p>
                     </div>
                     <span className={`px-3 py-1 rounded-full text-xs font-medium ${
                       testBookingStatus === 'pending'
@@ -226,15 +226,15 @@ export default function GoLivePage() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4 text-sm">
                     <div className="bg-white rounded-lg p-3">
-                      <p className="text-gray-500">Date</p>
+                      <p className="text-[#7A828D]">Date</p>
                       <p className="font-medium text-gray-900">Tomorrow, 2:00 PM</p>
                     </div>
                     <div className="bg-white rounded-lg p-3">
-                      <p className="text-gray-500">Guests</p>
+                      <p className="text-[#7A828D]">Guests</p>
                       <p className="font-medium text-gray-900">2 guests</p>
                     </div>
                     <div className="bg-white rounded-lg p-3">
-                      <p className="text-gray-500">Total</p>
+                      <p className="text-[#7A828D]">Total</p>
                       <p className="font-medium text-gray-900">₦50,000</p>
                     </div>
                   </div>
@@ -257,7 +257,7 @@ export default function GoLivePage() {
                       </button>
                     </div>
                   ) : (
-                    <div className="flex items-center gap-2 text-green-700 bg-green-50 border border-green-200 rounded-lg p-3">
+                    <div className="flex items-center gap-2 text-gtbank-success bg-[#FFF8F3] border border-gtbank-success rounded-lg p-3">
                       <CheckCircle className="w-5 h-5" />
                       <span className="text-sm font-medium">Great! You completed the test booking simulation.</span>
                     </div>
@@ -284,7 +284,7 @@ export default function GoLivePage() {
                 disabled={!canActivate}
                 className={`inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all ${
                   canActivate
-                    ? 'bg-white text-gtbank-primary hover:bg-gray-100'
+                    ? 'bg-[#E67817] text-white hover:bg-[#D66A12] shadow-sm hover:shadow-md'
                     : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                 }`}
               >
@@ -321,9 +321,9 @@ export default function GoLivePage() {
           )}
 
           {/* Support Info */}
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+          <div className="bg-[#FFFDFC] border border-[#F5E6DA] rounded-xl p-6">
             <div className="flex items-center gap-4">
-              <MessageSquare className="w-6 h-6 text-gray-600" />
+              <MessageSquare className="w-6 h-6 text-[#7A828D]" />
               <div>
                 <h3 className="font-semibold text-gray-900 mb-1">Need Help?</h3>
                 <p className="text-sm text-gray-600">

@@ -82,7 +82,7 @@ export default function RegistrationPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gtbank-bg-gray to-gtbank-soft-blue">
+    <div className="min-h-screen bg-[#FAFAF8]">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <motion.div
@@ -107,7 +107,7 @@ export default function RegistrationPage() {
             </div>
           </div>
           {/* Progress Bar */}
-          <div className="w-full bg-gray-200 rounded-full h-2">
+          <div className="w-full bg-[#FFF1E6] rounded-full h-2">
             <div className="bg-gradient-to-r from-gtbank-primary to-gtbank-secondary h-2 rounded-full" style={{ width: `${(step / 2) * 100}%` }} />
           </div>
         </motion.div>
@@ -117,11 +117,11 @@ export default function RegistrationPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-white rounded-2xl shadow-lg p-8"
+            className="bg-white rounded-2xl shadow-sm border border-[#F1F1F1] p-8"
           >
             <div className="mb-6">
               <h2 className="text-xl font-semibold text-gray-900 mb-2">Personal Information</h2>
-              <p className="text-gray-600 text-sm">Enter your contact details to create your account</p>
+              <p className="text-[#5B6470] text-sm">Enter your contact details to create your account</p>
             </div>
 
             <div className="space-y-4">
@@ -133,7 +133,7 @@ export default function RegistrationPage() {
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
+                    className="w-full px-4 py-3 border border-[#F5E6DA] rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                     placeholder="John"
                   />
                   {errors.firstName && <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>}
@@ -145,7 +145,7 @@ export default function RegistrationPage() {
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
+                    className="w-full px-4 py-3 border border-[#F5E6DA] rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                     placeholder="Doe"
                   />
                   {errors.lastName && <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>}
@@ -155,13 +155,13 @@ export default function RegistrationPage() {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
                 <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 w-5 h-5" />
+                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#7A828D] w-5 h-5" />
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-3 border border-[#F5E6DA] rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                     placeholder="john@company.com"
                   />
                 </div>
@@ -175,7 +175,7 @@ export default function RegistrationPage() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
+                  className="w-full px-4 py-3 border border-[#F5E6DA] rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                   placeholder="+234 800 000 0000"
                 />
                 {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
@@ -184,19 +184,19 @@ export default function RegistrationPage() {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Password</label>
                 <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 w-5 h-5" />
+                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#7A828D] w-5 h-5" />
                   <input
                     type={showPassword ? 'text' : 'password'}
                     name="password"
                     value={formData.password}
                     onChange={handleInputChange}
-                    className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
+                    className="w-full pl-10 pr-12 py-3 border border-[#F5E6DA] rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                     placeholder="••••••••"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-gray-600"
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#7A828D] hover:text-gray-600"
                   >
                     {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
@@ -211,7 +211,7 @@ export default function RegistrationPage() {
                   name="confirmPassword"
                   value={formData.confirmPassword}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
+                  className="w-full px-4 py-3 border border-[#F5E6DA] rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent"
                   placeholder="••••••••"
                 />
                 {errors.confirmPassword && <p className="text-red-500 text-sm mt-1">{errors.confirmPassword}</p>}
@@ -221,7 +221,7 @@ export default function RegistrationPage() {
             <div className="mt-8 flex justify-end">
               <button
                 onClick={handleNext}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gtbank-primary to-gtbank-secondary text-white rounded-lg font-semibold hover:from-gtbank-light-orange hover:to-gtbank-soft-blue transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#E67817] text-white rounded-lg font-semibold hover:bg-[#D66A12] transition-all shadow-sm hover:shadow-md"
               >
                 Continue
                 <ArrowRight className="w-5 h-5" />
@@ -235,11 +235,11 @@ export default function RegistrationPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-white rounded-2xl shadow-lg p-8"
+            className="bg-white rounded-2xl shadow-sm border border-[#F1F1F1] p-8"
           >
             <div className="mb-6">
               <h2 className="text-xl font-semibold text-gray-900 mb-2">Business Information</h2>
-              <p className="text-gray-600 text-sm">Select your business type and enter your business name</p>
+              <p className="text-[#5B6470] text-sm">Select your business type and enter your business name</p>
             </div>
 
             <div className="space-y-6">
@@ -265,8 +265,8 @@ export default function RegistrationPage() {
                       onClick={() => setSelectedBusinessType(type.id)}
                       className={`p-4 rounded-xl border-2 transition-all text-left ${
                         selectedBusinessType === type.id
-                          ? 'border-gtbank-primary bg-gtbank-bg-gray'
-                          : 'border-gray-200 hover:border-gray-300'
+                          ? 'border-gtbank-primary bg-[#FFF8F3]'
+                          : 'bg-[#FFFDFC] border-[#F5E6DA] hover:border-gtbank-primary'
                       }`}
                     >
                       <div className="flex items-center gap-3 mb-2">
@@ -275,7 +275,7 @@ export default function RegistrationPage() {
                           <h3 className="font-semibold text-gray-900">{type.name}</h3>
                         </div>
                       </div>
-                      <p className="text-sm text-gray-600">{type.description}</p>
+                      <p className="text-sm text-[#5B6470]">{type.description}</p>
                     </button>
                   ))}
                 </div>
@@ -286,14 +286,14 @@ export default function RegistrationPage() {
             <div className="mt-8 flex justify-between">
               <button
                 onClick={() => setStep(1)}
-                className="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 border border-[#F5E6DA] text-gray-700 rounded-lg font-semibold hover:bg-[#FFF8F3] transition-all"
               >
                 <ArrowLeft className="w-5 h-5" />
                 Back
               </button>
               <button
                 onClick={handleNext}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gtbank-primary to-gtbank-secondary text-white rounded-lg font-semibold hover:from-gtbank-light-orange hover:to-gtbank-soft-blue transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#E67817] text-white rounded-lg font-semibold hover:bg-[#D66A12] transition-all shadow-sm hover:shadow-md"
               >
                 Continue
                 <ArrowRight className="w-5 h-5" />

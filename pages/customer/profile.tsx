@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { ArrowLeft, Bell, CheckCircle, LogOut, Mail, MapPin, Phone, Save, ShieldCheck, User } from 'lucide-react';
+import { Bell, CheckCircle, LogOut, Mail, MapPin, Phone, Save, ShieldCheck, User, Home, Search, Calendar, Heart } from 'lucide-react';
 import axios from '../../lib/axios';
 import { clearSession } from '../../utils/auth';
 
@@ -78,81 +78,80 @@ export default function CustomerProfilePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-8">
-      <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
-        <div className="max-w-4xl mx-auto px-4 py-4">
-          <button onClick={() => router.push('/')} className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-4">
-            <ArrowLeft className="w-5 h-5" />
-            Home
-          </button>
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-gtbank-bg-gray flex items-center justify-center">
-              <User className="w-6 h-6 text-gtbank-primary" />
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold text-gtbank-secondary">Customer Profile</h1>
-              <p className="text-gray-600 text-sm">Your customer identity, preferences, and verification status.</p>
+    <div className="min-h-screen bg-gray-50 pb-20">
+      {/* Mobile Header */}
+      <div className="bg-white shadow-sm border-b border-gray-200">
+        <div className="max-w-lg mx-auto px-4 py-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-gradient-to-br from-gtbank-primary to-gtbank-secondary rounded-lg flex items-center justify-center">
+                <User className="w-5 h-5 text-white" />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-gray-900">Profile</h1>
+                <p className="text-xs text-gray-600">Your account settings</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <main className="max-w-4xl mx-auto px-4 py-6">
+      <main className="max-w-lg mx-auto px-4 py-4">
         {loading ? (
           <div className="bg-white rounded-2xl p-8 text-center text-gray-700">Loading profile...</div>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <section className="lg:col-span-2 bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-              <h2 className="text-lg font-bold text-gtbank-secondary mb-5">Personal Information</h2>
-              <div className="space-y-5">
+          <div className="space-y-4">
+            <section className="bg-white rounded-xl border border-gray-200 shadow-sm p-4">
+              <h2 className="text-lg font-bold text-gray-900 mb-4">Personal Information</h2>
+              <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Full name</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Full name</label>
                   <input
                     value={profile.full_name || ''}
                     onChange={(e) => updateField('full_name', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-gtbank-primary focus:border-transparent outline-none"
+                    className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent outline-none"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email address</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Email address</label>
                   <div className="relative">
                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-600" />
                     <input
                       value={profile.email || ''}
                       disabled
-                      className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl bg-gray-50 text-gray-700"
+                      className="w-full pl-12 pr-4 py-2.5 border border-gray-200 rounded-lg bg-gray-50 text-gray-700"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone number</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Phone number</label>
                   <div className="relative">
                     <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-600" />
                     <input
                       value={profile.phone || ''}
                       onChange={(e) => updateField('phone', e.target.value)}
-                      className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-gtbank-primary focus:border-transparent outline-none"
+                      className="w-full pl-12 pr-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent outline-none"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Preferred city</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Preferred city</label>
                   <div className="relative">
                     <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-600" />
                     <input
                       value={profile.preferred_city || ''}
                       onChange={(e) => updateField('preferred_city', e.target.value)}
-                      className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-gtbank-primary focus:border-transparent outline-none"
+                      className="w-full pl-12 pr-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent outline-none"
                     />
                   </div>
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center gap-3 mt-6">
+              <div className="flex items-center gap-3 mt-5">
                 <button
                   onClick={saveProfile}
                   disabled={saving}
-                  className="inline-flex items-center gap-2 px-5 py-3 bg-gtbank-primary text-white rounded-xl font-semibold hover:bg-gtbank-light-orange disabled:opacity-70"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 bg-gtbank-primary text-white rounded-lg font-semibold hover:bg-gtbank-light-orange disabled:opacity-70"
                 >
                   <Save className="w-5 h-5" />
                   {saving ? 'Saving...' : 'Save profile'}
@@ -161,10 +160,10 @@ export default function CustomerProfilePage() {
               </div>
             </section>
 
-            <aside className="space-y-6">
-              <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-                <h2 className="text-lg font-bold text-gtbank-secondary mb-4">Verification</h2>
-                <div className="space-y-3">
+            <aside className="space-y-4">
+              <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4">
+                <h2 className="text-lg font-bold text-gray-900 mb-3">Verification</h2>
+                <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <span className="flex items-center gap-2 text-gray-700"><Mail className="w-4 h-4" /> Email</span>
                     <CheckCircle className={`w-5 h-5 ${profile.email_verified ? 'text-green-500' : 'text-gray-300'}`} />
@@ -180,12 +179,12 @@ export default function CustomerProfilePage() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-                <h2 className="text-lg font-bold text-gtbank-secondary mb-4">Preferences</h2>
-                <div className="flex items-center gap-3 p-4 bg-gtbank-bg-gray rounded-xl">
+              <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4">
+                <h2 className="text-lg font-bold text-gray-900 mb-3">Preferences</h2>
+                <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                   <Bell className="w-5 h-5 text-gtbank-primary" />
                   <div>
-                    <div className="font-semibold text-gtbank-secondary">Notifications</div>
+                    <div className="font-semibold text-gray-900">Notifications</div>
                     <div className="text-sm text-gray-600">Booking updates and offers enabled</div>
                   </div>
                 </div>
@@ -193,7 +192,7 @@ export default function CustomerProfilePage() {
 
               <button
                 onClick={logout}
-                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-white border border-red-100 text-red-600 rounded-xl font-semibold hover:bg-red-50"
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white border border-red-100 text-red-600 rounded-lg font-semibold hover:bg-red-50"
               >
                 <LogOut className="w-5 h-5" />
                 Logout
@@ -202,6 +201,34 @@ export default function CustomerProfilePage() {
           </div>
         )}
       </main>
+
+      {/* Bottom Navigation */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50">
+        <div className="max-w-lg mx-auto px-4 py-2">
+          <div className="flex justify-around">
+            <button onClick={() => router.push('/')} className="flex flex-col items-center gap-1 p-2 text-gray-600">
+              <Home className="w-5 h-5" />
+              <span className="text-xs">Home</span>
+            </button>
+            <button onClick={() => router.push('/')} className="flex flex-col items-center gap-1 p-2 text-gray-600">
+              <Search className="w-5 h-5" />
+              <span className="text-xs">Search</span>
+            </button>
+            <button onClick={() => router.push('/customer/saved')} className="flex flex-col items-center gap-1 p-2 text-gray-600">
+              <Heart className="w-5 h-5" />
+              <span className="text-xs">Saved</span>
+            </button>
+            <button onClick={() => router.push('/customer/bookings')} className="flex flex-col items-center gap-1 p-2 text-gray-600">
+              <Calendar className="w-5 h-5" />
+              <span className="text-xs">Bookings</span>
+            </button>
+            <button className="flex flex-col items-center gap-1 p-2 text-gtbank-primary">
+              <User className="w-5 h-5" />
+              <span className="text-xs font-medium">Profile</span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
