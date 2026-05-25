@@ -99,7 +99,7 @@ export default function CustomerProfilePage() {
 
       <main className="max-w-4xl mx-auto px-4 py-6">
         {loading ? (
-          <div className="bg-white rounded-2xl p-8 text-center text-gray-500">Loading profile...</div>
+          <div className="bg-white rounded-2xl p-8 text-center text-gray-700">Loading profile...</div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <section className="lg:col-span-2 bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
@@ -116,18 +116,18 @@ export default function CustomerProfilePage() {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Email address</label>
                   <div className="relative">
-                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-600" />
                     <input
                       value={profile.email || ''}
                       disabled
-                      className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl bg-gray-50 text-gray-500"
+                      className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl bg-gray-50 text-gray-700"
                     />
                   </div>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Phone number</label>
                   <div className="relative">
-                    <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-600" />
                     <input
                       value={profile.phone || ''}
                       onChange={(e) => updateField('phone', e.target.value)}
@@ -138,7 +138,7 @@ export default function CustomerProfilePage() {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Preferred city</label>
                   <div className="relative">
-                    <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-600" />
                     <input
                       value={profile.preferred_city || ''}
                       onChange={(e) => updateField('preferred_city', e.target.value)}

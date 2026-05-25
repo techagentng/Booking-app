@@ -215,7 +215,7 @@ export default function ProviderServicesPage() {
         <div className="bg-white rounded-xl shadow-sm p-4 mb-6">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 w-5 h-5" />
               <input
                 type="text"
                 placeholder="Search services..."
@@ -278,25 +278,25 @@ export default function ProviderServicesPage() {
           <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                   Service
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                   Category
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                   Price
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                   Bookings
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                   Rating
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                   Status
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
@@ -307,7 +307,7 @@ export default function ProviderServicesPage() {
                   <td className="px-6 py-4">
                     <div>
                       <div className="font-medium text-gray-900">{service.name}</div>
-                      <div className="text-sm text-gray-500 truncate max-w-xs">{service.description}</div>
+                      <div className="text-sm text-gray-700 truncate max-w-xs">{service.description}</div>
                     </div>
                   </td>
                   <td className="px-6 py-4">
@@ -315,7 +315,7 @@ export default function ProviderServicesPage() {
                   </td>
                   <td className="px-6 py-4">
                     <div className="font-medium text-gray-900">₦{service.price.toLocaleString()}</div>
-                    <div className="text-xs text-gray-500">{service.duration}</div>
+                    <div className="text-xs text-gray-700">{service.duration}</div>
                   </td>
                   <td className="px-6 py-4">
                     <div className="font-medium text-gray-900">{service.bookings}</div>
@@ -332,21 +332,21 @@ export default function ProviderServicesPage() {
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => handleView(service.id)}
-                        className="p-1 text-gray-400 hover:text-gray-600"
+                        className="p-1 text-gray-600 hover:text-gray-600"
                         title="View"
                       >
                         <Eye className="w-4 h-4" />
                       </button>
                       <button
                         onClick={() => handleEdit(service.id)}
-                        className="p-1 text-gray-400 hover:text-gray-600"
+                        className="p-1 text-gray-600 hover:text-gray-600"
                         title="Edit"
                       >
                         <Edit className="w-4 h-4" />
                       </button>
                       <button
                         onClick={() => handleToggleStatus(service.id, service.status)}
-                        className="p-1 text-gray-400 hover:text-gray-600"
+                        className="p-1 text-gray-600 hover:text-gray-600"
                         title={service.status === 'active' ? 'Pause' : 'Activate'}
                       >
                         {service.status === 'active' ? (
@@ -357,7 +357,7 @@ export default function ProviderServicesPage() {
                       </button>
                       <button
                         onClick={() => handleDelete(service.id)}
-                        className="p-1 text-gray-400 hover:text-red-600"
+                        className="p-1 text-gray-600 hover:text-red-600"
                         title="Delete"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -371,7 +371,7 @@ export default function ProviderServicesPage() {
 
           {services.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-gray-500">No services found matching your criteria.</p>
+              <p className="text-gray-700">No services found matching your criteria.</p>
             </div>
           )}
         </div>

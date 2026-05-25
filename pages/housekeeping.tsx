@@ -296,7 +296,7 @@ export default function Housekeeping() {
           <div className="flex justify-between items-center">
             <div>
               <h1 className="text-2xl font-bold">Housekeeping Management</h1>
-              <p className="text-gray-500">Manage cleaning tasks, staff, and room status</p>
+              <p className="text-gray-700">Manage cleaning tasks, staff, and room status</p>
             </div>
             <div className="flex space-x-2">
               <button
@@ -321,7 +321,7 @@ export default function Housekeeping() {
             <div className="bg-white rounded-xl shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-500 text-sm">Pending Tasks</p>
+                  <p className="text-gray-700 text-sm">Pending Tasks</p>
                   <p className="text-3xl font-bold text-yellow-600">{pendingCount}</p>
                 </div>
                 <div className="bg-yellow-100 p-3 rounded-lg">
@@ -333,7 +333,7 @@ export default function Housekeeping() {
             <div className="bg-white rounded-xl shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-500 text-sm">In Progress</p>
+                  <p className="text-gray-700 text-sm">In Progress</p>
                   <p className="text-3xl font-bold text-blue-600">{inProgressCount}</p>
                 </div>
                 <div className="bg-blue-100 p-3 rounded-lg">
@@ -345,7 +345,7 @@ export default function Housekeeping() {
             <div className="bg-white rounded-xl shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-500 text-sm">Completed</p>
+                  <p className="text-gray-700 text-sm">Completed</p>
                   <p className="text-3xl font-bold text-green-600">{completedCount}</p>
                 </div>
                 <div className="bg-green-100 p-3 rounded-lg">
@@ -357,7 +357,7 @@ export default function Housekeeping() {
             <div className="bg-white rounded-xl shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-500 text-sm">Exceptions</p>
+                  <p className="text-gray-700 text-sm">Exceptions</p>
                   <p className="text-3xl font-bold text-red-600">{exceptionCount}</p>
                 </div>
                 <div className="bg-red-100 p-3 rounded-lg">
@@ -369,7 +369,7 @@ export default function Housekeeping() {
             <div className="bg-white rounded-xl shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-500 text-sm">Available Staff</p>
+                  <p className="text-gray-700 text-sm">Available Staff</p>
                   <p className="text-3xl font-bold text-gtbank-primary">{availableStaff}</p>
                 </div>
                 <div className="bg-gtbank-bg-gray p-3 rounded-lg">
@@ -425,7 +425,7 @@ export default function Housekeeping() {
                   {/* Search and Filter */}
                   <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mb-6">
                     <div className="relative flex-1">
-                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600" size={18} />
                       <input
                         type="text"
                         placeholder="Search tasks..."
@@ -494,17 +494,17 @@ export default function Housekeeping() {
 
                               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-gray-600">
                                 <div className="flex items-center">
-                                  <Briefcase size={16} className="mr-2 text-gray-400" />
+                                  <Briefcase size={16} className="mr-2 text-gray-600" />
                                   <span>{task.roomType}</span>
                                 </div>
                                 {task.assignedStaff && (
                                   <div className="flex items-center">
-                                    <User size={16} className="mr-2 text-gray-400" />
+                                    <User size={16} className="mr-2 text-gray-600" />
                                     <span>{task.assignedStaff}</span>
                                   </div>
                                 )}
                                 <div className="flex items-center">
-                                  <Calendar size={16} className="mr-2 text-gray-400" />
+                                  <Calendar size={16} className="mr-2 text-gray-600" />
                                   <span>{new Date(task.createdAt).toLocaleTimeString()}</span>
                                 </div>
                                 {task.exceptionReason && (
@@ -554,7 +554,7 @@ export default function Housekeeping() {
                         </div>
                       ))
                     ) : (
-                      <div className="text-center py-8 text-gray-500">
+                      <div className="text-center py-8 text-gray-700">
                         <CheckSquare className="w-12 h-12 text-gray-300 mx-auto mb-4" />
                         <p>No tasks found matching your criteria</p>
                       </div>
@@ -612,7 +612,7 @@ export default function Housekeeping() {
                         <div className="flex items-start justify-between mb-4">
                           <div>
                             <h3 className="text-lg font-semibold text-gray-900">{staff.name}</h3>
-                            <p className="text-sm text-gray-500">{staff.role}</p>
+                            <p className="text-sm text-gray-700">{staff.role}</p>
                           </div>
                           <span className={`px-3 py-1 text-xs leading-5 font-semibold rounded-full ${staffStatusStyles[staff.status]}`}>
                             {staff.status.charAt(0).toUpperCase() + staff.status.slice(1)}
@@ -622,7 +622,7 @@ export default function Housekeeping() {
                         <div className="space-y-3">
                           <div className="flex items-center justify-between">
                             <div className="flex items-center text-gray-600">
-                              <MapPin size={16} className="mr-2 text-gray-400" />
+                              <MapPin size={16} className="mr-2 text-gray-600" />
                               <span className="text-sm">Assigned Rooms</span>
                             </div>
                             <span className="font-semibold text-gray-900">{staff.assignedRooms}</span>
@@ -630,7 +630,7 @@ export default function Housekeeping() {
 
                           <div className="flex items-center justify-between">
                             <div className="flex items-center text-gray-600">
-                              <CheckCircle size={16} className="mr-2 text-gray-400" />
+                              <CheckCircle size={16} className="mr-2 text-gray-600" />
                               <span className="text-sm">Completed Today</span>
                             </div>
                             <span className="font-semibold text-gray-900">{staff.completedToday}</span>
@@ -655,13 +655,13 @@ export default function Housekeeping() {
                     <table className="min-w-full divide-y divide-gray-200">
                       <thead className="bg-gray-50">
                         <tr>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Room</th>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Staff</th>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Start Time</th>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">End Time</th>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Duration</th>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Notes</th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Room</th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Staff</th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Start Time</th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">End Time</th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Duration</th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Status</th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Notes</th>
                         </tr>
                       </thead>
                       <tbody className="bg-white divide-y divide-gray-200">

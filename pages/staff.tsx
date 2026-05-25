@@ -163,7 +163,7 @@ const StaffManagement: React.FC = () => {
                 <div>
                   <p className="text-sm font-medium text-gray-600 mb-1">Total Staff</p>
                   <p className="text-3xl font-bold text-gray-900">{stats?.total_staff || 0}</p>
-                  <p className="text-xs text-gray-500 mt-1">All employees</p>
+                  <p className="text-xs text-gray-700 mt-1">All employees</p>
                 </div>
                 <div className="p-4 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg">
                   <Users className="w-8 h-8 text-white" />
@@ -176,7 +176,7 @@ const StaffManagement: React.FC = () => {
                 <div>
                   <p className="text-sm font-medium text-gray-600 mb-1">On Duty</p>
                   <p className="text-3xl font-bold text-green-600">{onDutyStaff.length}</p>
-                  <p className="text-xs text-gray-500 mt-1">Currently working</p>
+                  <p className="text-xs text-gray-700 mt-1">Currently working</p>
                 </div>
                 <div className="p-4 bg-gradient-to-br from-green-500 to-green-600 rounded-xl shadow-lg">
                   <UserCheck className="w-8 h-8 text-white" />
@@ -189,7 +189,7 @@ const StaffManagement: React.FC = () => {
                 <div>
                   <p className="text-sm font-medium text-gray-600 mb-1">Available</p>
                   <p className="text-3xl font-bold text-blue-600">{onDutyStaff.filter(s => s.is_available).length}</p>
-                  <p className="text-xs text-gray-500 mt-1">Ready to work</p>
+                  <p className="text-xs text-gray-700 mt-1">Ready to work</p>
                 </div>
                 <div className="p-4 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg">
                   <Activity className="w-8 h-8 text-white" />
@@ -202,7 +202,7 @@ const StaffManagement: React.FC = () => {
                 <div>
                   <p className="text-sm font-medium text-gray-600 mb-1">Active</p>
                   <p className="text-3xl font-bold text-orange-600">{stats?.by_status?.active || 0}</p>
-                  <p className="text-xs text-gray-500 mt-1">Active status</p>
+                  <p className="text-xs text-gray-700 mt-1">Active status</p>
                 </div>
                 <div className="p-4 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl shadow-lg">
                   <TrendingUp className="w-8 h-8 text-white" />
@@ -217,7 +217,7 @@ const StaffManagement: React.FC = () => {
               {/* Search */}
               <div className="flex-1">
                 <div className="relative">
-                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-600 w-5 h-5" />
                   <input
                     type="text"
                     placeholder="Search staff by name, email, or position..."
@@ -281,7 +281,7 @@ const StaffManagement: React.FC = () => {
                   <Users className="w-8 h-8 text-white" />
                 </div>
                 <p className="text-gray-600 font-medium">No staff members found</p>
-                <p className="text-gray-500 text-sm mt-2">Try adjusting your filters</p>
+                <p className="text-gray-700 text-sm mt-2">Try adjusting your filters</p>
               </div>
             ) : (
               <div className="overflow-x-auto">
@@ -312,7 +312,7 @@ const StaffManagement: React.FC = () => {
                               {member.first_name} {member.last_name}
                             </div>
                             <div className="text-sm text-gray-600 font-medium">{member.position}</div>
-                            <div className="text-xs text-gray-500 flex items-center gap-1.5 mt-1">
+                            <div className="text-xs text-gray-700 flex items-center gap-1.5 mt-1">
                               <Mail className="w-3.5 h-3.5" />
                               {member.email}
                             </div>
@@ -327,7 +327,7 @@ const StaffManagement: React.FC = () => {
                       <td className="px-6 py-5 whitespace-nowrap">
                         <div className="text-sm font-semibold text-gray-900 capitalize">{member.shift}</div>
                         {member.shift_start_time && member.shift_end_time && (
-                          <div className="text-xs text-gray-500 font-medium mt-0.5">
+                          <div className="text-xs text-gray-700 font-medium mt-0.5">
                             {member.shift_start_time} - {member.shift_end_time}
                           </div>
                         )}
@@ -373,7 +373,7 @@ const StaffManagement: React.FC = () => {
                         <div className="text-sm font-bold text-gray-900">
                           {member.tasks_completed || 0} / {member.tasks_today || 0}
                         </div>
-                        <div className="text-xs text-gray-500 font-medium">completed today</div>
+                        <div className="text-xs text-gray-700 font-medium">completed today</div>
                       </td>
                       <td className="px-6 py-5 whitespace-nowrap text-sm font-medium">
                         <div className="flex items-center gap-2">
@@ -703,7 +703,7 @@ const StaffManagement: React.FC = () => {
                     type="text"
                     value={selectedStaff.employee_id}
                     disabled
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl bg-gray-50 text-gray-500"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl bg-gray-50 text-gray-700"
                   />
                 </div>
 

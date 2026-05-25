@@ -322,22 +322,22 @@ export default function AdminProvidersPage() {
           <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                   Provider
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                   Category
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                   Position
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                   Rating
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                   Status
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
@@ -360,7 +360,7 @@ export default function AdminProvidersPage() {
                       />
                       <div>
                         <div className="font-medium text-gray-900">{provider.name}</div>
-                        <div className="flex items-center gap-2 text-xs text-gray-500">
+                        <div className="flex items-center gap-2 text-xs text-gray-700">
                           <MapPin className="w-3 h-3" />
                           {provider.location.city}
                           {provider.verified && (
@@ -377,14 +377,14 @@ export default function AdminProvidersPage() {
                     {provider.position ? (
                       <span className="text-sm font-medium text-gtbank-primary">#{provider.position}</span>
                     ) : (
-                      <span className="text-sm text-gray-400">-</span>
+                      <span className="text-sm text-gray-600">-</span>
                     )}
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-1">
                       <Star className="w-4 h-4 text-yellow-500 fill-current" />
                       <span className="text-sm font-medium text-gray-900">{provider.rating}</span>
-                      <span className="text-xs text-gray-500">({provider.reviewCount})</span>
+                      <span className="text-xs text-gray-700">({provider.reviewCount})</span>
                     </div>
                   </td>
                   <td className="px-6 py-4">
@@ -394,17 +394,17 @@ export default function AdminProvidersPage() {
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => router.push(`/providers/${provider.id}`)}
-                        className="p-1 text-gray-400 hover:text-gray-600"
+                        className="p-1 text-gray-600 hover:text-gray-600"
                       >
                         <Eye className="w-4 h-4" />
                       </button>
                       <button
                         onClick={() => router.push(`/admin/providers/${provider.id}`)}
-                        className="p-1 text-gray-400 hover:text-gray-600"
+                        className="p-1 text-gray-600 hover:text-gray-600"
                       >
                         <Edit className="w-4 h-4" />
                       </button>
-                      <button className="p-1 text-gray-400 hover:text-gray-600">
+                      <button className="p-1 text-gray-600 hover:text-gray-600">
                         <MoreVertical className="w-4 h-4" />
                       </button>
                     </div>
@@ -416,7 +416,7 @@ export default function AdminProvidersPage() {
 
           {providers.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-gray-500">No providers found matching your criteria.</p>
+              <p className="text-gray-700">No providers found matching your criteria.</p>
             </div>
           )}
         </div>

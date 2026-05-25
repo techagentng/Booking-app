@@ -237,7 +237,7 @@ export default function RoomService() {
           <div className="flex justify-between items-center">
             <div>
               <h1 className="text-2xl font-bold">Room Service Management</h1>
-              <p className="text-gray-500">Manage guest service requests from all rooms</p>
+              <p className="text-gray-700">Manage guest service requests from all rooms</p>
             </div>
           </div>
 
@@ -246,7 +246,7 @@ export default function RoomService() {
             <div className="bg-white rounded-xl shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-500 text-sm">Pending Requests</p>
+                  <p className="text-gray-700 text-sm">Pending Requests</p>
                   <p className="text-3xl font-bold text-yellow-600">{pendingCount}</p>
                 </div>
                 <div className="bg-yellow-100 p-3 rounded-lg">
@@ -258,7 +258,7 @@ export default function RoomService() {
             <div className="bg-white rounded-xl shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-500 text-sm">In Progress</p>
+                  <p className="text-gray-700 text-sm">In Progress</p>
                   <p className="text-3xl font-bold text-blue-600">{inProgressCount}</p>
                 </div>
                 <div className="bg-blue-100 p-3 rounded-lg">
@@ -270,7 +270,7 @@ export default function RoomService() {
             <div className="bg-white rounded-xl shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-500 text-sm">Completed Today</p>
+                  <p className="text-gray-700 text-sm">Completed Today</p>
                   <p className="text-3xl font-bold text-green-600">{completedCount}</p>
                 </div>
                 <div className="bg-green-100 p-3 rounded-lg">
@@ -307,7 +307,7 @@ export default function RoomService() {
           <div className="bg-white rounded-xl shadow p-4">
             <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600" size={18} />
                 <input
                   type="text"
                   placeholder="Search by room, guest name, or description..."
@@ -366,7 +366,7 @@ export default function RoomService() {
             {isLoading ? (
               <div className="text-center py-12 bg-white rounded-lg">
                 <Clock className="w-12 h-12 text-gray-300 mx-auto mb-4 animate-spin" />
-                <p className="text-gray-500">Loading service requests...</p>
+                <p className="text-gray-700">Loading service requests...</p>
               </div>
             ) : paginatedRequests.length > 0 ? (
               paginatedRequests.map((request) => {
@@ -385,7 +385,7 @@ export default function RoomService() {
                           </div>
                           <div>
                             <h3 className="text-lg font-semibold text-gray-900">Room {request.room_number || 'N/A'}</h3>
-                            <p className="text-sm text-gray-500">{config.label}</p>
+                            <p className="text-sm text-gray-700">{config.label}</p>
                           </div>
                           <span className={`px-3 py-1 text-xs leading-5 font-semibold rounded-full ${statusStyles[request.status]}`}>
                             {statusIcons[request.status]}
@@ -397,15 +397,15 @@ export default function RoomService() {
 
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm text-gray-600">
                           <div className="flex items-center">
-                            <User size={16} className="mr-2 text-gray-400" />
+                            <User size={16} className="mr-2 text-gray-600" />
                             <span>{request.guest_name || 'N/A'}</span>
                           </div>
                           <div className="flex items-center">
-                            <Phone size={16} className="mr-2 text-gray-400" />
+                            <Phone size={16} className="mr-2 text-gray-600" />
                             <span>{request.guest_phone || 'N/A'}</span>
                           </div>
                           <div className="flex items-center">
-                            <Calendar size={16} className="mr-2 text-gray-400" />
+                            <Calendar size={16} className="mr-2 text-gray-600" />
                             <span>{new Date(request.requested_at).toLocaleTimeString()}</span>
                           </div>
                           <div className="flex items-center">
@@ -433,7 +433,7 @@ export default function RoomService() {
                           onClick={() => handleViewDetails(request)}
                           className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
                         >
-                          <ChevronRight size={20} className="text-gray-400" />
+                          <ChevronRight size={20} className="text-gray-600" />
                         </button>
                       </div>
                     </div>
@@ -443,7 +443,7 @@ export default function RoomService() {
             ) : (
               <div className="text-center py-12 bg-white rounded-lg">
                 <MessageSquare className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-                <p className="text-gray-500">No service requests found matching your criteria</p>
+                <p className="text-gray-700">No service requests found matching your criteria</p>
               </div>
             )}
           </div>
@@ -498,11 +498,11 @@ export default function RoomService() {
               <div className="flex justify-between items-start mb-6">
                 <div>
                   <h2 className="text-2xl font-bold">Service Request #{selectedRequest.id}</h2>
-                  <p className="text-gray-500">Room {selectedRequest.room_number || 'N/A'}</p>
+                  <p className="text-gray-700">Room {selectedRequest.room_number || 'N/A'}</p>
                 </div>
                 <button
                   onClick={closeModal}
-                  className="text-gray-400 hover:text-gray-500"
+                  className="text-gray-600 hover:text-gray-700"
                 >
                   <X size={24} />
                 </button>
@@ -513,20 +513,20 @@ export default function RoomService() {
                   <h3 className="text-lg font-medium text-gray-900 mb-4">Guest Information</h3>
                   <div className="space-y-4">
                     <div>
-                      <p className="text-sm text-gray-500">Guest Name</p>
+                      <p className="text-sm text-gray-700">Guest Name</p>
                       <p className="font-medium">{selectedRequest.guest_name || 'N/A'}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Phone</p>
+                      <p className="text-sm text-gray-700">Phone</p>
                       <p className="font-medium flex items-center">
-                        <Phone size={16} className="mr-2 text-gray-400" />
+                        <Phone size={16} className="mr-2 text-gray-600" />
                         {selectedRequest.guest_phone || 'N/A'}
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Room Number</p>
+                      <p className="text-sm text-gray-700">Room Number</p>
                       <p className="font-medium flex items-center">
-                        <MapPin size={16} className="mr-2 text-gray-400" />
+                        <MapPin size={16} className="mr-2 text-gray-600" />
                         {selectedRequest.room_number || 'N/A'}
                       </p>
                     </div>
@@ -537,7 +537,7 @@ export default function RoomService() {
                   <h3 className="text-lg font-medium text-gray-900 mb-4">Request Details</h3>
                   <div className="space-y-4">
                     <div>
-                      <p className="text-sm text-gray-500">Service Type</p>
+                      <p className="text-sm text-gray-700">Service Type</p>
                       <div className="flex items-center mt-1">
                         <div className={`p-2 rounded-lg ${(serviceTypeConfig[selectedRequest.service_type] || serviceTypeConfig['general-assistance']).bgColor} mr-2`}>
                           <div className={(serviceTypeConfig[selectedRequest.service_type] || serviceTypeConfig['general-assistance']).color}>
@@ -548,14 +548,14 @@ export default function RoomService() {
                       </div>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Status</p>
+                      <p className="text-sm text-gray-700">Status</p>
                       <span className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full mt-1 ${statusStyles[selectedRequest.status]}`}>
                         {statusIcons[selectedRequest.status]}
                         {selectedRequest.status.charAt(0).toUpperCase() + selectedRequest.status.slice(1).replace('-', ' ')}
                       </span>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Priority</p>
+                      <p className="text-sm text-gray-700">Priority</p>
                       <p className="font-medium capitalize">{selectedRequest.priority}</p>
                     </div>
                   </div>
@@ -576,18 +576,18 @@ export default function RoomService() {
 
               <div className="grid grid-cols-2 gap-4 mb-6 text-sm">
                 <div>
-                  <p className="text-gray-500">Requested At</p>
+                  <p className="text-gray-700">Requested At</p>
                   <p className="font-medium">{new Date(selectedRequest.requested_at).toLocaleString()}</p>
                 </div>
                 {selectedRequest.completed_at && (
                   <div>
-                    <p className="text-gray-500">Completed At</p>
+                    <p className="text-gray-700">Completed At</p>
                     <p className="font-medium">{new Date(selectedRequest.completed_at).toLocaleString()}</p>
                   </div>
                 )}
                 {selectedRequest.assigned_to && (
                   <div>
-                    <p className="text-gray-500">Assigned To</p>
+                    <p className="text-gray-700">Assigned To</p>
                     <p className="font-medium">{selectedRequest.assigned_to}</p>
                   </div>
                 )}

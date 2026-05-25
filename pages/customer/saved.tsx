@@ -103,7 +103,7 @@ export default function CustomerSavedPage() {
 
       <main className="max-w-4xl mx-auto px-4 py-6">
         {loading ? (
-          <div className="bg-white rounded-2xl p-8 text-center text-gray-500">Loading saved services...</div>
+          <div className="bg-white rounded-2xl p-8 text-center text-gray-700">Loading saved services...</div>
         ) : savedServices.length === 0 ? (
           <div className="bg-white rounded-2xl p-10 text-center border border-gray-100">
             <Heart className="w-12 h-12 text-gray-300 mx-auto mb-4" />
@@ -124,7 +124,7 @@ export default function CustomerSavedPage() {
                       <h2 className="font-bold text-gtbank-secondary">{service.service_name}</h2>
                       <p className="text-sm text-gtbank-primary font-medium">{service.service_type}</p>
                     </div>
-                    <button onClick={() => removeSaved(service.id)} className="p-2 rounded-lg text-gray-400 hover:text-red-600 hover:bg-red-50">
+                    <button onClick={() => removeSaved(service.id)} className="p-2 rounded-lg text-gray-600 hover:text-red-600 hover:bg-red-50">
                       <Trash2 className="w-5 h-5" />
                     </button>
                   </div>

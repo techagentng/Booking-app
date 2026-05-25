@@ -116,7 +116,7 @@ export default function Rooms() {
           <div className="flex justify-between items-center">
             <div>
               <h1 className="text-2xl font-bold">Rooms</h1>
-              <p className="text-gray-500">Manage all your hotel rooms</p>
+              <p className="text-gray-700">Manage all your hotel rooms</p>
             </div>
             <button
               onClick={() => {
@@ -145,7 +145,7 @@ export default function Rooms() {
             <div className="bg-white rounded-xl shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-500 text-sm">Total Rooms</p>
+                  <p className="text-gray-700 text-sm">Total Rooms</p>
                   <p className="text-3xl font-bold text-gray-900">{totalRooms}</p>
                 </div>
                 <div className="bg-blue-100 p-3 rounded-lg">
@@ -157,7 +157,7 @@ export default function Rooms() {
             <div className="bg-white rounded-xl shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-500 text-sm">Available</p>
+                  <p className="text-gray-700 text-sm">Available</p>
                   <p className="text-3xl font-bold text-green-600">{availableCount}</p>
                 </div>
                 <div className="bg-green-100 p-3 rounded-lg">
@@ -169,7 +169,7 @@ export default function Rooms() {
             <div className="bg-white rounded-xl shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-500 text-sm">Occupied</p>
+                  <p className="text-gray-700 text-sm">Occupied</p>
                   <p className="text-3xl font-bold text-blue-600">{occupiedCount}</p>
                 </div>
                 <div className="bg-blue-100 p-3 rounded-lg">
@@ -181,7 +181,7 @@ export default function Rooms() {
             <div className="bg-white rounded-xl shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-500 text-sm">Maintenance</p>
+                  <p className="text-gray-700 text-sm">Maintenance</p>
                   <p className="text-3xl font-bold text-red-600">{maintenanceCount}</p>
                 </div>
                 <div className="bg-red-100 p-3 rounded-lg">
@@ -195,7 +195,7 @@ export default function Rooms() {
           <div className="bg-white rounded-xl shadow p-4">
             <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600" size={18} />
                 <input
                   type="text"
                   placeholder="Search rooms..."
@@ -268,7 +268,7 @@ export default function Rooms() {
             {isLoading ? (
               <div className="col-span-full text-center py-12">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gtbank-primary mx-auto"></div>
-                <p className="text-gray-500 mt-4">Loading rooms...</p>
+                <p className="text-gray-700 mt-4">Loading rooms...</p>
               </div>
             ) : error ? (
               <div className="col-span-full text-center py-12">
@@ -286,7 +286,7 @@ export default function Rooms() {
                     <div className="flex justify-between items-start mb-4">
                       <div>
                         <h3 className="text-xl font-bold text-gray-900">Room {room.room_number}</h3>
-                        <p className="text-sm text-gray-500">{room.room_type}</p>
+                        <p className="text-sm text-gray-700">{room.room_type}</p>
                       </div>
                       <span className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${statusStyles[room.status as RoomStatus]}`}>
                         {statusIcons[room.status as RoomStatus]}
@@ -296,21 +296,21 @@ export default function Rooms() {
 
                     <div className="space-y-3 mb-4">
                       <div className="flex items-center text-gray-600">
-                        <Users size={16} className="mr-2 text-gray-400" />
+                        <Users size={16} className="mr-2 text-gray-600" />
                         <span className="text-sm">Capacity: {room.capacity} guests</span>
                       </div>
                       <div className="flex items-center text-gray-600">
-                        <DollarSign size={16} className="mr-2 text-gray-400" />
+                        <DollarSign size={16} className="mr-2 text-gray-600" />
                         <span className="text-sm">₦{room.price_per_night}/night</span>
                       </div>
                       <div className="flex items-center text-gray-600">
-                        <Bed size={16} className="mr-2 text-gray-400" />
+                        <Bed size={16} className="mr-2 text-gray-600" />
                         <span className="text-sm">{room.bed_type} Bed • Floor {room.floor}</span>
                       </div>
                     </div>
 
                     <div className="mb-4">
-                      <p className="text-xs font-medium text-gray-500 mb-2">Description</p>
+                      <p className="text-xs font-medium text-gray-700 mb-2">Description</p>
                       <p className="text-sm text-gray-600 line-clamp-2">{room.description || 'No description available'}</p>
                     </div>
 
@@ -326,7 +326,7 @@ export default function Rooms() {
             ) : (
               <div className="col-span-full text-center py-12">
                 <Home className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-                <p className="text-gray-500">No rooms found matching your criteria</p>
+                <p className="text-gray-700">No rooms found matching your criteria</p>
               </div>
             )}
           </div>
@@ -381,11 +381,11 @@ export default function Rooms() {
               <div className="flex justify-between items-start mb-6">
                 <div>
                   <h2 className="text-2xl font-bold">Room {selectedRoom.room_number}</h2>
-                  <p className="text-gray-500">{selectedRoom.room_type} • Floor {selectedRoom.floor}</p>
+                  <p className="text-gray-700">{selectedRoom.room_type} • Floor {selectedRoom.floor}</p>
                 </div>
                 <button
                   onClick={closeModal}
-                  className="text-gray-400 hover:text-gray-500"
+                  className="text-gray-600 hover:text-gray-700"
                 >
                   <X size={24} />
                 </button>
@@ -396,23 +396,23 @@ export default function Rooms() {
                   <h3 className="text-lg font-medium text-gray-900 mb-4">Room Information</h3>
                   <div className="space-y-4">
                     <div>
-                      <p className="text-sm text-gray-500">Room Number</p>
+                      <p className="text-sm text-gray-700">Room Number</p>
                       <p className="font-medium">{selectedRoom.room_number}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Type</p>
+                      <p className="text-sm text-gray-700">Type</p>
                       <p className="font-medium">{selectedRoom.room_type}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Capacity</p>
+                      <p className="text-sm text-gray-700">Capacity</p>
                       <p className="font-medium">{selectedRoom.capacity} guests</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Price per Night</p>
+                      <p className="text-sm text-gray-700">Price per Night</p>
                       <p className="font-medium text-gtbank-primary">₦{selectedRoom.price_per_night}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Bed Type</p>
+                      <p className="text-sm text-gray-700">Bed Type</p>
                       <p className="font-medium">{selectedRoom.bed_type}</p>
                     </div>
                   </div>
@@ -422,18 +422,18 @@ export default function Rooms() {
                   <h3 className="text-lg font-medium text-gray-900 mb-4">Status & Maintenance</h3>
                   <div className="space-y-4">
                     <div>
-                      <p className="text-sm text-gray-500">Current Status</p>
+                      <p className="text-sm text-gray-700">Current Status</p>
                       <span className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${statusStyles[selectedRoom.status as RoomStatus]}`}>
                         {statusIcons[selectedRoom.status as RoomStatus]}
                         {statusLabels[selectedRoom.status as RoomStatus]}
                       </span>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Created</p>
+                      <p className="text-sm text-gray-700">Created</p>
                       <p className="font-medium">{new Date(selectedRoom.created_at).toLocaleDateString()}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Last Updated</p>
+                      <p className="text-sm text-gray-700">Last Updated</p>
                       <p className="font-medium">{new Date(selectedRoom.updated_at).toLocaleDateString()}</p>
                     </div>
                   </div>
@@ -490,7 +490,7 @@ export default function Rooms() {
               </h2>
               <button
                 onClick={() => setShowCreateModal(false)}
-                className="text-gray-400 hover:text-gray-600"
+                className="text-gray-600 hover:text-gray-600"
               >
                 <X size={24} />
               </button>
@@ -669,7 +669,7 @@ export default function Rooms() {
                   rows={4}
                   value={roomForm.description}
                   onChange={(e) => setRoomForm({ ...roomForm, description: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent text-gray-900 placeholder-gray-400"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gtbank-primary focus:border-transparent text-gray-900 placeholder-gray-600"
                   placeholder="Enter room description, amenities, and features..."
                 />
               </div>

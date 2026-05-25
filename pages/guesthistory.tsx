@@ -413,7 +413,7 @@ export default function GuestHistory() {
           <div className="flex justify-between items-center">
             <div>
               <h1 className="text-2xl font-bold">Guest History & Profiles</h1>
-              <p className="text-gray-500">View guest profiles, reservations, and AI insights</p>
+              <p className="text-gray-700">View guest profiles, reservations, and AI insights</p>
             </div>
             <button
               onClick={openCreateModal}
@@ -427,7 +427,7 @@ export default function GuestHistory() {
           {/* Search Bar */}
           <div className="bg-white rounded-xl shadow p-4">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600" size={18} />
               <input
                 type="text"
                 placeholder="Search by guest name, email, or phone..."
@@ -443,7 +443,7 @@ export default function GuestHistory() {
             {isLoading ? (
               <div className="text-center py-12 bg-white rounded-lg">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gtbank-primary mx-auto"></div>
-                <p className="text-gray-500 mt-4">Loading guests...</p>
+                <p className="text-gray-700 mt-4">Loading guests...</p>
               </div>
             ) : error ? (
               <div className="text-center py-12 bg-white rounded-lg">
@@ -465,19 +465,19 @@ export default function GuestHistory() {
                         <h3 className="text-lg font-semibold text-gray-900">{guest.name}</h3>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm text-gray-600 mt-1">
                           <div className="flex items-center">
-                            <Mail size={14} className="mr-1 text-gray-400" />
+                            <Mail size={14} className="mr-1 text-gray-600" />
                             <span>{guest.email}</span>
                           </div>
                           <div className="flex items-center">
-                            <Phone size={14} className="mr-1 text-gray-400" />
+                            <Phone size={14} className="mr-1 text-gray-600" />
                             <span>{guest.phone}</span>
                           </div>
                           <div className="flex items-center">
-                            <Calendar size={14} className="mr-1 text-gray-400" />
+                            <Calendar size={14} className="mr-1 text-gray-600" />
                             <span>Member since {new Date(guest.join_date).toLocaleDateString()}</span>
                           </div>
                           <div className="flex items-center">
-                            <Globe size={14} className="mr-1 text-gray-400" />
+                            <Globe size={14} className="mr-1 text-gray-600" />
                             <span>{guest.nationality}</span>
                           </div>
                         </div>
@@ -488,7 +488,7 @@ export default function GuestHistory() {
                       onClick={() => handleViewProfile(guest.id)}
                       className="ml-4 p-2 hover:bg-gray-100 rounded-lg transition-colors flex-shrink-0"
                     >
-                      <ChevronRight size={20} className="text-gray-400" />
+                      <ChevronRight size={20} className="text-gray-600" />
                     </button>
                   </div>
                 </div>
@@ -496,7 +496,7 @@ export default function GuestHistory() {
             ) : (
               <div className="text-center py-12 bg-white rounded-lg">
                 <User className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-                <p className="text-gray-500">No guests found matching your search</p>
+                <p className="text-gray-700">No guests found matching your search</p>
               </div>
             )}
           </div>
@@ -552,11 +552,11 @@ export default function GuestHistory() {
               <div className="flex justify-between items-start mb-6">
                 <div>
                   <h2 className="text-2xl font-bold">Create New Guest</h2>
-                  <p className="text-gray-500 mt-1">Add a new guest to the system</p>
+                  <p className="text-gray-700 mt-1">Add a new guest to the system</p>
                 </div>
                 <button
                   onClick={closeCreateModal}
-                  className="text-gray-400 hover:text-gray-500"
+                  className="text-gray-600 hover:text-gray-700"
                 >
                   <X size={24} />
                 </button>
@@ -571,7 +571,7 @@ export default function GuestHistory() {
                       Full Name *
                     </label>
                     <div className="relative">
-                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600" size={18} />
                       <input
                         type="text"
                         name="name"
@@ -590,7 +590,7 @@ export default function GuestHistory() {
                       Email Address *
                     </label>
                     <div className="relative">
-                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600" size={18} />
                       <input
                         type="email"
                         name="email"
@@ -609,7 +609,7 @@ export default function GuestHistory() {
                       Phone Number *
                     </label>
                     <div className="relative">
-                      <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+                      <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600" size={18} />
                       <input
                         type="tel"
                         name="phone"
@@ -628,7 +628,7 @@ export default function GuestHistory() {
                       Nationality *
                     </label>
                     <div className="relative">
-                      <Globe className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+                      <Globe className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600" size={18} />
                       <input
                         type="text"
                         name="nationality"
@@ -665,7 +665,7 @@ export default function GuestHistory() {
                         ID Number *
                       </label>
                       <div className="relative">
-                        <CreditCard className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+                        <CreditCard className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600" size={18} />
                         <input
                           type="text"
                           name="idNumber"
@@ -712,7 +712,7 @@ export default function GuestHistory() {
               <div className="flex justify-end mb-4">
                 <button
                   onClick={closeModal}
-                  className="text-gray-400 hover:text-gray-500"
+                  className="text-gray-600 hover:text-gray-700"
                 >
                   <X size={24} />
                 </button>
@@ -722,7 +722,7 @@ export default function GuestHistory() {
               {guestLoading ? (
                 <div className="text-center py-12">
                   <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gtbank-primary mx-auto"></div>
-                  <p className="text-gray-500 mt-4">Loading guest details...</p>
+                  <p className="text-gray-700 mt-4">Loading guest details...</p>
                 </div>
               ) : !selectedGuest ? (
                 <div className="text-center py-12">
@@ -745,7 +745,7 @@ export default function GuestHistory() {
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold">{selectedGuest.name}</h2>
-                    <p className="text-gray-500">Member since {new Date(selectedGuest.join_date).toLocaleDateString()}</p>
+                    <p className="text-gray-700">Member since {new Date(selectedGuest.join_date).toLocaleDateString()}</p>
                   </div>
                 </div>
               </div>
@@ -753,30 +753,30 @@ export default function GuestHistory() {
               {/* Basic Info */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 p-4 bg-gray-50 rounded-lg">
                 <div>
-                  <p className="text-sm text-gray-500">Email</p>
+                  <p className="text-sm text-gray-700">Email</p>
                   <p className="font-medium flex items-center mt-1">
-                    <Mail size={16} className="mr-2 text-gray-400" />
+                    <Mail size={16} className="mr-2 text-gray-600" />
                     {selectedGuest.email}
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500">Phone</p>
+                  <p className="text-sm text-gray-700">Phone</p>
                   <p className="font-medium flex items-center mt-1">
-                    <Phone size={16} className="mr-2 text-gray-400" />
+                    <Phone size={16} className="mr-2 text-gray-600" />
                     {selectedGuest.phone}
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500">Nationality</p>
+                  <p className="text-sm text-gray-700">Nationality</p>
                   <p className="font-medium flex items-center mt-1">
-                    <Globe size={16} className="mr-2 text-gray-400" />
+                    <Globe size={16} className="mr-2 text-gray-600" />
                     {selectedGuest.nationality}
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500">{selectedGuest.id_type}</p>
+                  <p className="text-sm text-gray-700">{selectedGuest.id_type}</p>
                   <p className="font-medium flex items-center mt-1">
-                    <CreditCard size={16} className="mr-2 text-gray-400" />
+                    <CreditCard size={16} className="mr-2 text-gray-600" />
                     {selectedGuest.id_number}
                   </p>
                 </div>
@@ -808,7 +808,7 @@ export default function GuestHistory() {
                 <div className="space-y-2">
                   {(selectedGuest.reservations && selectedGuest.reservations.length > 0) ? selectedGuest.reservations.map((reservation, idx) => (
                     <div key={reservation.id} className="flex items-center p-3 bg-gray-50 rounded-lg">
-                      <Calendar size={16} className="text-gray-400 mr-3 flex-shrink-0" />
+                      <Calendar size={16} className="text-gray-600 mr-3 flex-shrink-0" />
                       <div className="flex-1">
                         <p className="font-medium text-gray-900">
                           Room {reservation.room?.room_number || 'N/A'} ({reservation.room?.room_type || 'N/A'})
@@ -833,7 +833,7 @@ export default function GuestHistory() {
                   )) : (
                     <div className="text-center py-8 bg-gray-50 rounded-lg">
                       <Calendar className="w-12 h-12 text-gray-300 mx-auto mb-2" />
-                      <p className="text-gray-500">No reservations found</p>
+                      <p className="text-gray-700">No reservations found</p>
                     </div>
                   )}
                 </div>
@@ -850,7 +850,7 @@ export default function GuestHistory() {
                         <span key={idx} className="bg-gtbank-bg-gray text-gtbank-secondary px-3 py-1 rounded-full text-sm">
                           {floor}
                         </span>
-                      )) : <span className="text-sm text-gray-500">No preference set</span>}
+                      )) : <span className="text-sm text-gray-700">No preference set</span>}
                     </div>
                   </div>
                   <div className="p-4 bg-gray-50 rounded-lg">
@@ -860,7 +860,7 @@ export default function GuestHistory() {
                         <span key={idx} className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
                           {meal}
                         </span>
-                      )) : <span className="text-sm text-gray-500">No preference set</span>}
+                      )) : <span className="text-sm text-gray-700">No preference set</span>}
                     </div>
                   </div>
                   <div className="p-4 bg-gray-50 rounded-lg">
@@ -870,7 +870,7 @@ export default function GuestHistory() {
                         <span key={idx} className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">
                           {type}
                         </span>
-                      )) : <span className="text-sm text-gray-500">No preference set</span>}
+                      )) : <span className="text-sm text-gray-700">No preference set</span>}
                     </div>
                   </div>
                   <div className="p-4 bg-gray-50 rounded-lg">
@@ -880,7 +880,7 @@ export default function GuestHistory() {
                         <span key={idx} className="bg-gtbank-bg-gray text-gtbank-primary px-3 py-1 rounded-full text-sm">
                           {req}
                         </span>
-                      )) : <span className="text-sm text-gray-500">No special requests</span>}
+                      )) : <span className="text-sm text-gray-700">No special requests</span>}
                     </div>
                   </div>
                 </div>
@@ -897,7 +897,7 @@ export default function GuestHistory() {
                     </div>
                   )) : (
                     <div className="col-span-full text-center py-8 bg-gray-50 rounded-lg">
-                      <p className="text-gray-500">No service usage data available</p>
+                      <p className="text-gray-700">No service usage data available</p>
                     </div>
                   )}
                 </div>

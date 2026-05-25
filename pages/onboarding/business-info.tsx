@@ -106,7 +106,7 @@ export default function BusinessInfoPage() {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Business Address</label>
                 <div className="relative">
-                  <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 w-5 h-5" />
                   <input
                     type="text"
                     name="address"
@@ -161,7 +161,7 @@ export default function BusinessInfoPage() {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Business Phone</label>
                   <div className="relative">
-                    <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                    <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 w-5 h-5" />
                     <input
                       type="tel"
                       name="businessPhone"
@@ -176,7 +176,7 @@ export default function BusinessInfoPage() {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Business Email</label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 w-5 h-5" />
                     <input
                       type="email"
                       name="businessEmail"
@@ -193,7 +193,7 @@ export default function BusinessInfoPage() {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Website (Optional)</label>
                 <div className="relative">
-                  <Globe className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <Globe className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 w-5 h-5" />
                   <input
                     type="url"
                     name="website"
@@ -237,9 +237,9 @@ export default function BusinessInfoPage() {
 
             <div className="space-y-4">
               <div className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center hover:border-gtbank-primary transition-colors">
-                <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                <Upload className="w-12 h-12 text-gray-600 mx-auto mb-4" />
                 <p className="text-gray-600 mb-2">Drag and drop files here, or click to select</p>
-                <p className="text-gray-400 text-sm">PDF, JPG, PNG up to 10MB each</p>
+                <p className="text-gray-600 text-sm">PDF, JPG, PNG up to 10MB each</p>
                 <input
                   type="file"
                   multiple
@@ -262,9 +262,9 @@ export default function BusinessInfoPage() {
                   {uploadedFiles.map((file, index) => (
                     <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                       <div className="flex items-center gap-3">
-                        <FileText className="w-5 h-5 text-gray-400" />
+                        <FileText className="w-5 h-5 text-gray-600" />
                         <span className="text-sm text-gray-700">{file.name}</span>
-                        <span className="text-xs text-gray-500">({(file.size / 1024).toFixed(1)} KB)</span>
+                        <span className="text-xs text-gray-700">({(file.size / 1024).toFixed(1)} KB)</span>
                       </div>
                       <button
                         onClick={() => handleRemoveFile(index)}

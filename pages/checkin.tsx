@@ -400,7 +400,7 @@ export default function CheckIn() {
           <div className="flex justify-between items-center">
             <div>
               <h1 className="text-2xl font-bold">Check-In Management</h1>
-              <p className="text-gray-500">Manage guest arrivals and check-in process</p>
+              <p className="text-gray-700">Manage guest arrivals and check-in process</p>
             </div>
             <button
               onClick={() => setShowManualCheckin(true)}
@@ -416,7 +416,7 @@ export default function CheckIn() {
             <div className="bg-white rounded-xl shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-500 text-sm">Pending Check-In</p>
+                  <p className="text-gray-700 text-sm">Pending Check-In</p>
                   <p className="text-3xl font-bold text-yellow-600">{pendingCount}</p>
                 </div>
                 <div className="bg-yellow-100 p-3 rounded-lg">
@@ -428,7 +428,7 @@ export default function CheckIn() {
             <div className="bg-white rounded-xl shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-500 text-sm">Checked In</p>
+                  <p className="text-gray-700 text-sm">Checked In</p>
                   <p className="text-3xl font-bold text-green-600">{checkedInCount}</p>
                 </div>
                 <div className="bg-green-100 p-3 rounded-lg">
@@ -440,7 +440,7 @@ export default function CheckIn() {
             <div className="bg-white rounded-xl shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-500 text-sm">Completed</p>
+                  <p className="text-gray-700 text-sm">Completed</p>
                   <p className="text-3xl font-bold text-blue-600">{completedCount}</p>
                 </div>
                 <div className="bg-blue-100 p-3 rounded-lg">
@@ -452,7 +452,7 @@ export default function CheckIn() {
             <div className="bg-white rounded-xl shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-500 text-sm">No Show</p>
+                  <p className="text-gray-700 text-sm">No Show</p>
                   <p className="text-3xl font-bold text-red-600">{noShowCount}</p>
                 </div>
                 <div className="bg-red-100 p-3 rounded-lg">
@@ -466,7 +466,7 @@ export default function CheckIn() {
           <div className="bg-white rounded-xl shadow p-4">
             <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600" size={18} />
                 <input
                   type="text"
                   placeholder="Search guests..."
@@ -522,13 +522,13 @@ export default function CheckIn() {
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Guest</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Booking ID</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Room</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Check-In</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Verification</th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Guest</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Booking ID</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Room</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Check-In</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Status</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Verification</th>
+                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-700 uppercase tracking-wider">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
@@ -542,7 +542,7 @@ export default function CheckIn() {
                             </div>
                             <div className="ml-4">
                               <div className="text-sm font-medium text-gray-900">{guest.guestName}</div>
-                              <div className="text-sm text-gray-500">{guest.guestEmail}</div>
+                              <div className="text-sm text-gray-700">{guest.guestEmail}</div>
                             </div>
                           </div>
                         </td>
@@ -551,11 +551,11 @@ export default function CheckIn() {
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="text-sm text-gray-900">{guest.roomNumber}</div>
-                          <div className="text-sm text-gray-500">{guest.roomType}</div>
+                          <div className="text-sm text-gray-700">{guest.roomType}</div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="text-sm text-gray-900">{formatDate(guest.checkInDate)}</div>
-                          <div className="text-sm text-gray-500">{guest.guestCount} guest{guest.guestCount > 1 ? 's' : ''}</div>
+                          <div className="text-sm text-gray-700">{guest.guestCount} guest{guest.guestCount > 1 ? 's' : ''}</div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${statusStyles[guest.status]}`}>
@@ -571,7 +571,7 @@ export default function CheckIn() {
                                 ID
                               </div>
                             ) : (
-                              <div className="flex items-center text-gray-400 text-xs font-semibold">
+                              <div className="flex items-center text-gray-600 text-xs font-semibold">
                                 <AlertCircle size={14} className="mr-1" />
                                 ID
                               </div>
@@ -582,7 +582,7 @@ export default function CheckIn() {
                                 Key
                               </div>
                             ) : (
-                              <div className="flex items-center text-gray-400 text-xs font-semibold">
+                              <div className="flex items-center text-gray-600 text-xs font-semibold">
                                 <AlertCircle size={14} className="mr-1" />
                                 Key
                               </div>
@@ -609,7 +609,7 @@ export default function CheckIn() {
                     ))
                   ) : (
                     <tr>
-                      <td colSpan={7} className="px-6 py-8 text-center text-gray-500">
+                      <td colSpan={7} className="px-6 py-8 text-center text-gray-700">
                         No guests found matching your criteria
                       </td>
                     </tr>
@@ -669,7 +669,7 @@ export default function CheckIn() {
               <div className="flex justify-between items-start mb-6">
                 <div>
                   <h2 className="text-2xl font-bold">Manual Check-In</h2>
-                  <p className="text-gray-500">
+                  <p className="text-gray-700">
                     {manualCheckinStep === 'search' && 'Search for booking'}
                     {manualCheckinStep === 'verify' && 'Verify guest information'}
                     {manualCheckinStep === 'complete' && 'Complete check-in'}
@@ -677,7 +677,7 @@ export default function CheckIn() {
                 </div>
                 <button
                   onClick={closeManualCheckin}
-                  className="text-gray-400 hover:text-gray-500"
+                  className="text-gray-600 hover:text-gray-700"
                 >
                   <X size={24} />
                 </button>
@@ -711,7 +711,7 @@ export default function CheckIn() {
                       onChange={(e) => setManualFormData({...manualFormData, bookingId: e.target.value})}
                     />
                   </div>
-                  <p className="text-sm text-gray-500">Or search by guest name or email</p>
+                  <p className="text-sm text-gray-700">Or search by guest name or email</p>
                 </div>
               )}
 
@@ -775,7 +775,7 @@ export default function CheckIn() {
                         className="w-4 h-4 text-gtbank-primary rounded focus:ring-2 focus:ring-gtbank-primary"
                       />
                       <div className="flex items-center">
-                        <FileText size={16} className="mr-2 text-gray-400" />
+                        <FileText size={16} className="mr-2 text-gray-600" />
                         <span className="text-sm font-medium text-gray-700">ID Verified</span>
                       </div>
                     </label>
@@ -788,7 +788,7 @@ export default function CheckIn() {
                         className="w-4 h-4 text-gtbank-primary rounded focus:ring-2 focus:ring-gtbank-primary"
                       />
                       <div className="flex items-center">
-                        <Key size={16} className="mr-2 text-gray-400" />
+                        <Key size={16} className="mr-2 text-gray-600" />
                         <span className="text-sm font-medium text-gray-700">Key Issued</span>
                       </div>
                     </label>
@@ -801,7 +801,7 @@ export default function CheckIn() {
                         className="w-4 h-4 text-gtbank-primary rounded focus:ring-2 focus:ring-gtbank-primary"
                       />
                       <div className="flex items-center">
-                        <FileText size={16} className="mr-2 text-gray-400" />
+                        <FileText size={16} className="mr-2 text-gray-600" />
                         <span className="text-sm font-medium text-gray-700">Documents Signed</span>
                       </div>
                     </label>
@@ -942,11 +942,11 @@ export default function CheckIn() {
               <div className="flex justify-between items-start mb-6">
                 <div>
                   <h2 className="text-2xl font-bold">{selectedGuest.guestName}</h2>
-                  <p className="text-gray-500">Booking ID: {selectedGuest.bookingId}</p>
+                  <p className="text-gray-700">Booking ID: {selectedGuest.bookingId}</p>
                 </div>
                 <button
                   onClick={closeModal}
-                  className="text-gray-400 hover:text-gray-500"
+                  className="text-gray-600 hover:text-gray-700"
                 >
                   <X size={24} />
                 </button>
@@ -957,29 +957,29 @@ export default function CheckIn() {
                   <h3 className="text-lg font-medium text-gray-900 mb-4">Guest Information</h3>
                   <div className="space-y-4">
                     <div>
-                      <p className="text-sm text-gray-500">Email</p>
+                      <p className="text-sm text-gray-700">Email</p>
                       <p className="font-medium flex items-center">
-                        <Mail size={16} className="mr-2 text-gray-400" />
+                        <Mail size={16} className="mr-2 text-gray-600" />
                         {selectedGuest.guestEmail}
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Phone</p>
+                      <p className="text-sm text-gray-700">Phone</p>
                       <p className="font-medium flex items-center">
-                        <Phone size={16} className="mr-2 text-gray-400" />
+                        <Phone size={16} className="mr-2 text-gray-600" />
                         {selectedGuest.guestPhone}
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Number of Guests</p>
+                      <p className="text-sm text-gray-700">Number of Guests</p>
                       <p className="font-medium flex items-center">
-                        <Users size={16} className="mr-2 text-gray-400" />
+                        <Users size={16} className="mr-2 text-gray-600" />
                         {selectedGuest.guestCount}
                       </p>
                     </div>
                     {selectedGuest.specialRequests && (
                       <div>
-                        <p className="text-sm text-gray-500">Special Requests</p>
+                        <p className="text-sm text-gray-700">Special Requests</p>
                         <p className="font-medium">{selectedGuest.specialRequests}</p>
                       </div>
                     )}
@@ -990,28 +990,28 @@ export default function CheckIn() {
                   <h3 className="text-lg font-medium text-gray-900 mb-4">Room & Stay Details</h3>
                   <div className="space-y-4">
                     <div>
-                      <p className="text-sm text-gray-500">Room</p>
+                      <p className="text-sm text-gray-700">Room</p>
                       <p className="font-medium flex items-center">
-                        <MapPin size={16} className="mr-2 text-gray-400" />
+                        <MapPin size={16} className="mr-2 text-gray-600" />
                         {selectedGuest.roomNumber} - {selectedGuest.roomType}
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Check-In Date</p>
+                      <p className="text-sm text-gray-700">Check-In Date</p>
                       <p className="font-medium flex items-center">
-                        <Calendar size={16} className="mr-2 text-gray-400" />
+                        <Calendar size={16} className="mr-2 text-gray-600" />
                         {formatDate(selectedGuest.checkInDate)}
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Check-Out Date</p>
+                      <p className="text-sm text-gray-700">Check-Out Date</p>
                       <p className="font-medium flex items-center">
-                        <Calendar size={16} className="mr-2 text-gray-400" />
+                        <Calendar size={16} className="mr-2 text-gray-600" />
                         {formatDate(selectedGuest.checkOutDate)}
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Total Price</p>
+                      <p className="text-sm text-gray-700">Total Price</p>
                       <p className="font-medium flex items-center text-gtbank-primary">
                         ₦{selectedGuest.totalPrice}
                       </p>
@@ -1025,7 +1025,7 @@ export default function CheckIn() {
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
-                      <FileText size={16} className="mr-2 text-gray-400" />
+                      <FileText size={16} className="mr-2 text-gray-600" />
                       <span className="text-sm font-medium">ID Verified</span>
                     </div>
                     {selectedGuest.idVerified ? (
@@ -1036,7 +1036,7 @@ export default function CheckIn() {
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
-                      <Key size={16} className="mr-2 text-gray-400" />
+                      <Key size={16} className="mr-2 text-gray-600" />
                       <span className="text-sm font-medium">Key Issued</span>
                     </div>
                     {selectedGuest.keyIssued ? (
@@ -1047,7 +1047,7 @@ export default function CheckIn() {
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
-                      <FileText size={16} className="mr-2 text-gray-400" />
+                      <FileText size={16} className="mr-2 text-gray-600" />
                       <span className="text-sm font-medium">Documents Signed</span>
                     </div>
                     {selectedGuest.documentsSigned ? (
@@ -1094,7 +1094,7 @@ export default function CheckIn() {
                           <p className="text-sm font-medium text-gray-700 mb-1">Meal Preference</p>
                           <p className="text-sm text-gray-600">
                             {aiInsights.meal_preference || (
-                              <span className="italic text-gray-400">No meal history available</span>
+                              <span className="italic text-gray-600">No meal history available</span>
                             )}
                           </p>
                         </div>
@@ -1106,7 +1106,7 @@ export default function CheckIn() {
                           <p className="text-sm font-medium text-gray-700 mb-1">Room Preference</p>
                           <p className="text-sm text-gray-600">
                             {aiInsights.room_preference || (
-                              <span className="italic text-gray-400">No booking history available</span>
+                              <span className="italic text-gray-600">No booking history available</span>
                             )}
                           </p>
                         </div>
@@ -1118,7 +1118,7 @@ export default function CheckIn() {
                           <p className="text-sm font-medium text-gray-700 mb-1">Service Pattern</p>
                           <p className="text-sm text-gray-600">
                             {aiInsights.service_pattern || (
-                              <span className="italic text-gray-400">No service history available</span>
+                              <span className="italic text-gray-600">No service history available</span>
                             )}
                           </p>
                         </div>
@@ -1153,7 +1153,7 @@ export default function CheckIn() {
                       )}
                     </div>
                   ) : (
-                    <p className="text-sm text-gray-500 italic">No insights available yet</p>
+                    <p className="text-sm text-gray-700 italic">No insights available yet</p>
                   )}
                 </div>
               )}
@@ -1216,7 +1216,7 @@ export default function CheckIn() {
                 <h2 className="text-3xl font-bold text-gray-900">Checkout</h2>
                 <button
                   onClick={() => setShowCheckoutModal(false)}
-                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                  className="text-gray-600 hover:text-gray-600 transition-colors"
                 >
                   <X className="w-8 h-8" />
                 </button>
@@ -1249,7 +1249,7 @@ export default function CheckIn() {
                     Additional Charges (Optional)
                   </label>
                   <div className="relative">
-                    <DollarSign className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                    <DollarSign className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-600 w-5 h-5" />
                     <input
                       type="number"
                       value={additionalCharges}
@@ -1259,7 +1259,7 @@ export default function CheckIn() {
                       className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-gtbank-primary focus:border-transparent text-gray-900"
                     />
                   </div>
-                  <p className="text-xs text-gray-500 mt-1">Mini-bar, room service, or other charges</p>
+                  <p className="text-xs text-gray-700 mt-1">Mini-bar, room service, or other charges</p>
                 </div>
 
                 <div>

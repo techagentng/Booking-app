@@ -110,7 +110,7 @@ export default function CustomerBookingsPage() {
 
       <main className="max-w-4xl mx-auto px-4 py-6">
         {loading ? (
-          <div className="bg-white rounded-2xl p-8 text-center text-gray-500">Loading bookings...</div>
+          <div className="bg-white rounded-2xl p-8 text-center text-gray-700">Loading bookings...</div>
         ) : bookings.length === 0 ? (
           <div className="bg-white rounded-2xl p-10 text-center border border-gray-100">
             <Calendar className="w-12 h-12 text-gray-300 mx-auto mb-4" />
@@ -128,7 +128,7 @@ export default function CustomerBookingsPage() {
                       <h2 className="font-bold text-gtbank-secondary">{booking.service_name}</h2>
                       <span className={`px-2 py-1 rounded-full text-xs font-semibold ${statusClass(booking.status)}`}>{booking.status}</span>
                     </div>
-                    <p className="text-sm text-gray-500">{booking.booking_id || booking.id} • {booking.service_type}</p>
+                    <p className="text-sm text-gray-700">{booking.booking_id || booking.id} • {booking.service_type}</p>
                   </div>
                   <div className="text-lg font-bold text-gtbank-secondary">₦{(booking.amount || 0).toLocaleString()}</div>
                 </div>
