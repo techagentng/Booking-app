@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Search, MapPin, Calendar, Users, Star, Home, Building, Car, Utensils, ShoppingBag, Heart, ChevronRight, Menu, User, Globe, Navigation, Clock, TrendingUp } from 'lucide-react';
+import { Search, MapPin, Calendar, Users, Star, Home, Building, Car, Utensils, ShoppingBag, Heart, ChevronRight, Menu, User, Globe, Navigation, Clock, TrendingUp, Bed } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTranslation } from '../hooks/useTranslation';
@@ -53,7 +53,7 @@ export default function Landing() {
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case 'home': return Home;
-      case 'building': return Building;
+      case 'building': return Bed;
       case 'car': return Car;
       case 'utensils': return Utensils;
       case 'shopping-bag': return ShoppingBag;
