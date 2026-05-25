@@ -327,19 +327,19 @@ export default function Landing() {
       icon: Heart,
       label: 'Saved',
       active: false,
-      action: () => router.push({ pathname: '/login', query: { redirectTo: '/' } })
+      action: () => router.push('/customer/saved')
     },
     {
       icon: Calendar,
       label: 'Bookings',
       active: false,
-      action: () => router.push({ pathname: '/login', query: { redirectTo: '/' } })
+      action: () => router.push('/customer/bookings')
     },
     {
       icon: User,
       label: 'Profile',
       active: false,
-      action: () => router.push({ pathname: '/login', query: { redirectTo: '/' } })
+      action: () => router.push('/customer/profile')
     }
   ];
 
