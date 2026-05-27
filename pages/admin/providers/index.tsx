@@ -3,8 +3,9 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import {
   Search, Filter, Plus, Edit, Eye, MoreVertical, CheckCircle,
-  XCircle, Clock, Star, MapPin, ChevronDown, Download
+  XCircle, Clock, Star, MapPin, ChevronDown, Download, Loader2
 } from 'lucide-react';
+import { adminAPI } from '../../../lib/api/admin';
 
 // Types
 interface ServiceProvider {
@@ -142,9 +143,53 @@ export default function AdminProvidersPage() {
   const [selectedStatus, setSelectedStatus] = useState('all');
   const [showFilters, setShowFilters] = useState(false);
   const [selectedProviders, setSelectedProviders] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    let filtered = mockProviders;
+    const fetchProviders = async () => {
+      try {
+        setIsLoading(true);
+        const verifications = await adminAPI.getPendingVerifications();
+        
+        // Map verification data to provider format
+        if (verifications && verifications.length > 0) {
+          const mappedProviders = verifications.map((v: any) => ({
+            id: v.id,
+            name: v.business_name || v.name,
+            type: v.business_type || 'hotels',
+            description: v.description || 'Pending verification',
+            image: v.image_url || 'https://picsum.photos/seed/pending/100/100.jpg',
+            rating: 0,
+            reviewCount: 0,
+            location: { 
+              address: v.address || 'N/A', 
+              city: v.city || 'N/A', 
+              state: v.state || 'N/A' 
+            },
+            verified: false,
+            status: 'pending' as const,
+            services: [],
+            businessInfo: { establishedYear: 0, employeeCount: 0 },
+            createdAt: v.created_at || new Date().toISOString(),
+          }));
+          
+          // Combine with mock active providers
+          setProviders([...mappedProviders, ...mockProviders.filter(p => p.status !== 'pending')]);
+        }
+      } catch (err) {
+        setError('Failed to load providers');
+        // Keep mock data as fallback
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchProviders();
+  }, []);
+
+  useEffect(() => {
+    let filtered = providers;
 
     if (selectedCategory !== 'all') {
       filtered = filtered.filter(p => p.type === selectedCategory);
@@ -228,8 +273,21 @@ export default function AdminProvidersPage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        {/* Filters */}
-        <div className="bg-white rounded-xl shadow-sm p-4 mb-6">
+        {error && (
+          <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+            {error}
+          </div>
+        )}
+
+        {isLoading ? (
+          <div className="flex items-center justify-center py-12">
+            <Loader2 className="w-8 h-8 animate-spin text-purple-600" />
+            <span className="ml-3 text-gray-600">Loading providers...</span>
+          </div>
+        ) : (
+          <>
+            {/* Filters */}
+            <div className="bg-white rounded-xl shadow-sm p-4 mb-6">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 w-5 h-5" />
@@ -420,6 +478,8 @@ export default function AdminProvidersPage() {
             </div>
           )}
         </div>
+          </>
+        )}
       </div>
     </div>
   );

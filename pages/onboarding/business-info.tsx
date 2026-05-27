@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
-import { ArrowLeft, ArrowRight, MapPin, Phone, Mail, Globe, Upload, FileText, CheckCircle, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, MapPin, Phone, Mail, Globe, Upload, FileText, CheckCircle, X, Loader2 } from 'lucide-react';
+import { providerAPI } from '../../lib/api/provider';
 
 export default function BusinessInfoPage() {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   const [formData, setFormData] = useState({
     address: '',
     city: '',
@@ -52,10 +55,34 @@ export default function BusinessInfoPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (validateForm()) {
-      // Save data and proceed to next phase
-      router.push('/onboarding/services');
+      setIsLoading(true);
+      setError('');
+      
+      try {
+        // Get stored registration data
+        const storedData = localStorage.getItem('provider_onboarding_data');
+        const onboardingData = storedData ? JSON.parse(storedData) : {};
+        
+        await providerAPI.updateBusinessInfo({
+          business_name: onboardingData.businessName || '',
+          business_type: onboardingData.businessType || '',
+          phone: formData.businessPhone,
+          address: formData.address,
+          city: formData.city,
+          state: formData.state,
+          description: formData.description,
+        });
+        
+        // Store business info for next steps
+        localStorage.setItem('provider_business_info', JSON.stringify(formData));
+        
+        router.push('/onboarding/services');
+      } catch (err) {
+        setError('Failed to save business information. Please try again.');
+        setIsLoading(false);
+      }
     }
   };
 
@@ -287,20 +314,38 @@ export default function BusinessInfoPage() {
 
           {/* Navigation */}
           <div className="flex justify-between">
-            <button
-              onClick={() => router.back()}
-              className="inline-flex items-center gap-2 px-6 py-3 border border-[#F5E6DA] text-gray-700 rounded-lg font-semibold hover:bg-[#FFF8F3] transition-all"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              Back
-            </button>
-            <button
-              onClick={handleSubmit}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#E67817] text-white rounded-lg font-semibold hover:bg-[#D66A12] transition-all shadow-sm hover:shadow-md"
-            >
-              Continue
-              <ArrowRight className="w-5 h-5" />
-            </button>
+            {error && (
+              <div className="flex-1 mr-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+                {error}
+              </div>
+            )}
+            <div className="flex gap-3 ml-auto">
+              <button
+                onClick={() => router.back()}
+                disabled={isLoading}
+                className="inline-flex items-center gap-2 px-6 py-3 border border-[#F5E6DA] text-gray-700 rounded-lg font-semibold hover:bg-[#FFF8F3] transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+              >
+                <ArrowLeft className="w-5 h-5" />
+                Back
+              </button>
+              <button
+                onClick={handleSubmit}
+                disabled={isLoading}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#E67817] text-white rounded-lg font-semibold hover:bg-[#D66A12] transition-all shadow-sm hover:shadow-md disabled:opacity-70 disabled:cursor-not-allowed"
+              >
+                {isLoading ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Saving...
+                  </>
+                ) : (
+                  <>
+                    Continue
+                    <ArrowRight className="w-5 h-5" />
+                  </>
+                )}
+              </button>
+            </div>
           </div>
         </motion.div>
       </div>

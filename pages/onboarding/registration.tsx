@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
-import { ArrowLeft, ArrowRight, CheckCircle, User, Building, Store, Home, Briefcase, Mail, Lock, Eye, EyeOff } from 'lucide-react';
+import { ArrowLeft, ArrowRight, CheckCircle, User, Building, Store, Home, Briefcase, Mail, Lock, Eye, EyeOff, Loader2 } from 'lucide-react';
+import { providerAPI } from '../../lib/api/provider';
 
 const businessTypes = [
   { id: 'hotel', name: 'Hotel', icon: '🏨', description: 'Accommodation and hospitality services' },
@@ -17,6 +18,8 @@ export default function RegistrationPage() {
   const [step, setStep] = useState(1);
   const [selectedBusinessType, setSelectedBusinessType] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -64,12 +67,39 @@ export default function RegistrationPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (step === 1 && validateStep1()) {
       setStep(2);
     } else if (step === 2 && validateStep2()) {
-      // Save data and proceed to next phase
-      router.push('/onboarding/business-info');
+      // Register provider with backend
+      setIsLoading(true);
+      setError('');
+      
+      try {
+        await providerAPI.register({
+          email: formData.email,
+          password: formData.password,
+          business_name: formData.businessName,
+          business_type: selectedBusinessType,
+          phone: formData.phone,
+        });
+        
+        // Store registration data for next steps
+        localStorage.setItem('provider_onboarding_data', JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          businessName: formData.businessName,
+          businessType: selectedBusinessType,
+        }));
+        
+        // Proceed to email verification
+        router.push('/onboarding/business-info');
+      } catch (err) {
+        setError('Registration failed. Please try again.');
+        setIsLoading(false);
+      }
     }
   };
 
@@ -218,13 +248,29 @@ export default function RegistrationPage() {
               </div>
             </div>
 
+            {error && (
+              <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+                {error}
+              </div>
+            )}
+
             <div className="mt-8 flex justify-end">
               <button
                 onClick={handleNext}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#E67817] text-white rounded-lg font-semibold hover:bg-[#D66A12] transition-all shadow-sm hover:shadow-md"
+                disabled={isLoading}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#E67817] text-white rounded-lg font-semibold hover:bg-[#D66A12] transition-all shadow-sm hover:shadow-md disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                Continue
-                <ArrowRight className="w-5 h-5" />
+                {isLoading ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Registering...
+                  </>
+                ) : (
+                  <>
+                    Continue
+                    <ArrowRight className="w-5 h-5" />
+                  </>
+                )}
               </button>
             </div>
           </motion.div>
@@ -283,20 +329,37 @@ export default function RegistrationPage() {
               </div>
             </div>
 
+            {error && (
+              <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+                {error}
+              </div>
+            )}
+
             <div className="mt-8 flex justify-between">
               <button
                 onClick={() => setStep(1)}
-                className="inline-flex items-center gap-2 px-6 py-3 border border-[#F5E6DA] text-gray-700 rounded-lg font-semibold hover:bg-[#FFF8F3] transition-all"
+                disabled={isLoading}
+                className="inline-flex items-center gap-2 px-6 py-3 border border-[#F5E6DA] text-gray-700 rounded-lg font-semibold hover:bg-[#FFF8F3] transition-all disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 <ArrowLeft className="w-5 h-5" />
                 Back
               </button>
               <button
                 onClick={handleNext}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#E67817] text-white rounded-lg font-semibold hover:bg-[#D66A12] transition-all shadow-sm hover:shadow-md"
+                disabled={isLoading}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#E67817] text-white rounded-lg font-semibold hover:bg-[#D66A12] transition-all shadow-sm hover:shadow-md disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                Continue
-                <ArrowRight className="w-5 h-5" />
+                {isLoading ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Registering...
+                  </>
+                ) : (
+                  <>
+                    Continue
+                    <ArrowRight className="w-5 h-5" />
+                  </>
+                )}
               </button>
             </div>
           </motion.div>

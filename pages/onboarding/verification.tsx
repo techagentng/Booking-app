@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
-import { ArrowLeft, CheckCircle, Clock, AlertCircle, Shield, FileText, RefreshCw } from 'lucide-react';
+import { ArrowLeft, CheckCircle, Clock, AlertCircle, Shield, FileText, RefreshCw, Loader2 } from 'lucide-react';
+import { providerAPI } from '../../lib/api/provider';
 
 interface VerificationStep {
   id: string;
@@ -42,36 +43,51 @@ export default function VerificationPage() {
   const router = useRouter();
   const [steps, setSteps] = useState<VerificationStep[]>(verificationSteps);
   const [isComplete, setIsComplete] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    // Simulate verification process
-    const interval = setInterval(() => {
-      setSteps((prevSteps) => {
-        const newSteps = [...prevSteps];
-        let allCompleted = true;
-
-        for (let i = 0; i < newSteps.length; i++) {
-          if (newSteps[i].status === 'in-progress') {
-            newSteps[i] = { ...newSteps[i], status: 'completed', completedAt: new Date().toISOString() };
-            if (i < newSteps.length - 1) {
-              newSteps[i + 1] = { ...newSteps[i + 1], status: 'in-progress' };
+    const fetchVerificationStatus = async () => {
+      try {
+        const status = await providerAPI.getVerificationStatus();
+        
+        // Map backend status to UI steps
+        const updatedSteps = steps.map(step => {
+          if (status.status === 'approved') {
+            return { ...step, status: 'completed' as const, completedAt: status.reviewed_at };
+          } else if (status.status === 'rejected') {
+            return { ...step, status: 'failed' as const };
+          } else if (status.status === 'pending') {
+            // Map document status from backend if available
+            if (step.id === 'document-review' && status.documents?.[0]?.status === 'approved') {
+              return { ...step, status: 'completed' as const };
             }
+            return { ...step, status: 'pending' as const };
           }
-          if (newSteps[i].status !== 'completed') {
-            allCompleted = false;
-          }
-        }
-
-        if (allCompleted && !isComplete) {
+          return step;
+        });
+        
+        setSteps(updatedSteps);
+        
+        if (status.status === 'approved') {
           setIsComplete(true);
         }
+      } catch (err) {
+        setError('Failed to fetch verification status');
+        // Use mock data as fallback
+        setSteps(verificationSteps);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-        return newSteps;
-      });
-    }, 2000);
-
+    fetchVerificationStatus();
+    
+    // Poll for status updates every 10 seconds
+    const interval = setInterval(fetchVerificationStatus, 10000);
+    
     return () => clearInterval(interval);
-  }, [isComplete]);
+  }, []);
 
   const getStatusIcon = (status: VerificationStep['status']) => {
     switch (status) {
@@ -130,6 +146,20 @@ export default function VerificationPage() {
               <p className="text-gray-600">We're verifying your information (1-3 business days)</p>
             </div>
           </div>
+          
+          {isLoading && (
+            <div className="flex items-center gap-2 text-gray-600">
+              <Loader2 className="w-4 h-4 animate-spin" />
+              <span className="text-sm">Loading verification status...</span>
+            </div>
+          )}
+          
+          {error && (
+            <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+              {error}
+            </div>
+          )}
+          
           {/* Progress Bar */}
           <div className="w-full bg-[#FFF1E6] rounded-full h-2">
             <div className="bg-gradient-to-r from-gtbank-primary to-gtbank-secondary h-2 rounded-full" style={{ width: '80%' }} />

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
-import { ArrowLeft, CheckCircle, Play, BookOpen, Settings, Users, MessageSquare, Rocket, XCircle } from 'lucide-react';
+import { ArrowLeft, CheckCircle, Play, BookOpen, Settings, Users, MessageSquare, Rocket, XCircle, Loader2 } from 'lucide-react';
+import { providerAPI } from '../../lib/api/provider';
 
 const trainingModules = [
   {
@@ -44,30 +45,45 @@ export default function GoLivePage() {
   const [isActivated, setIsActivated] = useState(false);
   const [showTestBooking, setShowTestBooking] = useState(false);
   const [testBookingStatus, setTestBookingStatus] = useState<'not_started' | 'pending' | 'accepted' | 'declined'>('not_started');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const toggleModule = (moduleId: string) => {
+  const toggleModule = async (moduleId: string) => {
+    const module = modules.find(m => m.id === moduleId);
+    if (!module) return;
+
+    // Optimistic update
     setModules(
       modules.map((m) =>
         m.id === moduleId ? { ...m, completed: !m.completed } : m
       )
     );
+
+    try {
+      // Call API to mark training as complete
+      await providerAPI.completeTraining(moduleId);
+    } catch (err) {
+      // Revert on error
+      setModules(
+        modules.map((m) =>
+          m.id === moduleId ? { ...m, completed: module.completed } : m
+        )
+      );
+      setError('Failed to mark training as complete');
+    }
   };
 
   const handleActivate = async () => {
+    setIsLoading(true);
+    setError('');
+    
     try {
-      const response = await fetch('http://localhost:8080/api/v1/provider/onboarding/activate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-      });
-      if (response.ok) {
-        setIsActivated(true);
-        router.push({ pathname: '/provider/login', query: { redirectTo: '/provider/dashboard' } });
-      } else {
-        alert('Activation failed. Please try again.');
-      }
-    } catch (error) {
-      console.error('Activation error:', error);
-      alert('Activation failed. Please try again.');
+      await providerAPI.activateAccount();
+      setIsActivated(true);
+      router.push({ pathname: '/provider/login', query: { redirectTo: '/provider/dashboard' } });
+    } catch (err) {
+      setError('Activation failed. Please try again.');
+      setIsLoading(false);
     }
   };
 
@@ -274,6 +290,11 @@ export default function GoLivePage() {
               animate={{ opacity: 1, y: 0 }}
               className="bg-gradient-to-r from-gtbank-primary to-gtbank-secondary rounded-2xl shadow-lg p-8 text-center"
             >
+              {error && (
+                <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+                  {error}
+                </div>
+              )}
               <Rocket className="w-12 h-12 text-white mx-auto mb-4" />
               <h2 className="text-2xl font-bold text-white mb-2">Ready to Go Live?</h2>
               <p className="text-gtbank-light-orange mb-6">
@@ -281,15 +302,24 @@ export default function GoLivePage() {
               </p>
               <button
                 onClick={handleActivate}
-                disabled={!canActivate}
+                disabled={!canActivate || isLoading}
                 className={`inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all ${
-                  canActivate
+                  canActivate && !isLoading
                     ? 'bg-[#E67817] text-white hover:bg-[#D66A12] shadow-sm hover:shadow-md'
                     : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                 }`}
               >
-                <CheckCircle className="w-5 h-5" />
-                Activate My Account
+                {isLoading ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Activating...
+                  </>
+                ) : (
+                  <>
+                    <CheckCircle className="w-5 h-5" />
+                    Activate My Account
+                  </>
+                )}
               </button>
               {!canActivate && (
                 <p className="text-gtbank-light-orange text-sm mt-3">

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
-import { ArrowLeft, ArrowRight, Plus, Trash2, Clock, DollarSign, CheckCircle, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Plus, Trash2, Clock, DollarSign, CheckCircle, X, Loader2 } from 'lucide-react';
+import { providerAPI } from '../../lib/api/provider';
 
 const categories = [
   { id: 'accommodation', name: 'Accommodation', icon: '🏨' },
@@ -24,6 +25,8 @@ interface Service {
 
 export default function ServicesPage() {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [services, setServices] = useState<Service[]>([
     {
@@ -105,9 +108,31 @@ export default function ServicesPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (validateForm()) {
-      router.push('/onboarding/verification');
+      setIsLoading(true);
+      setError('');
+      
+      try {
+        // Convert services to API format
+        const servicesPayload = services.map(service => ({
+          name: service.name,
+          type: service.category,
+          description: service.description,
+          price: service.price,
+          features: [`Duration: ${service.duration}`, `Available: ${service.availability.join(', ')}`],
+        }));
+        
+        await providerAPI.createServices(servicesPayload);
+        
+        // Store services data for next steps
+        localStorage.setItem('provider_services', JSON.stringify(services));
+        
+        router.push('/onboarding/verification');
+      } catch (err) {
+        setError('Failed to save services. Please try again.');
+        setIsLoading(false);
+      }
     }
   };
 
@@ -317,20 +342,38 @@ export default function ServicesPage() {
 
           {/* Navigation */}
           <div className="flex justify-between">
-            <button
-              onClick={() => router.back()}
-              className="inline-flex items-center gap-2 px-6 py-3 border border-[#F5E6DA] text-gray-700 rounded-lg font-semibold hover:bg-[#FFF8F3] transition-all"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              Back
-            </button>
-            <button
-              onClick={handleSubmit}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#E67817] text-white rounded-lg font-semibold hover:bg-[#D66A12] transition-all shadow-sm hover:shadow-md"
-            >
-              Continue
-              <ArrowRight className="w-5 h-5" />
-            </button>
+            {error && (
+              <div className="flex-1 mr-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+                {error}
+              </div>
+            )}
+            <div className="flex gap-3 ml-auto">
+              <button
+                onClick={() => router.back()}
+                disabled={isLoading}
+                className="inline-flex items-center gap-2 px-6 py-3 border border-[#F5E6DA] text-gray-700 rounded-lg font-semibold hover:bg-[#FFF8F3] transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+              >
+                <ArrowLeft className="w-5 h-5" />
+                Back
+              </button>
+              <button
+                onClick={handleSubmit}
+                disabled={isLoading}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#E67817] text-white rounded-lg font-semibold hover:bg-[#D66A12] transition-all shadow-sm hover:shadow-md disabled:opacity-70 disabled:cursor-not-allowed"
+              >
+                {isLoading ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Saving...
+                  </>
+                ) : (
+                  <>
+                    Continue
+                    <ArrowRight className="w-5 h-5" />
+                  </>
+                )}
+              </button>
+            </div>
           </div>
         </motion.div>
       </div>

@@ -26,7 +26,9 @@ export function middleware(req: NextRequest) {
 
   // Redirect unauthenticated users to login for protected pages
   if (!isAuthenticated && !isExemptedByPath && !isExemptedByPrefix) {
-    return NextResponse.redirect(new URL('/login', req.url));
+    const loginUrl = new URL('/login', req.url);
+    loginUrl.searchParams.set('redirectTo', pathname);
+    return NextResponse.redirect(loginUrl);
   }
 
   return NextResponse.next();

@@ -7,9 +7,11 @@ import { Eye, EyeOff, Lock, Mail, User, Zap, ArrowRight, CheckCircle } from 'luc
 import Link from 'next/link';
 import { useTranslation } from '../hooks/useTranslation';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useAuth } from '../contexts/AuthContext';
 
 export default function Signup() {
   const { t } = useTranslation();
+  const { signup } = useAuth();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,6 +23,7 @@ export default function Signup() {
   const [errors, setErrors] = useState<{[key: string]: string}>({});
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState('');
   const router = useRouter();
 
   const validateForm = () => {
@@ -61,15 +64,22 @@ export default function Signup() {
 
     setIsLoading(true);
 
-    // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 1500));
-
-    // Simulate successful signup
-    setIsSuccess(true);
-    
-    setTimeout(() => {
-      router.push('/login');
-    }, 2000);
+    try {
+      await signup({
+        email: formData.email,
+        password: formData.password,
+        full_name: formData.name,
+      });
+      
+      setIsSuccess(true);
+      
+      setTimeout(() => {
+        router.push('/');
+      }, 2000);
+    } catch (err) {
+      setError('Failed to create account. Please try again.');
+      setIsLoading(false);
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {

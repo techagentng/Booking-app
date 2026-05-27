@@ -3,11 +3,11 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Navigation, Eye, EyeOff, Lock, Mail, ShieldCheck, Sparkles, ArrowRight, Loader2, Building2 } from 'lucide-react';
-import axios from '../lib/axios';
-import { setSession } from '../utils/auth';
+import { useAuth } from '../contexts/AuthContext';
 
 export default function Login() {
   const router = useRouter();
+  const { login } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -22,22 +22,7 @@ export default function Login() {
     const redirectTo = typeof router.query.redirectTo === 'string' ? router.query.redirectTo : '/';
 
     try {
-      const { data } = await axios.post('/auth/login', { email, password });
-      const responseData = data?.data || data;
-      const token = responseData?.access_token || responseData?.token;
-      const user = responseData?.user || {
-        id: responseData?.user_id || email,
-        email,
-        fullname: responseData?.fullname || 'User Account',
-        role_name: 'User',
-      };
-
-      if (!token) {
-        throw new Error('Missing authentication token');
-      }
-
-      setSession(token, user.role_name || 'User', user);
-      router.push(redirectTo);
+      await login(email, password, redirectTo);
     } catch (err) {
       setError('Invalid email or password. Please try again.');
     } finally {

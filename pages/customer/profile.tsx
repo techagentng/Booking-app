@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Bell, CheckCircle, LogOut, Mail, MapPin, Phone, Save, ShieldCheck, User, Home, Search, Calendar, Heart } from 'lucide-react';
-import axios from '../../lib/axios';
+import { customerAPI } from '../../lib/api/customer';
 import { clearSession } from '../../utils/auth';
 
 type CustomerProfile = {
@@ -39,8 +39,8 @@ export default function CustomerProfilePage() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const { data } = await axios.get('/customer/me');
-        setProfile(data?.data || data?.customer || data || fallbackProfile);
+        const data = await customerAPI.getProfile();
+        setProfile(data);
       } catch (error) {
         setProfile(fallbackProfile);
       } finally {
@@ -59,7 +59,7 @@ export default function CustomerProfilePage() {
   const saveProfile = async () => {
     setSaving(true);
     try {
-      await axios.patch('/customer/me', {
+      await customerAPI.updateProfile({
         full_name: profile.full_name,
         phone: profile.phone,
         preferred_city: profile.preferred_city,

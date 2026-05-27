@@ -4,8 +4,9 @@ import { useRouter } from 'next/router';
 import {
   TrendingUp, DollarSign, Users, Star, Clock, Calendar,
   ChevronRight, Plus, Filter, Download, AlertCircle,
-  CheckCircle, ArrowUpRight, ArrowDownRight, Minus, ArrowLeft
+  CheckCircle, ArrowUpRight, ArrowDownRight, Minus, ArrowLeft, Loader2
 } from 'lucide-react';
+import { providerAPI } from '../../../lib/api/provider';
 
 // Types
 interface DashboardStats {
@@ -127,6 +128,39 @@ export default function ProviderDashboardPage() {
   const [recentBookings, setRecentBookings] = useState<RecentBooking[]>(mockRecentBookings);
   const [recentReviews, setRecentReviews] = useState<RecentReview[]>(mockRecentReviews);
   const [timeRange, setTimeRange] = useState<'7d' | '30d' | '90d'>('30d');
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const fetchDashboardData = async () => {
+      try {
+        setIsLoading(true);
+        const analytics = await providerAPI.getDashboardAnalytics();
+        
+        // Map analytics data to dashboard stats
+        if (analytics) {
+          setStats({
+            totalRevenue: analytics.total_revenue || mockStats.totalRevenue,
+            revenueChange: analytics.revenue_change || mockStats.revenueChange,
+            totalBookings: analytics.total_bookings || mockStats.totalBookings,
+            bookingsChange: analytics.bookings_change || mockStats.bookingsChange,
+            activeServices: analytics.active_services || mockStats.activeServices,
+            averageRating: analytics.average_rating || mockStats.averageRating,
+            ratingChange: analytics.rating_change || mockStats.ratingChange,
+            responseTime: analytics.response_time || mockStats.responseTime,
+            pendingRequests: analytics.pending_requests || mockStats.pendingRequests,
+          });
+        }
+      } catch (err) {
+        setError('Failed to load dashboard data');
+        // Keep mock data as fallback
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchDashboardData();
+  }, [timeRange]);
 
   const getStatusBadge = (status: string) => {
     const statusConfig = {
@@ -203,8 +237,21 @@ export default function ProviderDashboardPage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        {error && (
+          <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+            {error}
+          </div>
+        )}
+
+        {isLoading ? (
+          <div className="flex items-center justify-center py-12">
+            <Loader2 className="w-8 h-8 animate-spin text-gtbank-primary" />
+            <span className="ml-3 text-gray-600">Loading dashboard...</span>
+          </div>
+        ) : (
+          <>
+            {/* Stats Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -449,6 +496,8 @@ export default function ProviderDashboardPage() {
             </div>
           </div>
         </motion.div>
+          </>
+        )}
       </div>
     </div>
   );

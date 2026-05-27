@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { ArrowLeft, Heart, MapPin, Star, Trash2, Calendar, Home, Search, User } from 'lucide-react';
-import axios from '../../lib/axios';
+import { customerAPI } from '../../lib/api/customer';
 
 type SavedService = {
   id: string;
@@ -47,8 +47,8 @@ export default function CustomerSavedPage() {
   useEffect(() => {
     const fetchSaved = async () => {
       try {
-        const { data } = await axios.get('/customer/saved');
-        setSavedServices(data?.data || data?.saved_services || data || []);
+        const data = await customerAPI.getSaved();
+        setSavedServices(data);
       } catch (error) {
         setSavedServices(fallbackSaved);
       } finally {
@@ -62,7 +62,7 @@ export default function CustomerSavedPage() {
   const removeSaved = async (savedId: string) => {
     setSavedServices(prev => prev.filter(item => item.id !== savedId));
     try {
-      await axios.delete(`/customer/saved/${savedId}`);
+      await customerAPI.removeSaved(savedId);
     } catch (error) {
       console.warn('Could not remove saved service yet:', error);
     }

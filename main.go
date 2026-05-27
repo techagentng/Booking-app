@@ -95,6 +95,11 @@ func main() {
 	// Analytics
 	api.HandleFunc("/analytics/track", server.trackAnalytics).Methods("POST")
 
+	// Customer bookings (authenticated)
+	customer := router.PathPrefix("/api/v1/customer").Subrouter()
+	customer.HandleFunc("/bookings/service", server.createServiceBooking).Methods("POST")
+	customer.HandleFunc("/bookings", server.getCustomerBookings).Methods("GET")
+
 	// CORS middleware
 	c := cors.New(cors.Options{
 		AllowedOrigins: []string{"http://localhost:3000", "http://localhost:3001"},
@@ -991,6 +996,102 @@ func (s *Server) getCurrentLocation(w http.ResponseWriter, r *http.Request) {
 	}
 
 	s.sendResponse(w, location, "Current location retrieved successfully")
+}
+
+// Service booking endpoints
+func (s *Server) createServiceBooking(w http.ResponseWriter, r *http.Request) {
+	var bookingData struct {
+		ServiceID       string `json:"service_id"`
+		CustomerID      string `json:"customer_id"`
+		CheckInDate     string `json:"check_in_date"`
+		CheckOutDate    string `json:"check_out_date"`
+		GuestCount      int    `json:"guest_count"`
+		SpecialRequests string `json:"special_requests"`
+	}
+
+	if err := json.NewDecoder(r.Body).Decode(&bookingData); err != nil {
+		http.Error(w, "Invalid request body", http.StatusBadRequest)
+		return
+	}
+
+	// Insert booking into database
+	query := `
+		INSERT INTO bookings (service_id, customer_id, check_in_date, check_out_date, guest_count, special_requests, status, created_at)
+		VALUES ($1, $2, $3, $4, $5, $6, 'pending', NOW())
+		RETURNING id
+	`
+
+	var bookingID string
+	err := s.db.QueryRow(query, bookingData.ServiceID, bookingData.CustomerID, bookingData.CheckInDate, bookingData.CheckOutDate, bookingData.GuestCount, bookingData.SpecialRequests).Scan(&bookingID)
+	if err != nil {
+		http.Error(w, "Failed to create booking", http.StatusInternalServerError)
+		return
+	}
+
+	result := map[string]interface{}{
+		"booking_id": bookingID,
+		"status":     "pending",
+	}
+
+	s.sendResponse(w, result, "Booking created successfully")
+}
+
+func (s *Server) getCustomerBookings(w http.ResponseWriter, r *http.Request) {
+	customerID := r.URL.Query().Get("customer_id")
+	status := r.URL.Query().Get("status")
+
+	if customerID == "" {
+		http.Error(w, "Customer ID is required", http.StatusBadRequest)
+		return
+	}
+
+	query := `
+		SELECT id, service_id, customer_id, check_in_date, check_out_date, guest_count, special_requests, status, created_at
+		FROM bookings
+		WHERE customer_id = $1
+	`
+
+	args := []interface{}{customerID}
+	argIndex := 2
+
+	if status != "" {
+		query += " AND status = $" + strconv.Itoa(argIndex)
+		args = append(args, status)
+		argIndex++
+	}
+
+	query += " ORDER BY created_at DESC"
+
+	rows, err := s.db.Query(query, args...)
+	if err != nil {
+		http.Error(w, "Database error", http.StatusInternalServerError)
+		return
+	}
+	defer rows.Close()
+
+	var bookings []map[string]interface{}
+	for rows.Next() {
+		var id, serviceID, customerID, checkInDate, checkOutDate, specialRequests, status, createdAt string
+		var guestCount int
+
+		if err := rows.Scan(&id, &serviceID, &customerID, &checkInDate, &checkOutDate, &guestCount, &specialRequests, &status, &createdAt); err != nil {
+			continue
+		}
+
+		bookings = append(bookings, map[string]interface{}{
+			"id":               id,
+			"service_id":       serviceID,
+			"customer_id":      customerID,
+			"check_in_date":    checkInDate,
+			"check_out_date":   checkOutDate,
+			"guest_count":      guestCount,
+			"special_requests": specialRequests,
+			"status":           status,
+			"created_at":       createdAt,
+		})
+	}
+
+	s.sendResponse(w, bookings, "Bookings retrieved successfully")
 }
 
 func (s *Server) getPopularLocations(w http.ResponseWriter, r *http.Request) {

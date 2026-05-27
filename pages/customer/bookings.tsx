@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Calendar, Clock, CreditCard, MapPin, RefreshCw, Home, Search, Heart, User } from 'lucide-react';
-import axios from '../../lib/axios';
+import { customerAPI } from '../../lib/api/customer';
 
 type CustomerBooking = {
   id: string;
@@ -55,9 +55,8 @@ export default function CustomerBookingsPage() {
     const fetchBookings = async () => {
       setLoading(true);
       try {
-        const params = activeTab === 'all' ? {} : { status: activeTab };
-        const { data } = await axios.get('/customer/bookings', { params });
-        setBookings(data?.data || data?.bookings || data || []);
+        const data = await customerAPI.getBookings(activeTab === 'all' ? undefined : activeTab);
+        setBookings(data);
       } catch (error) {
         setBookings(activeTab === 'all' ? fallbackBookings : fallbackBookings.filter(item => item.status === activeTab));
       } finally {

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getSession } from '../utils/auth';
+import { getSession, clearSession } from '../utils/auth';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api/v1';
 
@@ -36,12 +36,12 @@ axiosInstance.interceptors.request.use(
 );
 
 // Pages that should not redirect to login on 401
-const noAuthRedirectPages = ['/inroomtablet', '/bookings', '/bookings/new'];
+const noAuthRedirectPages = ['/inroomtablet', '/bookings', '/bookings/new', '/login', '/signup'];
 
 // Response interceptor for error handling
 axiosInstance.interceptors.response.use(
   (response) => response,
-  (error) => {
+  async (error) => {
     if (error.code === 'ECONNABORTED') {
       console.error('Request timeout - backend may be down');
     } else if (error.response?.status === 401) {
@@ -54,16 +54,17 @@ axiosInstance.interceptors.response.use(
         const shouldSkipRedirect = noAuthRedirectPages.some(page => currentPath.startsWith(page));
         
         if (!shouldSkipRedirect) {
-          localStorage.removeItem('auth_token');
-          localStorage.removeItem('user_role');
-          localStorage.removeItem('user_data');
+          clearSession();
           
-          // Redirect to login page
-          window.location.href = '/login';
+          // Redirect to login page with return URL
+          const returnUrl = encodeURIComponent(currentPath);
+          window.location.href = `/login?redirectTo=${returnUrl}`;
         }
       }
     } else if (error.response?.status === 403) {
       console.error('Forbidden - insufficient permissions');
+    } else if (error.response?.status === 500) {
+      console.error('Server error - backend may be down');
     }
     
     return Promise.reject(error);

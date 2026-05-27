@@ -15,6 +15,7 @@ import {
   ProviderService,
   ProviderReview
 } from '../lib/api/tripsbook-api';
+import { servicesAPI } from '../lib/api/services';
 
 // Debounce utility
 function debounce<T extends (...args: any[]) => any>(
@@ -92,7 +93,7 @@ export function useCategories() {
     try {
       setLoading(true);
       setError(null);
-      const data = await tripsBookAPI.getCategories();
+      const data = await servicesAPI.getCategories();
       setCategories(data || []);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to fetch categories');

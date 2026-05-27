@@ -35,6 +35,8 @@ export interface AuthContextType {
   isInitialized: boolean;
   user: User | null;
   role_name: string | null;
+  login: (email: string, password: string, redirectTo?: string) => Promise<void>;
+  signup: (data: { email: string; password: string; full_name: string; phone?: string }) => Promise<void>;
   googleLogin: (email: string, fullname: string, telephone: string, redirectTo?: string) => Promise<void>;
   logout: () => void;
 }

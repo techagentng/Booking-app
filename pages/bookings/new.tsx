@@ -4,6 +4,7 @@ import { ArrowLeft, Save, Calendar as CalendarIcon, User, Users, Home, X, Loader
 import axios from '../../lib/axios';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { incrementScore } from '../../store';
+import { customerAPI } from '../../lib/api/customer';
 
 const roomTypes = [
   { id: 'standard', name: 'Standard', price: 100 },
@@ -479,46 +480,17 @@ export default function NewBooking() {
     setError(null);
     
     try {
-      console.log('Submitting form with idDocument:', idDocument ? 'YES' : 'NO');
+      // Get service ID from query params or use a default
+      const serviceId = typeof router.query.serviceId === 'string' ? router.query.serviceId : formData.roomId;
       
-      // Always use FormData for consistency with backend
-      const formDataToSend = new FormData();
-      
-      // Guest information - either existing guest ID or new guest details
-      if (formData.guestId) {
-        // Existing guest
-        formDataToSend.append('guest_id', formData.guestId);
-        console.log('Using existing guest ID:', formData.guestId);
-      } else {
-        // New guest - send guest details
-        formDataToSend.append('guest_name', formData.guestName);
-        formDataToSend.append('guest_email', formData.guestEmail);
-        formDataToSend.append('guest_phone', formData.guestPhone);
-        formDataToSend.append('guest_id_type', formData.guestIdType.toLowerCase()); // passport, drivers_license, etc.
-        formDataToSend.append('guest_id_number', formData.guestIdNumber);
-        console.log('Creating new guest:', formData.guestName);
-      }
-      
-      // Reservation fields
-      formDataToSend.append('room_id', formData.roomId);
-      formDataToSend.append('check_in_date', formData.checkIn);
-      formDataToSend.append('check_out_date', formData.checkOut);
-      formDataToSend.append('number_of_guests', formData.guestCount.toString());
-      formDataToSend.append('payment_method', 'credit_card');
-      
-      if (formData.specialRequests) {
-        formDataToSend.append('special_requests', formData.specialRequests);
-      }
-      
-      // Add ID document if uploaded
-      if (idDocument) {
-        formDataToSend.append('id_document', idDocument);
-        console.log('File attached to FormData');
-      }
-      
-      console.log('Sending FormData to backend...');
-      // Let axios automatically set Content-Type with proper boundary
-      const response = await axios.post('/reservations', formDataToSend);
+      // Create booking using customer API
+      await customerAPI.createBooking({
+        service_id: serviceId,
+        check_in_date: formData.checkIn,
+        check_out_date: formData.checkOut,
+        guest_count: formData.guestCount,
+        special_requests: formData.specialRequests,
+      });
       
       // Redirect to bookings list with success message
       router.push({
@@ -526,13 +498,8 @@ export default function NewBooking() {
         query: { success: 'Booking created successfully' },
       });
     } catch (err: any) {
-      console.error('Full error object:', err);
-      console.error('Error response:', err.response?.data);
-      console.error('Error status:', err.response?.status);
-      router.push({
-        pathname: '/bookings',
-        query: { success: 'Booking request submitted successfully' },
-      });
+      console.error('Booking error:', err);
+      setError('Failed to create booking. Please try again.');
     } finally {
       setLoading(false);
     }

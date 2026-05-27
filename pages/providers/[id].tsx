@@ -3,8 +3,9 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import {
   Star, MapPin, Phone, Mail, Globe, Clock, CheckCircle,
-  ChevronRight, Calendar, Users, Award, Share2, Heart, ArrowLeft
+  ChevronRight, Calendar, Users, Award, Share2, Heart, ArrowLeft, Loader2
 } from 'lucide-react';
+import { reviewsAPI } from '../../lib/api/reviews';
 
 // Types
 interface ServiceProvider {
@@ -202,10 +203,47 @@ export default function ProviderDetailPage() {
   const [reviews, setReviews] = useState<Review[]>(mockReviews);
   const [activeTab, setActiveTab] = useState<'services' | 'reviews'>('services');
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isLoadingReviews, setIsLoadingReviews] = useState(false);
+  const [reviewsError, setReviewsError] = useState('');
 
   useEffect(() => {
     // In production, fetch provider data by ID
     setProvider(mockProvider);
+  }, [id]);
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      if (!id || typeof id !== 'string') return;
+
+      try {
+        setIsLoadingReviews(true);
+        const apiReviews = await reviewsAPI.getProviderReviews(id);
+        
+        // Map API reviews to local Review format
+        if (apiReviews && apiReviews.length > 0) {
+          const mappedReviews = apiReviews.map((r: any) => ({
+            id: r.id,
+            userId: r.user_id,
+            userName: r.user_name,
+            userAvatar: r.user_avatar || 'https://picsum.photos/seed/default/50/50.jpg',
+            rating: r.rating,
+            comment: r.comment,
+            verified: true,
+            date: r.created_at,
+            response: undefined,
+            ratingBreakdown: { quality: r.rating, value: r.rating, punctuality: r.rating, professionalism: r.rating },
+          }));
+          setReviews(mappedReviews);
+        }
+      } catch (err) {
+        setReviewsError('Failed to load reviews');
+        // Keep mock data as fallback
+      } finally {
+        setIsLoadingReviews(false);
+      }
+    };
+
+    fetchReviews();
   }, [id]);
 
   const handleServiceClick = (serviceId: string) => {

@@ -3,8 +3,9 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import {
   Plus, Edit, Eye, Trash2, Search, Filter, Clock,
-  CheckCircle, XCircle, PauseCircle, MoreVertical, ChevronDown, ArrowLeft
+  CheckCircle, XCircle, PauseCircle, MoreVertical, ChevronDown, ArrowLeft, Loader2
 } from 'lucide-react';
+import { providerAPI } from '../../../lib/api/provider';
 
 // Types
 interface ProviderService {
@@ -115,14 +116,33 @@ const statusFilters = [
 
 export default function ProviderServicesPage() {
   const router = useRouter();
-  const [services, setServices] = useState<ProviderService[]>(mockServices);
+  const [services, setServices] = useState<ProviderService[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedStatus, setSelectedStatus] = useState('all');
   const [showFilters, setShowFilters] = useState(false);
 
   useEffect(() => {
-    let filtered = mockServices;
+    const fetchServices = async () => {
+      try {
+        setIsLoading(true);
+        const data = await providerAPI.getServices();
+        setServices(data);
+      } catch (err) {
+        setError('Failed to load services');
+        setServices(mockServices); // Fallback to mock data
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchServices();
+  }, []);
+
+  useEffect(() => {
+    let filtered = services;
 
     if (selectedCategory !== 'all') {
       filtered = filtered.filter(s => s.category.toLowerCase() === selectedCategory);
@@ -167,17 +187,34 @@ export default function ProviderServicesPage() {
     router.push(`/providers/1/services/${serviceId}`);
   };
 
-  const handleDelete = (serviceId: string) => {
+  const handleDelete = async (serviceId: string) => {
     if (confirm('Are you sure you want to delete this service?')) {
-      setServices(services.filter(s => s.id !== serviceId));
+      try {
+        await providerAPI.deleteService(serviceId);
+        setServices(services.filter(s => s.id !== serviceId));
+      } catch (err) {
+        setError('Failed to delete service');
+      }
     }
   };
 
-  const handleToggleStatus = (serviceId: string, currentStatus: string) => {
+  const handleToggleStatus = async (serviceId: string, currentStatus: string) => {
     const newStatus = currentStatus === 'active' ? 'paused' : 'active';
+    
+    // Optimistic update
     setServices(services.map(s =>
       s.id === serviceId ? { ...s, status: newStatus as any } : s
     ));
+
+    try {
+      await providerAPI.toggleServiceAvailability(serviceId, newStatus === 'active');
+    } catch (err) {
+      // Revert on error
+      setServices(services.map(s =>
+        s.id === serviceId ? { ...s, status: currentStatus as any } : s
+      ));
+      setError('Failed to update service status');
+    }
   };
 
   return (
@@ -211,8 +248,21 @@ export default function ProviderServicesPage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        {/* Filters */}
-        <div className="bg-white rounded-xl shadow-sm p-4 mb-6">
+        {error && (
+          <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+            {error}
+          </div>
+        )}
+
+        {isLoading ? (
+          <div className="flex items-center justify-center py-12">
+            <Loader2 className="w-8 h-8 animate-spin text-gtbank-primary" />
+            <span className="ml-3 text-gray-600">Loading services...</span>
+          </div>
+        ) : (
+          <>
+            {/* Filters */}
+            <div className="bg-white rounded-xl shadow-sm p-4 mb-6">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 w-5 h-5" />
@@ -375,6 +425,8 @@ export default function ProviderServicesPage() {
             </div>
           )}
         </div>
+          </>
+        )}
       </div>
     </div>
   );
